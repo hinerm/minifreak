@@ -88,9 +88,9 @@
               Answers <i>&ldquo;If I want to do X, what do I press?&rdquo;</i> across the entire front panel without cluttering the view with sound option lists.
             </p>
             <ul class="text-xs text-slate-300 space-y-1.5 border-t border-slate-800 pt-2.5">
-              <li>&bull; <b>Sheet 1 (Front):</b> Annotated hardware schematic + toggleable photo overlay showing modal color shifts for the 30-pad bar (Arp, Seq, Favorites, Purple LFO Shaper) and Touch Strips.</li>
-              <li>&bull; <b>Sheet 2 (Back):</b> Instant <code class="text-orange-300">Sound Edit + Button</code> shortcuts, Top 18 task lookup table, and corrected <code class="text-orange-300">Sound Edit</code> vs. <code class="text-sky-300">Utility</code> menu trees.</li>
-              <li>&bull; <b>Interactive Filters:</b> Spotlight <i>Blue Shift</i>, <i>Arp/Seq/Mods</i>, <i>Favorites</i>, <i>LFO Shaper</i>, or <i>Touch Strip</i> workflows.</li>
+              <li>&bull; <b>Sheet 1 (Front):</b> High-resolution hardware panel photo with precision color-coded outlines matching the 8 workflow and modal shift cards (Arp/Seq, Favorites, Purple LFO Shaper, and Touch Strips).</li>
+              <li>&bull; <b>Sheet 2 (Back):</b> Instant <code class="text-orange-300">Sound Edit + Button</code> shortcuts, Top 16 task lookup table, and complete <code class="text-orange-300">Sound Edit</code> vs. <code class="text-sky-300">Utility</code> menu trees.</li>
+              <li>&bull; <b>Single Source of Truth:</b> Directly prints as a 2-page 14&quot;&times;8.5&quot; Legal Landscape PDF and generates the standalone 2800&times;1700 high-resolution PNG.</li>
             </ul>
           </div>
           <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
@@ -157,7 +157,7 @@
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div>
               <h3 class="text-sm font-bold text-white">High-Resolution Annotated Hardware Panel Diagram</h3>
-              <p class="text-xs text-slate-400">Standalone 2200 &times; 1250 PNG with color-coded callout boxes and leader lines mapped to the MiniFreak hardware</p>
+              <p class="text-xs text-slate-400">Derived directly from Sheet 1 of Doc 1 (2800 &times; 1700 PNG at 14&quot; &times; 8.5&quot; Legal Landscape aspect ratio)</p>
             </div>
             <a href="assets/minifreak_annotated_ui.png" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition-colors">
               Open Full-Size PNG &nearr;
@@ -174,7 +174,7 @@
               Printing &amp; Case-Fit Guide
             </div>
             <p class="text-slate-300 leading-relaxed">
-              Every document page is formatted with <code class="text-emerald-300">@page { size: 14in 8.5in; }</code> print rules so the navigation bar and interactive filter buttons automatically hide when printing.
+              Every document page is formatted with <code class="text-emerald-300">@page { size: 14in 8.5in; }</code> print rules so the navigation bar and screen toolbar automatically hide when printing.
             </p>
             <div class="space-y-2 text-slate-300">
               <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
@@ -200,17 +200,42 @@
         </div>
       </section>
 
+      <!-- Acknowledgements & Official Arturia Resources -->
+      <section class="rounded-2xl bg-slate-900/90 border border-slate-800 p-4 md:p-5 text-xs text-slate-300">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div class="space-y-1 max-w-3xl">
+            <div class="font-bold text-white text-sm">Acknowledgements &amp; Official Arturia Resources</div>
+            <p class="text-slate-400 leading-relaxed">
+              <b>MiniFreak</b> and <b>MiniFreak V</b> are hardware and software instruments designed and manufactured by <a href="https://www.arturia.com/" target="_blank" rel="noopener" class="text-orange-400 hover:text-orange-300 underline font-semibold">Arturia</a>. All product names, trademarks, hardware photography, and firmware designs are the property of Arturia. This reference suite is an unofficial community companion created to support hands-on learning alongside Arturia&rsquo;s official documentation.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 shrink-0">
+            <a href="https://www.arturia.com/products/hardware-synths/minifreak/overview" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold transition-colors">
+              Arturia MiniFreak &nearr;
+            </a>
+            <a href="https://www.arturia.com/products/hardware-synths/minifreak/resources" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold transition-colors">
+              Official Manual &amp; Firmware &nearr;
+            </a>
+            <a href="https://www.arturia.com/products/software-instruments/minifreak-v/overview" target="_blank" rel="noopener" class="px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold transition-colors">
+              MiniFreak V &nearr;
+            </a>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
   <footer class="max-w-[1400px] w-full mx-auto mt-8 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
-    <span>Arturia MiniFreak 37-Key Hybrid Synthesizer Reference Suite (Firmware v4.0)</span>
+    <span>Arturia MiniFreak 37-Key Hybrid Synthesizer Reference Suite (Firmware v4.0) &bull; Acknowledgements to <a href="https://www.arturia.com/" target="_blank" rel="noopener" class="text-slate-400 hover:text-orange-400 underline">Arturia</a></span>
     <div class="flex items-center gap-3">
       <a href="pages/minifreak_ui_workflows.html" class="hover:text-slate-300">UI Workflows</a>
       <span>&bull;</span>
       <a href="pages/minifreak_sound_vibes_guide.html" class="hover:text-slate-300">Sound Vibes Guide</a>
       <span>&bull;</span>
       <a href="pages/minifreak_technical_roadmap.html" class="hover:text-slate-300">Technical Roadmap</a>
+      <span>&bull;</span>
+      <a href="https://www.arturia.com/products/hardware-synths/minifreak/overview" target="_blank" rel="noopener" class="hover:text-orange-400">Arturia.com &nearr;</a>
     </div>
   </footer>
 

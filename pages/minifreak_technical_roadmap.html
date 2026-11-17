@@ -18,10 +18,13 @@
     }
     @page {
       size: 14in 8.5in;
-      margin: 0.22in;
+      margin: 0.14in;
     }
     @media print {
-      body {
+      html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
         background: #ffffff !important;
         color: #0f172a !important;
         -webkit-print-color-adjust: exact !important;
@@ -31,13 +34,19 @@
         display: none !important;
       }
       .print-sheet {
+        box-sizing: border-box !important;
         display: flex !important;
-        width: 13.56in !important;
-        height: 8.04in !important;
-        max-height: 8.04in !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 13.70in !important;
+        height: 8.16in !important;
+        max-height: 8.16in !important;
+        aspect-ratio: auto !important;
         overflow: hidden !important;
-        page-break-after: always;
-        break-after: page;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
         border: 1px solid #cbd5e1 !important;
         box-shadow: none !important;
         margin: 0 auto !important;
@@ -45,8 +54,8 @@
         color: #0f172a !important;
       }
       .print-sheet:last-of-type {
-        page-break-after: auto;
-        break-after: auto;
+        page-break-after: auto !important;
+        break-after: auto !important;
       }
     }
     .stage-dim {

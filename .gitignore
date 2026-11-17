@@ -1,0 +1,21 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Thumbnails
+Thumbs.db
+ehthumbs.db
+
+# Editor & IDE directories/files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary & scratch files
+*.tmp
+*.bak
+*.log
