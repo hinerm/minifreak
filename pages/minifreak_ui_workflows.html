@@ -384,6 +384,11 @@
 			line-height: 1rem;
 		}
 
+		.text-\[9px\] {
+			font-size: 9px;
+			line-height: 11px;
+		}
+
 		.text-\[10px\] {
 			font-size: 10px;
 			line-height: 12px;
@@ -1448,9 +1453,9 @@
 					<div>
 						<div
 							class="font-extrabold text-slate-900 uppercase tracking-tight border-b border-slate-300 pb-0.5 mb-0.5">
-							&ldquo;If I Want To Do X, Where Do I Go?&rdquo; (Top 16 Workflows)
+							&ldquo;If I Want To Do X, Where Do I Go?&rdquo;
 						</div>
-						<table class="w-full text-left border-collapse">
+						<table class="w-full text-left border-collapse text-[10px] leading-tight">
 							<thead>
 								<tr class="border-b border-slate-300 text-slate-500">
 									<th class="py-0.5 pr-1 font-bold">Goal / Task</th>
@@ -1458,99 +1463,116 @@
 								</tr>
 							</thead>
 							<tbody class="divide-y text-slate-800">
-								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Start a clean patch from scratch</td>
-									<td class="py-0.5"><b>Long-press <code class="font-bold">Preset/Edit</code></b> (or
-										<code class="font-mono">Utility &gt; Preset Ops &gt; Erase &gt; Init</code>)
-									</td>
+								<tr class="bg-slate-200 text-[9px] uppercase tracking-wider font-extrabold text-slate-700">
+									<td colspan="2" class="py-0.5 px-1">1. Presets, Snapshots &amp; Selective Reset</td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Undo a bad edit / restore state</td>
-									<td class="py-0.5"><code
-											class="font-mono">Sound Edit &gt; Preset &gt; View Snapshots</code>
-										(time-stamped auto-saves!)</td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Start a clean patch from scratch</td>
+									<td class="py-0.5"><b>Long-press <code class="font-bold">Preset/Edit</code></b> (or <code class="font-mono">Utility &gt; Preset Ops &gt; Erase &gt; Init</code>)</td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Copy Osc, FX, Seq, or LFO to patch</td>
-									<td class="py-0.5"><code
-											class="font-mono">Utility &gt; Preset Ops &gt; Preset Copy</code> &rarr;
-										switch preset &rarr; <code class="font-mono">Preset Paste</code></td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Undo a bad edit / restore state</td>
+									<td class="py-0.5"><code class="font-mono">Sound Edit &gt; Preset &gt; View Snapshots</code> (time-stamped auto-saves!)</td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Swap FX 1, FX 2, or FX 3 order</td>
-									<td class="py-0.5"><code
-											class="font-mono">Utility &gt; Preset Ops &gt; Preset Paste &gt; Swap FX 1/2/3</code>
-									</td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Clear only Matrix, Seq, Mods, or Macro</td>
+									<td class="py-0.5"><code class="font-mono">Utility &gt; Preset Ops &gt; Preset Erase</code> &rarr; pick section (<code class="font-mono">Reload</code> reverts)</td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Run Delay/Reverb in parallel</td>
-									<td class="py-0.5"><code class="font-bold">SE + FX Select</code> &rarr; set
-										Delay/Reverb Routing = <b>Send</b></td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Copy Osc, FX, Seq, or LFO to patch</td>
+									<td class="py-0.5"><code class="font-mono">Utility &gt; Preset Ops &gt; Preset Copy</code> &rarr; switch &rarr; <code class="font-mono">Preset Paste</code></td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Quantize pitch mod to a scale</td>
-									<td class="py-0.5"><code class="font-bold">SE + Osc Select</code> &rarr; <code
-											class="font-mono">Osc1/2 Mod Quant</code></td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Filter presets by your name / hide Init</td>
+									<td class="py-0.5">Set <code class="font-mono">Utility &gt; Your Name</code> &rarr; <code class="font-bold text-sky-700">Shift + Turn Preset</code> (<code class="font-mono">User</code> hides <code class="font-mono">Init</code>)</td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Lock keyboard to a scale / key</td>
-									<td class="py-0.5"><code class="font-bold text-sky-700">Shift + Chord</code> (<code
-											class="font-mono">Scale Config</code>) &rarr; pick Scale &amp; Root (or
-										<code class="font-mono">User</code>)
-									</td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Snap analog knobs to physical pos</td>
+									<td class="py-0.5"><code class="font-mono">Utility &gt; Preset Ops &gt; Panel Mode = Knob Panel</code> &rarr; <code class="font-bold text-sky-700">Shift + Save</code></td>
+								</tr>
+
+								<tr class="bg-slate-200 text-[9px] uppercase tracking-wider font-extrabold text-slate-700">
+									<td colspan="2" class="py-0.5 px-1">2. Pitch, Scales, Voicing &amp; Envelopes</td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Make velocity control loudness</td>
-									<td class="py-0.5"><code class="font-bold">SE + Env Mode</code> &rarr; <code
-											class="font-mono">Envelope &gt; Velo &gt; VCA</code></td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Lock keyboard to a scale / key</td>
+									<td class="py-0.5"><code class="font-bold text-sky-700">Shift + Chord</code> (<code class="font-mono">Scale Config</code>) &rarr; pick Scale &amp; Root (or <code class="font-mono">User</code>)</td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Use Velocity + Aftertouch together</td>
-									<td class="py-0.5"><code class="font-bold">SE + Touch Strip</code> &rarr; <code
-											class="font-mono">Matrix Src VeloAT = Both</code></td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Quantize pitch mod to a scale</td>
+									<td class="py-0.5"><code class="font-bold">SE + Osc Select</code> &rarr; <code class="font-mono">Osc1/2 Mod Quant</code></td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Adjust Unison voices &amp; detune</td>
-									<td class="py-0.5"><code class="font-bold">SE + Env Mode</code> (2&times;) &rarr;
-										<code class="font-mono">Voice &gt; Unison Count / Spread / Mode</code>
-									</td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Legato glide only when overlapping</td>
+									<td class="py-0.5"><code class="font-bold">SE + Osc Select</code> &rarr; <code class="font-mono">Glide Mode = Time/Rate/Sync Legato</code></td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Legato glide only when overlapping</td>
-									<td class="py-0.5"><code class="font-bold">SE + Osc Select</code> &rarr; <code
-											class="font-mono">Glide Mode = Time/Rate/Sync Legato</code></td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Adjust Unison voices &amp; detune</td>
+									<td class="py-0.5"><code class="font-bold">SE + Env Mode</code> (2&times;) &rarr; <code class="font-mono">Voice &gt; Unison Count / Spread / Mode</code></td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Stop step pads flickering in Shaper</td>
-									<td class="py-0.5"><code
-											class="font-mono">Utility &gt; Controls &gt; Touch Button Sens = Medium</code>
-									</td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Turn CycEnv loop into rhythmic plucks</td>
+									<td class="py-0.5"><code class="font-bold">SE + CycEnv Mode</code> &rarr; <code class="font-mono">Stage Order = RFH</code> or <code class="font-mono">HRF</code> (<code class="font-mono">Hold</code> pauses at <code class="font-mono">0</code>!)</td>
+								</tr>
+
+								<tr class="bg-slate-200 text-[9px] uppercase tracking-wider font-extrabold text-slate-700">
+									<td colspan="2" class="py-0.5 px-1">3. Modulation, LFO Shaper &amp; Expression</td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Prevent analog knob value jumps</td>
-									<td class="py-0.5"><code
-											class="font-mono">Utility &gt; Controls &gt; Knob Catch = Hook</code> or
-										<code class="font-mono">Scale</code>
-									</td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Modulate another mod (sidechain)</td>
+									<td class="py-0.5"><b>Hold <code class="font-bold">Assign 1&ndash;3</code> + turn <code class="font-bold">Matrix</code></b> (or <code class="font-bold">Preset</code> &rarr; <code class="font-mono">LFO/CycEnv AM</code>)</td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Plug a Mic or Synth into Audio In</td>
-									<td class="py-0.5">Set Osc 1 = <code class="font-mono">Audio In</code> (or FX =
-										<code class="font-mono">Vocoder Ext</code>) + <code
-											class="font-mono">Utility &gt; Audio &gt; In Mode/Gain</code>
-									</td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Make 16-step Shaper run 16&times; faster</td>
+									<td class="py-0.5"><code class="font-bold">SE + LFO Select</code> &rarr; <code class="font-mono">Shaper Rate = All Steps</code> (whole wave in 1 step!)</td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Keep same BPM when changing patch</td>
-									<td class="py-0.5"><code
-											class="font-mono">Utility &gt; Sync &gt; Global Tempo = On</code></td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Stop step pads flickering in Shaper</td>
+									<td class="py-0.5"><code class="font-mono">Utility &gt; Controls &gt; Touch Button Sens = Medium</code></td>
 								</tr>
 								<tr>
-									<td class="py-0.5 pr-1 font-semibold">Tune self-oscillating Analog Filter</td>
-									<td class="py-0.5"><code
-											class="font-mono">Utility &gt; Audio &gt; Calib Cutoff</code> (1 min) &amp;
-										<code class="font-mono">Calib Analog</code> (2 min)
-									</td>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Make velocity control loudness</td>
+									<td class="py-0.5"><code class="font-bold">SE + Env Mode</code> &rarr; <code class="font-mono">Envelope &gt; Velo &gt; VCA</code></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Use Velocity + Aftertouch together</td>
+									<td class="py-0.5"><code class="font-bold">SE + Touch Strip</code> &rarr; <code class="font-mono">Matrix Src VeloAT = Both</code></td>
+								</tr>
+
+								<tr class="bg-slate-200 text-[9px] uppercase tracking-wider font-extrabold text-slate-700">
+									<td colspan="2" class="py-0.5 px-1">4. Effects, Audio In &amp; Self-Feedback</td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Swap FX 1, FX 2, or FX 3 order</td>
+									<td class="py-0.5"><code class="font-mono">Utility &gt; Preset Ops &gt; Preset Paste &gt; Swap FX 1/2/3</code></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Run Delay/Reverb in parallel</td>
+									<td class="py-0.5"><code class="font-bold">SE + FX Select</code> &rarr; set Delay/Reverb Routing = <b>Send</b></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Plug a Mic or Synth into Audio In</td>
+									<td class="py-0.5">Osc 1 = <code class="font-mono">Audio In</code> (or <code class="font-mono">Vocoder Ext</code>) + <code class="font-mono">Utility &gt; Audio &gt; In Mode/Gain</code></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Self-feedback loop (Audio Out &rarr; In)</td>
+									<td class="py-0.5">Patch Out &rarr; In, set Osc 1 = <code class="font-mono">Audio In</code>, <b>latch <code class="font-bold">Hold</code> + press key</b> to open VCA</td>
+								</tr>
+
+								<tr class="bg-slate-200 text-[9px] uppercase tracking-wider font-extrabold text-slate-700">
+									<td colspan="2" class="py-0.5 px-1">5. Live Performance, Tempo &amp; Calibration</td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Prevent analog knob value jumps</td>
+									<td class="py-0.5"><code class="font-mono">Utility &gt; Controls &gt; Knob Catch = Hook</code> or <code class="font-mono">Scale</code></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Keep same BPM when changing patch</td>
+									<td class="py-0.5"><code class="font-mono">Utility &gt; Sync &gt; Global Tempo = On</code></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold whitespace-nowrap">Tune self-oscillating Analog Filter</td>
+									<td class="py-0.5"><code class="font-mono">Utility &gt; Audio &gt; Calib Cutoff</code> (1 min) &amp; <code class="font-mono">Calib Analog</code> (2 min)</td>
 								</tr>
 							</tbody>
 						</table>
