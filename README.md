@@ -1,4 +1,6 @@
-# Arturia MiniFreak — Workflow, Sound-Building & Technical Reference Suite
+# Arturia MiniFreak
+
+# Workflow, Sound-Building & Technical Reference Suite
 
 Interactive and print-ready (`14" × 8.5"` Legal Landscape) documentation suite for the **Arturia MiniFreak 37-Key Hybrid Synthesizer (Firmware v4.0)**.
 
