@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arturia MiniFreak — Workflow, Sound-Building &amp; Technical Reference Suite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>if (!window.tailwind) { document.write('<script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"><\/script>'); }</script>
+  <style>
+    :root {
+      --background: #0b1120;
+      --foreground: #f8fafc;
+      --card: #111827;
+      --border: #1e293b;
+      --muted-foreground: #94a3b8;
+      --primary: #f97316;
+      --primary-foreground: #ffffff;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-2 md:p-4 m-0 min-h-screen flex flex-col justify-between">
+
+  <div>
+    <!-- Site Navigation Bar -->
+    <nav class="max-w-[1400px] mx-auto mb-4 px-3 py-2 rounded-xl bg-slate-900/95 border border-slate-800 shadow-md flex flex-wrap items-center justify-between gap-2 text-xs">
+      <a href="index.html" class="flex items-center gap-2 font-black tracking-tight text-white hover:text-orange-400 transition-colors">
+        <span class="px-2 py-0.5 rounded bg-orange-500 text-slate-950 font-black">_MINIFREAK</span>
+        <span class="text-sm font-bold">Documentation Suite</span>
+      </a>
+      <div class="flex flex-wrap items-center gap-1.5">
+        <a href="index.html" class="px-2.5 py-1.5 rounded-lg font-semibold bg-slate-700 text-white border border-slate-600 shadow-sm">Home</a>
+        <a href="pages/minifreak_ui_workflows.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-orange-300 hover:bg-slate-800 transition-colors">1. UI Workflows &amp; Menus</a>
+        <a href="pages/minifreak_sound_vibes_guide.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-amber-300 hover:bg-slate-800 transition-colors">2. Sound &ldquo;Vibe &amp; Flavor&rdquo; Guide</a>
+        <a href="pages/minifreak_technical_roadmap.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-sky-300 hover:bg-slate-800 transition-colors">3. Technical &amp; Signal Roadmap</a>
+      </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-[1400px] mx-auto space-y-5">
+
+      <!-- Hero Banner -->
+      <section class="rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 border border-slate-700/80 p-5 md:p-7 shadow-xl">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+          <div class="space-y-2.5 max-w-3xl">
+            <div class="inline-flex flex-wrap items-center gap-2 text-xs">
+              <span class="px-2.5 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/40 font-bold uppercase tracking-wider">Arturia MiniFreak (Firmware v4.0)</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-medium">Interactive Web + 14&quot; &times; 8.5&quot; Legal Landscape Print</span>
+            </div>
+            <h1 class="text-2xl md:text-3xl font-black tracking-tight text-white">
+              37-Key Hybrid Synthesizer Workflow &amp; Sound Design Reference
+            </h1>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              A 3-part interactive and print-ready desk reference built for fast hands-on navigation, sound-building inspiration, and deep signal-flow exploration. Sized for <b>14&quot; &times; 8.5&quot; Legal Landscape</b> sheets so printed copies fit flat inside the 22.75&quot; &times; 9.1&quot; MiniFreak case.
+            </p>
+          </div>
+
+          <!-- Quick Color Grammar Legend -->
+          <div class="rounded-xl bg-slate-950/70 border border-slate-800 p-3.5 text-xs space-y-2 shrink-0 lg:w-80">
+            <div class="font-bold text-slate-200 uppercase tracking-wider text-[11px] border-b border-slate-800 pb-1">
+              Hardware Modal Color Grammar
+            </div>
+            <div class="grid grid-cols-2 gap-1.5">
+              <span class="px-2 py-1 rounded bg-slate-800 text-slate-100 border border-slate-700 font-medium"><b>White:</b> Primary Action</span>
+              <span class="px-2 py-1 rounded bg-sky-950/80 text-sky-300 border border-sky-700/60 font-medium"><b>Blue:</b> Hold Shift +</span>
+              <span class="px-2 py-1 rounded bg-orange-950/80 text-orange-300 border border-orange-700/60 font-medium"><b>Orange:</b> Oscillators</span>
+              <span class="px-2 py-1 rounded bg-purple-950/80 text-purple-300 border border-purple-700/60 font-medium"><b>Purple:</b> LFO Shaper</span>
+              <span class="px-2 py-1 rounded bg-rose-950/80 text-rose-300 border border-rose-700/60 font-medium"><b>Red:</b> Favs / Step Edit</span>
+              <span class="px-2 py-1 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 font-medium"><b>Green:</b> Arp / Seq Bar</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 Document Cards -->
+      <section class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+        <!-- DOC 1 CARD -->
+        <a href="pages/minifreak_ui_workflows.html" class="group rounded-2xl bg-slate-900 border-2 border-orange-500/70 hover:border-orange-400 p-5 flex flex-col justify-between transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-orange-500/10">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md text-xs font-extrabold uppercase tracking-wider bg-orange-500 text-white">Document 1 &bull; 2 Sheets</span>
+              <span class="text-xs font-mono text-orange-400 group-hover:translate-x-0.5 transition-transform">Open Doc 1 &rarr;</span>
+            </div>
+            <h2 class="text-lg font-extrabold text-white group-hover:text-orange-300 transition-colors">
+              UI Workflow Infographic &amp; Complete Menu Reference
+            </h2>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Answers <i>&ldquo;If I want to do X, what do I press?&rdquo;</i> across the entire front panel without cluttering the view with sound option lists.
+            </p>
+            <ul class="text-xs text-slate-300 space-y-1.5 border-t border-slate-800 pt-2.5">
+              <li>&bull; <b>Sheet 1 (Front):</b> Annotated hardware schematic + toggleable photo overlay showing modal color shifts for the 30-pad bar (Arp, Seq, Favorites, Purple LFO Shaper) and Touch Strips.</li>
+              <li>&bull; <b>Sheet 2 (Back):</b> Instant <code class="text-orange-300">Sound Edit + Button</code> shortcuts, Top 18 task lookup table, and corrected <code class="text-orange-300">Sound Edit</code> vs. <code class="text-sky-300">Utility</code> menu trees.</li>
+              <li>&bull; <b>Interactive Filters:</b> Spotlight <i>Blue Shift</i>, <i>Arp/Seq/Mods</i>, <i>Favorites</i>, <i>LFO Shaper</i>, or <i>Touch Strip</i> workflows.</li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Front &amp; Back Legal Sheet</span>
+            <span class="px-3 py-1.5 rounded-lg bg-orange-500 group-hover:bg-orange-400 text-white font-bold transition-colors">View UI Workflows</span>
+          </div>
+        </a>
+
+        <!-- DOC 2 CARD -->
+        <a href="pages/minifreak_sound_vibes_guide.html" class="group rounded-2xl bg-slate-900 border-2 border-amber-500/70 hover:border-amber-400 p-5 flex flex-col justify-between transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-amber-500/10">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md text-xs font-extrabold uppercase tracking-wider bg-amber-500 text-slate-950">Document 2 &bull; 2 Sheets</span>
+              <span class="text-xs font-mono text-amber-400 group-hover:translate-x-0.5 transition-transform">Open Doc 2 &rarr;</span>
+            </div>
+            <h2 class="text-lg font-extrabold text-white group-hover:text-amber-300 transition-colors">
+              Sound-Building &ldquo;Vibe &amp; Flavor&rdquo; Handout
+            </h2>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Your first point of entry when building a patch from scratch: what each engine sounds like, when to reach for it, and where its sweet spots hide.
+            </p>
+            <ul class="text-xs text-slate-300 space-y-1.5 border-t border-slate-800 pt-2.5">
+              <li>&bull; <b>Sheet 1 (Oscillator Palette):</b> All 14 Shared Engines, Osc 1 Exclusives (Wavetable, Sample, Audio In, 7 Granular Engines), and Osc 2 Filters/Processors with <code class="text-amber-300">Wave / Timbre / Shape</code> mappings.</li>
+              <li>&bull; <b>Sheet 2 (Digital FX &amp; Recipes):</b> All 12 FX types (including v4.0 Vocoders), hidden <code class="text-sky-300">Shift+Type</code> subtypes, and 6 starter patch recipes.</li>
+              <li>&bull; <b>Interactive Vibe Filter:</b> Highlight engines by <i>Warm/Lush</i>, <i>Gritty/Folded</i>, <i>Plucked/Bell/FM</i>, <i>Vocal/Talk</i>, or <i>Granular Groove</i>.</li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Front &amp; Back Legal Sheet</span>
+            <span class="px-3 py-1.5 rounded-lg bg-amber-500 group-hover:bg-amber-400 text-slate-950 font-bold transition-colors">View Sound Vibes Guide</span>
+          </div>
+        </a>
+
+        <!-- DOC 3 CARD -->
+        <a href="pages/minifreak_technical_roadmap.html" class="group rounded-2xl bg-slate-900 border-2 border-sky-500/70 hover:border-sky-400 p-5 flex flex-col justify-between transition-all hover:-translate-y-0.5 shadow-lg hover:shadow-sky-500/10">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md text-xs font-extrabold uppercase tracking-wider bg-sky-600 text-white">Document 3 &bull; 1 Sheet</span>
+              <span class="text-xs font-mono text-sky-400 group-hover:translate-x-0.5 transition-transform">Open Doc 3 &rarr;</span>
+            </div>
+            <h2 class="text-lg font-extrabold text-white group-hover:text-sky-300 transition-colors">
+              Technical Controls &amp; Signal-Flow Roadmap
+            </h2>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Traces the hybrid digital-into-analog architecture across 6 stages, explaining how levels, slopes, curves, and voice allocation shape the sound.
+            </p>
+            <ul class="text-xs text-slate-300 space-y-1.5 border-t border-slate-800 pt-2.5">
+              <li>&bull; <b>End-to-End Signal Diagram:</b> Visualizes parallel Osc mix vs. Pale-Blue Osc 2 Drive/Wet, 12 dB Analog SEM VCF, 6v Poly vs. 12v Paraphonic pairs, and Serial vs. Send FX.</li>
+              <li>&bull; <b>6 Technical Deep Dives:</b> Wavefolding physics, Filter Key Tracking (<code class="text-sky-300">+50</code>), <code class="text-sky-300">RHF</code> vs. <code class="text-sky-300">RFH</code> Cycling Env stages, <code class="text-sky-300">VeloAT = Both</code>, and Matrix sidechaining.</li>
+              <li>&bull; <b>&ldquo;Try This to Hear It&rdquo; Labs:</b> 6 hands-on micro-experiments starting from <code class="text-sky-300">Init Preset</code>.</li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Single Legal Sheet</span>
+            <span class="px-3 py-1.5 rounded-lg bg-sky-600 group-hover:bg-sky-500 text-white font-bold transition-colors">View Technical Roadmap</span>
+          </div>
+        </a>
+
+      </section>
+
+      <!-- Annotated Hardware Image Preview & Print Instructions -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        <div class="lg:col-span-8 rounded-2xl bg-slate-900 border border-slate-800 p-4 flex flex-col justify-between gap-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 class="text-sm font-bold text-white">High-Resolution Annotated Hardware Panel Diagram</h3>
+              <p class="text-xs text-slate-400">Standalone 2200 &times; 1250 PNG with color-coded callout boxes and leader lines mapped to the MiniFreak hardware</p>
+            </div>
+            <a href="assets/minifreak_annotated_ui.png" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition-colors">
+              Open Full-Size PNG &nearr;
+            </a>
+          </div>
+          <a href="assets/minifreak_annotated_ui.png" target="_blank" rel="noopener" class="block overflow-hidden rounded-xl border border-slate-700/80 bg-slate-950">
+            <img src="assets/minifreak_annotated_ui.png" alt="Arturia MiniFreak Annotated Hardware UI Workflow Diagram" class="w-full h-auto block hover:opacity-95 transition-opacity" />
+          </a>
+        </div>
+
+        <div class="lg:col-span-4 rounded-2xl bg-slate-900 border border-slate-800 p-4 flex flex-col justify-between gap-4 text-xs">
+          <div class="space-y-3">
+            <div class="font-bold text-white text-sm border-b border-slate-800 pb-2">
+              Printing &amp; Case-Fit Guide
+            </div>
+            <p class="text-slate-300 leading-relaxed">
+              Every document page is formatted with <code class="text-emerald-300">@page { size: 14in 8.5in; }</code> print rules so the navigation bar and interactive filter buttons automatically hide when printing.
+            </p>
+            <div class="space-y-2 text-slate-300">
+              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                <div class="font-bold text-emerald-400 mb-0.5">1. Recommended Paper Size</div>
+                <div><b>US Legal (14&quot; &times; 8.5&quot;) Landscape</b>, two-sided (flip on short or long edge). Fits flat inside the 22.75&quot; &times; 9.1&quot; MiniFreak case alongside the synth.</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                <div class="font-bold text-sky-400 mb-0.5">2. Standard Letter Printer Option</div>
+                <div>In your browser's Print dialog, choose <b>US Letter Landscape</b> and set Scale to <b>Fit to Printable Area</b> (~78%).</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                <div class="font-bold text-amber-400 mb-0.5">3. Enable Background Graphics</div>
+                <div>Check <b>&ldquo;Background graphics&rdquo;</b> in the browser print settings so all modal color badges and signal-flow highlights render sharply.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-800 flex flex-wrap gap-2">
+            <a href="pages/minifreak_ui_workflows.html" class="flex-1 text-center px-3 py-2 rounded-lg bg-orange-500/20 hover:bg-orange-500/30 text-orange-300 border border-orange-500/40 font-semibold transition-colors">Doc 1: Workflows</a>
+            <a href="pages/minifreak_sound_vibes_guide.html" class="flex-1 text-center px-3 py-2 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 font-semibold transition-colors">Doc 2: Vibes</a>
+            <a href="pages/minifreak_technical_roadmap.html" class="flex-1 text-center px-3 py-2 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-500/40 font-semibold transition-colors">Doc 3: Roadmap</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="max-w-[1400px] w-full mx-auto mt-8 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+    <span>Arturia MiniFreak 37-Key Hybrid Synthesizer Reference Suite (Firmware v4.0)</span>
+    <div class="flex items-center gap-3">
+      <a href="pages/minifreak_ui_workflows.html" class="hover:text-slate-300">UI Workflows</a>
+      <span>&bull;</span>
+      <a href="pages/minifreak_sound_vibes_guide.html" class="hover:text-slate-300">Sound Vibes Guide</a>
+      <span>&bull;</span>
+      <a href="pages/minifreak_technical_roadmap.html" class="hover:text-slate-300">Technical Roadmap</a>
+    </div>
+  </footer>
+
+</body>
+</html>

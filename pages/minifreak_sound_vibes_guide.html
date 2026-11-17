@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arturia MiniFreak — Sound-Building &ldquo;Vibe &amp; Flavor&rdquo; Handout (14" × 8.5")</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>if (!window.tailwind) { document.write('<script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"><\/script>'); }</script>
+  <style>
+    :root {
+      --background: #0b1120;
+      --foreground: #f8fafc;
+      --card: #111827;
+      --border: #1e293b;
+      --muted-foreground: #94a3b8;
+      --primary: #f97316;
+      --primary-foreground: #ffffff;
+    }
+    @page {
+      size: 14in 8.5in;
+      margin: 0.22in;
+    }
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-sheet {
+        display: flex !important;
+        width: 13.56in !important;
+        height: 8.04in !important;
+        max-height: 8.04in !important;
+        overflow: hidden !important;
+        page-break-after: always;
+        break-after: page;
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: none !important;
+        margin: 0 auto !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+      }
+      .print-sheet:last-of-type {
+        page-break-after: auto;
+        break-after: auto;
+      }
+    }
+    .vibe-dim {
+      opacity: 0.2;
+      filter: grayscale(80%);
+      transition: all 0.18s ease;
+    }
+    .vibe-hi {
+      opacity: 1;
+      box-shadow: 0 0 0 2px #f97316;
+      transition: all 0.18s ease;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-2 md:p-4 m-0">
+
+  <!-- Site Navigation Bar (Hidden on Print) -->
+  <nav class="no-print max-w-[1400px] mx-auto mb-2.5 px-3 py-2 rounded-xl bg-slate-900/95 border border-slate-800 shadow-md flex flex-wrap items-center justify-between gap-2 text-xs">
+    <a href="../index.html" class="flex items-center gap-2 font-black tracking-tight text-white hover:text-orange-400 transition-colors">
+      <span class="px-2 py-0.5 rounded bg-orange-500 text-slate-950 font-black">_MINIFREAK</span>
+      <span class="text-sm font-bold">Documentation Suite</span>
+    </a>
+    <div class="flex flex-wrap items-center gap-1.5">
+      <a href="../index.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+      <a href="minifreak_ui_workflows.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-orange-300 hover:bg-slate-800 transition-colors">1. UI Workflows &amp; Menus</a>
+      <a href="minifreak_sound_vibes_guide.html" class="px-2.5 py-1.5 rounded-lg font-semibold bg-amber-500 text-slate-950 shadow-sm">2. Sound &ldquo;Vibe &amp; Flavor&rdquo; Guide</a>
+      <a href="minifreak_technical_roadmap.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-sky-300 hover:bg-slate-800 transition-colors">3. Technical &amp; Signal Roadmap</a>
+    </div>
+  </nav>
+
+  <!-- Interactive Screen Toolbar (Hidden on Print) -->
+  <div class="no-print max-w-[1400px] mx-auto mb-3 p-3 rounded-xl bg-[var(--card)] border border-[var(--border)] flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <span class="px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-amber-500 text-slate-950">Doc 2 of 3</span>
+      <div>
+        <h1 class="text-sm font-bold leading-tight">MiniFreak Sound-Building &ldquo;Vibe &amp; Flavor&rdquo; Handout</h1>
+        <p class="text-xs text-[var(--muted-foreground)]">First point of entry when building sounds: When to reach for each Oscillator, Granular Engine, Osc 2 Processor &amp; FX</p>
+      </div>
+    </div>
+
+    <!-- Vibe Filter Bar -->
+    <div class="flex flex-wrap items-center gap-1.5 text-xs">
+      <span class="text-[var(--muted-foreground)] font-medium mr-1">Filter by Sonic Vibe:</span>
+      <button onclick="filterVibe('all')" class="px-2 py-1 rounded bg-orange-500 text-white font-semibold">All Engines &amp; FX</button>
+      <button onclick="filterVibe('lush')" class="px-2 py-1 rounded border border-[var(--border)] hover:border-sky-400 text-sky-400 font-medium">Warm / Lush / Pad</button>
+      <button onclick="filterVibe('grit')" class="px-2 py-1 rounded border border-[var(--border)] hover:border-rose-400 text-rose-400 font-medium">Gritty / Folded / Bass</button>
+      <button onclick="filterVibe('acoustic')" class="px-2 py-1 rounded border border-[var(--border)] hover:border-emerald-400 text-emerald-400 font-medium">Plucked / Bell / FM</button>
+      <button onclick="filterVibe('vocal')" class="px-2 py-1 rounded border border-[var(--border)] hover:border-purple-400 text-purple-400 font-medium">Vocal / Talk / Noise</button>
+      <button onclick="filterVibe('rhythm')" class="px-2 py-1 rounded border border-[var(--border)] hover:border-amber-400 text-amber-400 font-medium">Granular / Sample Groove</button>
+      <button onclick="window.print()" class="ml-2 px-3 py-1 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-semibold">
+        Print 14&quot;&times;8.5&quot;
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- SHEET 1: THE OSCILLATOR PALETTE (SHARED + OSC 1 + OSC 2 ENGINES)      -->
+  <!-- ===================================================================== -->
+  <div class="print-sheet max-w-[1400px] mx-auto mb-6 rounded-xl bg-white text-slate-900 border border-slate-300 shadow-lg p-3.5 flex flex-col justify-between" style="aspect-ratio: 14 / 8.5;">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between border-b-2 border-slate-900 pb-1.5 mb-2">
+      <div class="flex items-baseline gap-2.5">
+        <span class="bg-orange-500 text-white font-black tracking-tighter px-2 py-0.5 rounded text-sm">_OSCILLATORS</span>
+        <h2 class="text-sm font-extrabold uppercase tracking-wide text-slate-900">Sound Palette: What Is the Vibe &amp; When to Explore Each Engine?</h2>
+      </div>
+      <div class="flex items-center gap-2 text-xs">
+        <span class="px-2 py-0.5 rounded bg-orange-50 border border-orange-400 font-semibold text-orange-950">
+          OLED Icons: <b>1. Wave</b> = Test Tube &bull; <b>2. Timbre</b> = Bottle &bull; <b>3. Shape</b> = Flask
+        </span>
+        <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-300 font-semibold text-slate-700">
+          <b>Freak Out:</b> You can modulate Oscillator <code class="font-bold">Type</code> in the Matrix!
+        </span>
+      </div>
+    </div>
+
+    <!-- Main 12-Col Grid -->
+    <div class="grid grid-cols-12 gap-2.5 flex-1 text-xs leading-snug">
+
+      <!-- LEFT 7 COLUMNS: 14 SHARED OSCILLATOR ENGINES (OSC 1 & OSC 2) -->
+      <div class="col-span-7 flex flex-col justify-between rounded-lg border-2 border-orange-500 bg-orange-50/20 p-2">
+        <div class="flex items-center justify-between border-b border-orange-300 pb-1 mb-1">
+          <span class="font-extrabold text-orange-950 uppercase">14 Shared Oscillator Engines (Available on Both Osc 1 &amp; Osc 2)</span>
+          <span class="text-xs font-mono text-orange-800">Knobs: 1=Wave | 2=Timbre | 3=Shape</span>
+        </div>
+
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-orange-200 text-slate-500">
+              <th class="py-0.5 pr-1 w-24">Engine</th>
+              <th class="py-0.5 pr-1 w-44">The Vibe / When to Use</th>
+              <th class="py-0.5 pr-1 w-56">1: Wave &bull; 2: Timbre &bull; 3: Shape</th>
+              <th class="py-0.5">Field Notes &amp; Sweet Spots</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-orange-100 text-slate-800">
+            <tr class="vibe-item" data-vibe="lush grit">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">BasicWaves</td>
+              <td class="py-1 pr-1">Classic 60s/70s analog breads-and-butter, hollow PWM leads &amp; deep sub-anchored basses.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Morph</code> (0=Sqr, 50=Saw, 100=2&times;Saw +1oct) &bull; <code class="font-bold">2: Sym</code> (PW &lt;50, Phase &gt;50) &bull; <code class="font-bold">3: Sub</code> (-1oct Sine)</td>
+              <td class="py-1">Max PW square = clean retro tone; narrow PW = buzzy/hollow. 2&times;Saw needs phase (<code class="font-mono">Sym &gt; 50</code>) to pop. The <code class="font-mono">-1oct</code> sine sub adds huge warmth.</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="lush">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">SuperWave</td>
+              <td class="py-1 pr-1">Lush, wide JP-8000 trance stacks, warm detuned pads, or soft swirling clouds.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Wave</code> (Saw/Sqr/Tri/Sin) &bull; <code class="font-bold">2: Detune</code> (spread) &bull; <code class="font-bold">3: Volume</code> (copies vs base)</td>
+              <td class="py-1">Triangle acts like a soft sine wave. High <code class="font-mono">Detune</code> veers into &ldquo;angry bees&rdquo;&mdash;pull back <code class="font-mono">3: Volume</code> to keep copies in check!</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="lush grit">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">VAnalog</td>
+              <td class="py-1 pr-1">Dual-wave virtual analog (Pulse + Saw) capable of tearing hard-sync leads &amp; wide intervals.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Detune</code> (Saw vs Pulse &plusmn;2oct) &bull; <code class="font-bold">2: Shape</code> (Narrow&rarr;Sqr&rarr;Sync) &bull; <code class="font-bold">3: Wave</code> (Tri&rarr;Saw)</td>
+              <td class="py-1">Broader tonal range than BasicWaves&mdash;great for harmonic exploration and aggressive sync-like sweeps on <code class="font-mono">2: Shape</code>.</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="lush acoustic">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">Harmo</td>
+              <td class="py-1 pr-1">Shimmering additive synthesis, drawbar organs, and evolving glass/prism textures.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Content</code> (8-harmonic tables) &bull; <code class="font-bold">2: Sculpting</code> (Sin&rarr;Tri harmonics) &bull; <code class="font-bold">3: Chorus</code></td>
+              <td class="py-1"><code class="font-mono">Sculpting</code> adds peaks and shifts offset; high <code class="font-mono">Content</code> dominates fundamental. Built-in Chorus adds movement (stacking Chorus FX = a lot!).</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="grit">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">Harm <span class="text-xs font-normal text-orange-700">(NE)</span></td>
+              <td class="py-1 pr-1">Additive harmonics pushed through an analog-style rectifier &amp; phase-noise circuit.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Spread</code> (50=Uni, 0/100=&plusmn;1oct) &bull; <code class="font-bold">2: Rectify</code> (fold) &bull; <code class="font-bold">3: Noise</code> (phase clip)</td>
+              <td class="py-1">Ideal when you want to blend controlled harmonic tone adjustments with wavefold-style edge; values between 0/50/100 act like a balanced modulator.</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="grit">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">Waveshaper</td>
+              <td class="py-1 pr-1">West-Coast Buchla wavefolding &amp; cycle-asymmetry for rubbery, nasal, overtone-rich leads.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Wave</code> (shaper wave) &bull; <code class="font-bold">2: Amount</code> (fold depth) &bull; <code class="font-bold">3: Asym</code> (Sin&rarr;Saw tilt)</td>
+              <td class="py-1">Wavefolding is hardest to hear at extreme ends of <code class="font-mono">Wave</code>&mdash;play <b>low notes</b> with mid <code class="font-mono">Wave</code> settings, or modulate all 3 knobs with LFOs!</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="grit">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">BASS <span class="text-xs font-normal text-orange-700">(NE)</span></td>
+              <td class="py-1 pr-1">Massive quadrature sine+cosine bass engine with overdrive and 2-stage asymmetric wavefolder.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Saturate</code> (cosine drive) &bull; <code class="font-bold">2: Fold</code> (2-stage fold) &bull; <code class="font-bold">3: Noise</code> (inter-stage PM)</td>
+              <td class="py-1">Awesome for &ldquo;harmony explosions&rdquo; from a sub foundation. Built-in inter-stage noise behaves quirkily and adds organic grit.</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="grit lush">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">SawX <span class="text-xs font-normal text-orange-700">(NE)</span></td>
+              <td class="py-1 pr-1">Super-charged sawtooth phase-modulated by decimated white noise + thick chorus.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: SawMod</code> (mod intensity) &bull; <code class="font-bold">2: Shape</code> (chorus depth) &bull; <code class="font-bold">3: Noise</code> (radio grit)</td>
+              <td class="py-1">Sounds like blowing through a progressively smaller/larger tube. <b>Pro Tip:</b> Modulate <code class="font-mono">2: Shape</code> with a slow LFO for a unique sweeping width.</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="acoustic">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">Two Op. FM</td>
+              <td class="py-1 pr-1">DX7-style glassy electric pianos, woody mallets, metallic bells, and growling FM basses.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Ratio</code> (2:1 oct, 1.5:1 5th, or inharm) &bull; <code class="font-bold">2: Amount</code> (overtones) &bull; <code class="font-bold">3: Feedback</code></td>
+              <td class="py-1">Very sensitive to precise ratios. <b>Pro Tip:</b> Set <i>both</i> Osc 1 &amp; Osc 2 to <code class="font-mono">Two Op. FM</code> to build a 4-Operator FM synth with <i>two</i> feedback loops!</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="acoustic">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">KarplusStr</td>
+              <td class="py-1 pr-1">Physical model of plucked harp/guitar strings, bowed cello tones, and struck resonances.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Bow</code> (pluck vs continuous bow) &bull; <code class="font-bold">2: Position</code> (center vs edge) &bull; <code class="font-bold">3: Decay</code></td>
+              <td class="py-1">Fast Attack = harp/string pluck; <b>raise ADSR Attack time + turn up <code class="font-mono">Bow</code></b> to hear a realistic drawn bow!</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="acoustic">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">Modal</td>
+              <td class="py-1 pr-1">Exciter + damped resonator physical model for marimbas, xylophones, kalimbas &amp; church bells.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Inharm</code> (woody&rarr;metallic) &bull; <code class="font-bold">2: Timbre</code> (exciter bright) &bull; <code class="font-bold">3: Decay</code> (damping)</td>
+              <td class="py-1">Low <code class="font-mono">Decay</code> = tight xylophone/palm-mute plucks; high <code class="font-mono">Decay</code> + high <code class="font-mono">Inharm</code> = shimmering metallic bells.</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="vocal">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">Formant</td>
+              <td class="py-1 pr-1">Granular particles routed through dual fixed-frequency vocal filters for choir &amp; talking leads.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Interval</code> (formant ratio) &bull; <code class="font-bold">2: Formant</code> (base freq) &bull; <code class="font-bold">3: Shape</code> (width)</td>
+              <td class="py-1">Static settings can feel subtle&mdash;comes alive when you sweep <code class="font-mono">Interval</code> and <code class="font-mono">Formant</code> with an Envelope, LFO, or Wheel!</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="vocal">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">Speech</td>
+              <td class="py-1 pr-1">1970s Speak &amp; Spell / Kraftwerk robot voice singing vowels, colors, numbers &amp; NATO words.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Type</code> (word bank) &bull; <code class="font-bold">2: Timbre</code> (formant shift) &bull; <code class="font-bold">3: Word</code> (select word)</td>
+              <td class="py-1">Route an LFO set to <code class="font-mono">SnH</code> (Sample &amp; Hold) to <code class="font-mono">3: Shape (Word)</code> so every key press speaks a random word at the played pitch!</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="vocal grit">
+              <td class="py-1 pr-1 font-extrabold text-slate-900">Noise</td>
+              <td class="py-1 pr-1">Percussive transients, wind/ocean sweeps, lo-fi crackle, or pitched noise-plus-wave layers.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Type</code> (4 zones in 25% steps: Particle&rarr;White&rarr;Metallic) &bull; <code class="font-bold">2: Rate</code> &bull; <code class="font-bold">3: Balance</code></td>
+              <td class="py-1"><code class="font-mono">Balance</code> blends pure noise &rarr; +Sine &rarr; +Triangle &rarr; +Square so one Osc provides both air/grit and fundamental pitch at once.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- RIGHT 5 COLUMNS: OSC 1 EXCLUSIVES (WT/SAMPLE/GRANULAR) + OSC 2 EXCLUSIVES -->
+      <div class="col-span-5 flex flex-col justify-between gap-2">
+
+        <!-- OSC 1 EXCLUSIVE ENGINES -->
+        <div class="rounded-lg border-2 border-purple-600 bg-purple-50/30 p-2">
+          <div class="flex items-center justify-between border-b border-purple-300 pb-1 mb-1">
+            <span class="font-extrabold text-purple-950 uppercase">Osc 1 Exclusive Engines (Samples, Wavetables &amp; 7 Granulars)</span>
+            <span class="px-1.5 py-0.2 bg-purple-600 text-white rounded text-xs font-mono">Shift+Type = Select Source</span>
+          </div>
+
+          <div class="space-y-1 text-slate-800">
+            <div class="vibe-item" data-vibe="lush grit">
+              <b>&bull; Wavetable:</b> Scans 32 cycle tables with built-in filter. <code class="font-bold">1: Wave</code> (scan cycle) &bull; <code class="font-bold">2: Timbre</code> (symmetrical PW) &bull; <code class="font-bold">3: Shape</code> (1-pole LPF/HPF).
+            </div>
+            <div class="vibe-item" data-vibe="rhythm acoustic">
+              <b>&bull; Sample:</b> Plays factory acoustic/synth samples forward or backward! <code class="font-bold">1: Start</code> &bull; <code class="font-bold">2: Length/Dir</code> (<code class="font-mono">50&ndash;100</code> = Forward, <code class="font-mono">49&ndash;0</code> = <b>Reverse</b>) &bull; <code class="font-bold">3: Loop</code>. <i>Note: Set <code class="font-mono">Start = 100</code> to hear the full sample in reverse!</i>
+            </div>
+            <div class="vibe-item" data-vibe="grit vocal">
+              <b>&bull; Audio In:</b> Routes rear jack (Mic/Synth, or MiniFreak's own output for self-feedback!) into synth voice. <code class="font-bold">1: Fold</code> (input level @ Decimate=0) &bull; <code class="font-bold">2: Decimate</code> (key-tracked) &bull; <code class="font-bold">3: Noise</code>. <i>Must hold a key / Latch Arp to open VCA!</i>
+            </div>
+
+            <!-- 7 Granular Engines Table -->
+            <div class="vibe-item mt-1 p-1.5 rounded bg-white border border-purple-200" data-vibe="rhythm lush">
+              <div class="font-extrabold text-purple-950 mb-0.5 flex justify-between">
+                <span>7 Granular Engines (&ldquo;Like a Built-In Little Arp for Any Sample!&rdquo;)</span>
+                <span class="font-mono text-purple-700">Knob 1 = Always Start Pos</span>
+              </div>
+              <div class="grid grid-cols-2 gap-x-2 gap-y-0.5 text-xs">
+                <div><b>1. Cloud:</b> Textural ambient grain clouds (<code class="font-mono">2:Density, 3:Chaos</code>)</div>
+                <div><b>2. Hit:</b> Sharp rhythmic stutter blasts (<code class="font-mono">2:Density, 3:Shape/Hold</code>)</div>
+                <div><b>3. Frozen:</b> Ethereal icy time-freeze (<code class="font-mono">2:Size, 3:Chaos</code>)</div>
+                <div><b>4. Skan:</b> Time-stretch playhead sweep (<code class="font-mono">2:Scan Spd, 3:Chaos</code>)</div>
+                <div><b>5. Particles:</b> Hypnotic psychedelic layers (<code class="font-mono">2:Density, 3:Chaos</code>)</div>
+                <div><b>6. Lick:</b> 1/16 tempo-synced groove (<code class="font-mono">2:Size, 3:Chaos</code>)</div>
+                <div class="col-span-2"><b>7. Raster:</b> Tempo-synced beat-repeat chopper (<code class="font-mono">2:Rate 1/2&ndash;1/32, 3:Chaos</code>)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OSC 2 EXCLUSIVE ENGINES (CHORDS, FM/RM, 5 FILTERS/PROCESSORS) -->
+        <div class="rounded-lg border-2 border-sky-600 bg-sky-50/30 p-2 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between border-b border-sky-300 pb-1 mb-1">
+              <span class="font-extrabold text-sky-950 uppercase">Osc 2 Exclusive Engines &amp; Audio Processors</span>
+              <span class="px-1.5 py-0.2 bg-sky-600 text-white rounded text-xs font-mono">Pale Blue LED = Osc1 &rarr; Osc2</span>
+            </div>
+
+            <div class="space-y-1 text-slate-800">
+              <div class="vibe-item" data-vibe="lush">
+                <b>&bull; Chords:</b> 1-note chord machine with inversions! <code class="font-bold">1: Interval</code> (Oct, 5th, sus4, m, m7, m9, m11, 69, M9, M7, M) &bull; <code class="font-bold">2: Inv/Trsp</code> (voice inversions) &bull; <code class="font-bold">3: Waveform</code> (waves 0&ndash;50, wavetable 50&ndash;100).
+              </div>
+              <div class="vibe-item" data-vibe="acoustic grit">
+                <b>&bull; FM/RM:</b> Osc 1 frequency- &amp; ring-modulates Osc 2 for clangorous metallic sum/difference tones. <code class="font-bold">1: Wave</code> (Osc 2 wave) &bull; <code class="font-bold">2: FreqMod</code> &bull; <code class="font-bold">3: RingMod</code>.
+              </div>
+              <div class="vibe-item border-t border-sky-200 pt-1" data-vibe="lush grit">
+                <b>&bull; Multi Filter:</b> Digital filter with gentle-to-steep slopes (6, 12, 24, 36 dB/oct). <code class="font-bold">1: Cutoff</code> &bull; <code class="font-bold">2: Reso</code> &bull; <code class="font-bold">3: Mode</code> (LP, BP, HP, Notch). <i>Map <code class="font-mono">Kbd &rarr; Osc2 Wave @ 50</code> to key-track!</i>
+              </div>
+              <div class="vibe-item" data-vibe="lush">
+                <b>&bull; Surgeon Filter:</b> Scalpel parametric EQ to carve wolf tones or boost a resonant peak. <code class="font-bold">1: Cutoff</code> &bull; <code class="font-bold">2: Spread</code> (width in BP/Notch) &bull; <code class="font-bold">3: Mode</code>.
+              </div>
+              <div class="vibe-item" data-vibe="acoustic vocal">
+                <b>&bull; Comb Filter:</b> Short delay feedback creating hollow, flanger/plucked resonances (<b>auto key-tracked!</b>). <code class="font-bold">1: Cutoff</code> &bull; <code class="font-bold">2: Gain</code> &bull; <code class="font-bold">3: Damping</code>.
+              </div>
+              <div class="vibe-item" data-vibe="lush vocal">
+                <b>&bull; Phaser Filter:</b> Manual all-pass phase notch bank (sweeps only when you modulate Cutoff!). <code class="font-bold">1: Cutoff</code> &bull; <code class="font-bold">2: Feedback</code> &bull; <code class="font-bold">3: Poles</code> (2&ndash;12 stages = 1&ndash;6 notches).
+              </div>
+              <div class="vibe-item" data-vibe="grit">
+                <b>&bull; Destroy:</b> Brutal 3-stage mangler on Osc 1. <code class="font-bold">1: Fold</code> &bull; <code class="font-bold">2: Decimate</code> (auto key-tracked crackle) &bull; <code class="font-bold">3: Bitcrush</code>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- SHEET 2: DIGITAL EFFECTS PALETTE (12 FX TYPES + SUBTYPES & PAIRINGS)  -->
+  <!-- ===================================================================== -->
+  <div class="print-sheet max-w-[1400px] mx-auto rounded-xl bg-white text-slate-900 border border-slate-300 shadow-lg p-3.5 flex flex-col justify-between" style="aspect-ratio: 14 / 8.5;">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between border-b-2 border-slate-900 pb-1.5 mb-2">
+      <div class="flex items-baseline gap-2.5">
+        <span class="bg-indigo-600 text-white font-black tracking-tighter px-2 py-0.5 rounded text-sm">_DIGITAL FX</span>
+        <h2 class="text-sm font-extrabold uppercase tracking-wide text-slate-900">3-Slot Digital Effects Guide (FX 1 &rarr; FX 2 &rarr; FX 3): Vibe, Subtypes &amp; Sound Recipes</h2>
+      </div>
+      <div class="flex items-center gap-2 text-xs">
+        <span class="px-2 py-0.5 rounded bg-indigo-50 border border-indigo-400 font-semibold text-indigo-950">
+          <b>Shift + Turn Type/Sub</b> = Load Subtype (reconfigures hidden internal parameters!)
+        </span>
+        <span class="px-2 py-0.5 rounded bg-amber-50 border border-amber-400 font-semibold text-amber-950">
+          <i>Note: Only 1 Delay, 1 Reverb &amp; 1 Multi Comp allowed per patch</i>
+        </span>
+      </div>
+    </div>
+
+    <!-- FX Table + Sound Design Starter Recipes -->
+    <div class="grid grid-cols-12 gap-2.5 flex-1 text-xs leading-snug">
+
+      <!-- 8 COLUMNS: ALL 12 DIGITAL FX TYPES -->
+      <div class="col-span-8 rounded-lg border-2 border-indigo-600 bg-indigo-50/20 p-2 flex flex-col justify-between">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b-2 border-indigo-300 text-indigo-950">
+              <th class="py-0.5 pr-1 w-28">FX Type</th>
+              <th class="py-0.5 pr-1 w-48">The Vibe / When to Use</th>
+              <th class="py-0.5 pr-1 w-56">Knobs: 1:Time &bull; 2:Intensity &bull; 3:Amount</th>
+              <th class="py-0.5">Subtypes (<span class="text-sky-700">Shift+Type</span>) &amp; Pro Tips</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-indigo-100 text-slate-800">
+            <tr class="vibe-item" data-vibe="lush">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">1. Chorus</td>
+              <td class="py-1 pr-1">Widens &amp; thickens stereo image; turns thin mono waves into ensemble pads.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Rate</code> &bull; <code class="font-bold">2: Depth</code> (wet internal mix) &bull; <code class="font-bold">3: Dry/Wet</code></td>
+              <td class="py-1"><i>Default, Lush, Dark, Shaded, Single.</i> <b>Tip:</b> <code class="font-mono">Depth</code> &ne; <code class="font-mono">Dry/Wet</code>! Set <code class="font-mono">Dry/Wet = 100%</code> + fast <code class="font-mono">Rate</code> for true pitch vibrato.</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="lush">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">2. Super Unison</td>
+              <td class="py-1 pr-1">Stacks up to 6 LFO-detuned copies over dry signal without using polyphony voices!</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Detune</code> (amt + LFO speed) &bull; <code class="font-bold">2: LPF/HPF</code> &bull; <code class="font-bold">3: Dry/Wet</code></td>
+              <td class="py-1"><i>Classic, Ravey, Soli, Slow, Slow Trig, Wide Trig, Mono Trig, Wavy.</i> <code class="font-mono">Trig</code> subtypes reset phase on legato notes!</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="lush vocal">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">3. Phaser</td>
+              <td class="py-1 pr-1">70s swirling all-pass phase sweeps, cosmic pads, or rhythmic sample-and-hold steps.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Rate</code> &bull; <code class="font-bold">2: Feedback</code> (resonance) &bull; <code class="font-bold">3: Dry/Wet</code></td>
+              <td class="py-1"><i>Default, Space, SnH (+ Sync versions of each).</i> Use <code class="font-mono">SnH Sync</code> for tempo-locked stepped filter motion!</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="lush grit">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">4. Flanger</td>
+              <td class="py-1 pr-1">Jet-plane metallic comb sweeps and resonant stereo movement.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Rate</code> &bull; <code class="font-bold">2: Feedback</code> &bull; <code class="font-bold">3: Dry/Wet</code></td>
+              <td class="py-1"><i>Default, Default Sync, Silly, Silly Sync.</i> High <code class="font-mono">Feedback</code> screams like a resonant filter.</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="lush acoustic">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">5. Reverb</td>
+              <td class="py-1 pr-1">Places dry synth in a tight room, dark chamber, or endless ambient cathedral.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Decay</code> (size) &bull; <code class="font-bold">2: Damping</code> (HF absorb) &bull; <code class="font-bold">3: Dry/Wet | Send</code></td>
+              <td class="py-1"><i>Default, Long, Hall, Echoes, Room, Dark Room.</i> Switch to <b>Send</b> in <code class="font-mono">Sound Edit &gt; FX</code> to keep subsequent FX dry!</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="lush rhythm">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">6. Delay</td>
+              <td class="py-1 pr-1">Rhythmic dotted-8th echoes, slapback doubling, or stereo ping-pong repeats.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Time</code> &bull; <code class="font-bold">2: Feedback</code> (0=1 slap, 100=inf) &bull; <code class="font-bold">3: Dry/Wet | Send</code></td>
+              <td class="py-1"><i>Digital, Stereo, Ping-Pong, Mono, Filtered, Filtered Ping-Pong (+ Sync versions).</i></td>
+            </tr>
+            <tr class="vibe-item" data-vibe="grit">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">7. Distortion</td>
+              <td class="py-1 pr-1">Everything from warm tape saturation and germanium fuzz to dual-wavefolding chaos.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Gain</code> (auto-gain leveled!) &bull; <code class="font-bold">2: HPF/LPF</code> (&lt;0 LP, &gt;0 HP) &bull; <code class="font-bold">3: Dry/Wet</code></td>
+              <td class="py-1"><i>Classic, Soft Clip, Germanium, Dual Fold, Climb, Tape.</i> Auto-gain prevents volume jumps as you crank <code class="font-mono">Gain</code>.</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="grit rhythm">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">8. Bit Crusher</td>
+              <td class="py-1 pr-1">Early-sampler 8-bit crunch and sample-rate aliasing ring/garbage.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Decimate</code> (sample rate) &bull; <code class="font-bold">2: BitDepth</code> &bull; <code class="font-bold">3: Dry/Wet</code></td>
+              <td class="py-1"><i>No subtypes.</i> Blend low <code class="font-mono">Dry/Wet</code> (15&ndash;25%) to add crispy top-end fizz to warm pads or basses.</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="lush grit">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">9. 3 Bands EQ</td>
+              <td class="py-1 pr-1">Fast mixer-style tone shaping (-15 dB to +6 dB per band).</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Low Gain</code> &bull; <code class="font-bold">2: Mid Gain</code> &bull; <code class="font-bold">3: High Gain</code></td>
+              <td class="py-1"><i>Default, Wide, Mid 1K.</i> Great at FX 3 end-of-chain to sculpt final mix weight.</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="lush acoustic">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">10. Peak EQ</td>
+              <td class="py-1 pr-1">Single parametric band to notch out a harsh resonant spike or boost a sweet spot.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Freq</code> (30Hz&ndash;15kHz) &bull; <code class="font-bold">2: Gain</code> &bull; <code class="font-bold">3: Width (Q)</code></td>
+              <td class="py-1"><i>No subtypes.</i> Sweep <code class="font-mono">Freq</code> with narrow <code class="font-mono">Width</code> via LFO/Env for a post-VCF formant filter!</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="grit rhythm">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">11. Multi Comp</td>
+              <td class="py-1 pr-1">Multiband compressor (up to 30 internal params) for OTT-style smack &amp;glue.</td>
+              <td class="py-1 pr-1"><code class="font-bold">1: Time</code> (Atk/Rel) &bull; <code class="font-bold">2: Tone</code> (band balance) &bull; <code class="font-bold">3: Amount</code></td>
+              <td class="py-1"><i>OPP (OTT-style), Bass Ctrl, High Ctrl, Tighter.</i> <code class="font-mono">OPP</code> brings out tiny granular/modal details!</td>
+            </tr>
+            <tr class="vibe-item" data-vibe="vocal">
+              <td class="py-1 pr-1 font-extrabold text-indigo-950">12. Vocoder <span class="text-xs font-normal text-indigo-600">(v4.0)</span></td>
+              <td class="py-1 pr-1"><b>Ext In:</b> Voice mic modulates synth. <b>Self:</b> Synth vocodes itself like a resonant filter bank!</td>
+              <td class="py-1 pr-1"><b>Ext:</b> <code class="font-bold">1:Time</code>, <code class="font-bold">2:Intensity/Gate</code>, <code class="font-bold">3:Amt</code><br/><b>Self:</b> <code class="font-bold">1:Spectrum</code>, <code class="font-bold">2:Formant/Gate</code>, <code class="font-bold">3:Amt</code></td>
+              <td class="py-1"><i>Clean, Vintage (70s/80s), Narrow (resonant), Gated (plucky droplets).</i> <code class="font-mono">Vocoder Self + Gated</code> turns pads into water droplets!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- RIGHT 4 COLUMNS: "STARTING POINT" SOUND RECIPES BY VIBE -->
+      <div class="col-span-4 flex flex-col justify-between gap-2">
+
+        <div class="rounded-lg border-2 border-slate-800 bg-slate-50 p-2 flex-1">
+          <div class="font-extrabold text-slate-900 uppercase tracking-tight border-b-2 border-slate-800 pb-1 mb-1.5">
+            6 &ldquo;First Point of Entry&rdquo; Sound-Building Recipes
+          </div>
+
+          <div class="space-y-1.5 text-slate-800">
+            <div class="p-1.5 rounded bg-white border border-slate-200">
+              <div class="font-bold text-orange-700">1. Huge 80s CS-80 / Blade Runner Brass-Pad</div>
+              <div><b>Osc 1:</b> <code class="font-mono">VAnalog</code> or <code class="font-mono">BasicWaves</code> (Saw + Sub) &bull; <b>Osc 2:</b> <code class="font-mono">SuperWave</code> (+5 cents fine tune) &bull; <b>Voicing:</b> <code class="font-mono">Poly</code> &bull; <b>Filter:</b> LPF w/ slow Attack Env &bull; <b>FX:</b> <code class="font-mono">Chorus (Lush)</code> &rarr; <code class="font-mono">Reverb (Hall)</code>. Set <code class="font-mono">Matrix Src VeloAT = Both</code> &rarr; Cutoff!</div>
+            </div>
+
+            <div class="p-1.5 rounded bg-white border border-slate-200">
+              <div class="font-bold text-rose-700">2. West-Coast Buchla Bongos / Pluck Bass</div>
+              <div><b>Osc 1:</b> <code class="font-mono">Waveshaper</code> or <code class="font-mono">BASS</code> (low octave) &bull; <b>Filter:</b> LPF wide open &bull; <b>CycEnv:</b> <code class="font-mono">Env</code> mode with snappy logarithmic Fall routed to <code class="font-mono">Osc 1 Timbre (Fold Amount)</code> instead of Filter Cutoff!</div>
+            </div>
+
+            <div class="p-1.5 rounded bg-white border border-slate-200">
+              <div class="font-bold text-emerald-700">3. Organic Bowed Cello &rarr; Plucked Harp Morph</div>
+              <div><b>Osc 1:</b> <code class="font-mono">KarplusStr</code> &bull; Route <b>Macro 1</b> to simultaneously raise <code class="font-mono">Osc 1 Wave (Bow)</code> AND lengthen <code class="font-mono">Envelope Attack</code>. At M1=0 it's a plucked harp; sweep M1 up to draw the bow!</div>
+            </div>
+
+            <div class="p-1.5 rounded bg-white border border-slate-200">
+              <div class="font-bold text-purple-700">4. 4-Operator DX7 Bell / Glass Keys</div>
+              <div><b>Osc 1:</b> <code class="font-mono">Two Op. FM</code> (<code class="font-mono">Ratio = 2:1</code>) &bull; <b>Osc 2:</b> <code class="font-mono">Two Op. FM</code> (<code class="font-mono">Ratio = 3.5:1</code>, +12 st) &bull; <b>Env:</b> Fast Attack, long Percussive Decay &rarr; Matrix <code class="font-mono">Timbre 1+2</code> &bull; <b>FX:</b> <code class="font-mono">Super Unison</code> &rarr; <code class="font-mono">Delay (Ping-Pong)</code>.</div>
+            </div>
+
+            <div class="p-1.5 rounded bg-white border border-slate-200">
+              <div class="font-bold text-amber-700">5. Instant Granular Breakbeat / Glitch Loop</div>
+              <div><b>Osc 1:</b> <code class="font-mono">Lick</code> or <code class="font-mono">Raster</code> (pick a drum/percussion sample via <code class="font-mono">Shift+Type</code>) &bull; <b>Osc 2:</b> <code class="font-mono">Destroy</code> or <code class="font-mono">Comb Filter</code> &bull; <b>FX:</b> <code class="font-mono">Multi Comp (OPP)</code> &rarr; <code class="font-mono">Vocoder Self (Gated)</code>.</div>
+            </div>
+
+            <div class="p-1.5 rounded bg-white border border-slate-200">
+              <div class="font-bold text-sky-700">6. 12-Voice Paraphonic String Machine</div>
+              <div><b>Osc 1:</b> <code class="font-mono">SawX</code> (modulate <code class="font-mono">Shape</code> with slow LFO 1) &bull; <b>Voicing:</b> <code class="font-mono">Para</code> (unlocks 12 voices!) &bull; <b>FX:</b> <code class="font-mono">Phaser (Space)</code> &rarr; <code class="font-mono">Super Unison (Soli)</code> &rarr; <code class="font-mono">Reverb</code>.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function filterVibe(vibe) {
+      const rows = document.querySelectorAll('.vibe-item');
+      rows.forEach(r => {
+        const tags = (r.getAttribute('data-vibe') || '').split(' ');
+        r.classList.remove('vibe-dim', 'vibe-hi');
+        if (vibe === 'all') return;
+        if (tags.includes(vibe)) {
+          r.classList.add('vibe-hi');
+        } else {
+          r.classList.add('vibe-dim');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

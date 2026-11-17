@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arturia MiniFreak — Technical Controls &amp; Signal-Flow Roadmap (14" × 8.5")</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>if (!window.tailwind) { document.write('<script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"><\/script>'); }</script>
+  <style>
+    :root {
+      --background: #0b1120;
+      --foreground: #f8fafc;
+      --card: #111827;
+      --border: #1e293b;
+      --muted-foreground: #94a3b8;
+      --primary: #f97316;
+      --primary-foreground: #ffffff;
+    }
+    @page {
+      size: 14in 8.5in;
+      margin: 0.22in;
+    }
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-sheet {
+        display: flex !important;
+        width: 13.56in !important;
+        height: 8.04in !important;
+        max-height: 8.04in !important;
+        overflow: hidden !important;
+        page-break-after: always;
+        break-after: page;
+        border: 1px solid #cbd5e1 !important;
+        box-shadow: none !important;
+        margin: 0 auto !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+      }
+      .print-sheet:last-of-type {
+        page-break-after: auto;
+        break-after: auto;
+      }
+    }
+    .stage-dim {
+      opacity: 0.22;
+      filter: grayscale(70%);
+      transition: all 0.2s ease;
+    }
+    .stage-hi {
+      opacity: 1;
+      box-shadow: 0 0 0 2px #0284c7;
+      transition: all 0.2s ease;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-2 md:p-4 m-0">
+
+  <!-- Site Navigation Bar (Hidden on Print) -->
+  <nav class="no-print max-w-[1400px] mx-auto mb-2.5 px-3 py-2 rounded-xl bg-slate-900/95 border border-slate-800 shadow-md flex flex-wrap items-center justify-between gap-2 text-xs">
+    <a href="../index.html" class="flex items-center gap-2 font-black tracking-tight text-white hover:text-orange-400 transition-colors">
+      <span class="px-2 py-0.5 rounded bg-orange-500 text-slate-950 font-black">_MINIFREAK</span>
+      <span class="text-sm font-bold">Documentation Suite</span>
+    </a>
+    <div class="flex flex-wrap items-center gap-1.5">
+      <a href="../index.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+      <a href="minifreak_ui_workflows.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-orange-300 hover:bg-slate-800 transition-colors">1. UI Workflows &amp; Menus</a>
+      <a href="minifreak_sound_vibes_guide.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-amber-300 hover:bg-slate-800 transition-colors">2. Sound &ldquo;Vibe &amp; Flavor&rdquo; Guide</a>
+      <a href="minifreak_technical_roadmap.html" class="px-2.5 py-1.5 rounded-lg font-semibold bg-sky-600 text-white shadow-sm">3. Technical &amp; Signal Roadmap</a>
+    </div>
+  </nav>
+
+  <!-- Interactive Screen Toolbar (Hidden on Print) -->
+  <div class="no-print max-w-[1400px] mx-auto mb-3 p-3 rounded-xl bg-[var(--card)] border border-[var(--border)] flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center gap-3">
+      <span class="px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-sky-600 text-white">Doc 3 of 3</span>
+      <div>
+        <h1 class="text-sm font-bold leading-tight">MiniFreak Technical Controls &amp; Signal-Flow Exploration Roadmap</h1>
+        <p class="text-xs text-[var(--muted-foreground)]">How levels, curves, slopes, voicing &amp; sidechaining shape the sound + &ldquo;Try This to Hear It&rdquo; lab patches</p>
+      </div>
+    </div>
+
+    <!-- Interactive Stage Highlighter -->
+    <div class="flex flex-wrap items-center gap-1.5 text-xs">
+      <span class="text-[var(--muted-foreground)] font-medium mr-1">Focus Stage:</span>
+      <button onclick="focusStage('all')" class="px-2 py-1 rounded bg-sky-600 text-white font-semibold">All 6 Stages</button>
+      <button onclick="focusStage('s1')" class="px-2 py-1 rounded border border-[var(--border)] hover:border-orange-400 text-orange-400 font-medium">1. Osc Levels &amp; Folding</button>
+      <button onclick="focusStage('s2')" class="px-2 py-1 rounded border border-[var(--border)] hover:border-emerald-400 text-emerald-400 font-medium">2. Filter Slopes &amp; KeyTrack</button>
+      <button onclick="focusStage('s3')" class="px-2 py-1 rounded border border-[var(--border)] hover:border-purple-400 text-purple-400 font-medium">3. Voicing &amp; Allocation</button>
+      <button onclick="focusStage('s4')" class="px-2 py-1 rounded border border-[var(--border)] hover:border-rose-400 text-rose-400 font-medium">4. Env Curves &amp; Retrig</button>
+      <button onclick="focusStage('s5')" class="px-2 py-1 rounded border border-[var(--border)] hover:border-amber-400 text-amber-400 font-medium">5. Velo / AT / Kbd Src</button>
+      <button onclick="focusStage('s6')" class="px-2 py-1 rounded border border-[var(--border)] hover:border-indigo-400 text-indigo-400 font-medium">6. Matrix Sidechain &amp; FX</button>
+      <button onclick="window.print()" class="ml-2 px-3 py-1 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-semibold">
+        Print 14&quot;&times;8.5&quot;
+      </button>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- LEGAL LANDSCAPE SHEET (14" × 8.5"): TECHNICAL EXPLORATION ROADMAP     -->
+  <!-- ===================================================================== -->
+  <div class="print-sheet max-w-[1400px] mx-auto rounded-xl bg-white text-slate-900 border border-slate-300 shadow-lg p-3.5 flex flex-col justify-between" style="aspect-ratio: 14 / 8.5;">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between border-b-2 border-slate-900 pb-1.5 mb-1.5">
+      <div class="flex items-baseline gap-2.5">
+        <span class="bg-sky-700 text-white font-black tracking-tighter px-2 py-0.5 rounded text-sm">_TECHNICAL ROADMAP</span>
+        <h2 class="text-sm font-extrabold uppercase tracking-wide text-slate-900">End-to-End Signal Architecture, Control Impact &amp; Exploration Lab</h2>
+      </div>
+      <span class="text-xs font-semibold text-slate-600">Tip: Long-press <code class="font-bold text-slate-900">Preset/Edit</code> (<code class="font-mono">Init Preset</code>) before running any &ldquo;Try This to Hear It&rdquo; experiment!</span>
+    </div>
+
+    <!-- TOP SVG SIGNAL-FLOW & ARCHITECTURE DIAGRAM -->
+    <div class="w-full rounded-lg border-2 border-slate-800 bg-slate-50 p-1.5 mb-2">
+      <svg viewBox="0 0 1200 92" class="w-full h-auto block">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155"/>
+          </marker>
+          <marker id="arr-blue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7"/>
+          </marker>
+        </defs>
+
+        <!-- Stage 1: Digital Oscillators -->
+        <rect x="6" y="6" width="232" height="80" rx="5" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+        <text x="14" y="18" font-size="8" font-weight="900" fill="#9a3412">STAGE 1: DIGITAL OSCILLATORS &amp; GAIN STAGING</text>
+        <rect x="14" y="24" width="96" height="24" rx="3" fill="#fed7aa" stroke="#f97316"/>
+        <text x="62" y="35" text-anchor="middle" font-size="7" font-weight="800" fill="#7c2d12">OSC 1 (Vol 1)</text>
+        <text x="62" y="44" text-anchor="middle" font-size="6" fill="#9a3412">16 Types + WT/Smp/Gran</text>
+
+        <rect x="132" y="24" width="98" height="24" rx="3" fill="#e0f2fe" stroke="#0284c7"/>
+        <text x="181" y="35" text-anchor="middle" font-size="7" font-weight="800" fill="#075985">OSC 2 (Vol 2)</text>
+        <text x="181" y="44" text-anchor="middle" font-size="6" fill="#0369a1">Pale Blue = Filter/Destroy</text>
+
+        <path d="M 110 36 L 130 36" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3 2" marker-end="url(#arr-blue)"/>
+        <text x="122" y="61" text-anchor="middle" font-size="6.3" font-weight="700" fill="#334155">&bull; Normal: Vol 1 + Vol 2 mix in parallel</text>
+        <text x="122" y="71" text-anchor="middle" font-size="6.3" font-weight="700" fill="#0284c7">&bull; Osc2 Proc: Vol 1 = Drive, Vol 2 = Dry/Wet</text>
+        <text x="122" y="81" text-anchor="middle" font-size="6.3" font-weight="700" fill="#7e22ce">&bull; Paraphonic: Osc 2 Off &rarr; 12 Osc 1 Voices!</text>
+
+        <line x1="238" y1="46" x2="256" y2="46" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Stage 2: Analog Filter -->
+        <rect x="258" y="6" width="204" height="80" rx="5" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+        <text x="266" y="18" font-size="8" font-weight="900" fill="#14532d">STAGE 2: ANALOG SEM VCF (12 dB/oct)</text>
+        <!-- Mini Filter Curve -->
+        <path d="M 270 54 L 315 54 Q 330 54 335 30 Q 340 54 365 76" fill="none" stroke="#16a34a" stroke-width="2"/>
+        <text x="335" y="27" text-anchor="middle" font-size="6" font-weight="800" fill="#15803d">Reso Peak (Self-Osc @ 100)</text>
+        <text x="360" y="45" font-size="6.3" font-weight="700" fill="#334155">&bull; LPF / BPF / HPF</text>
+        <text x="360" y="55" font-size="6.3" font-weight="700" fill="#334155">&bull; Env/Velo (bipolar &plusmn;)</text>
+        <text x="360" y="65" font-size="6.3" font-weight="700" fill="#0284c7">&bull; KeyTrack: Kbd&rarr;Cut=50</text>
+        <text x="360" y="78" text-anchor="middle" font-size="6" fill="#475569">Smooth 12dB vs Steep Osc2 36dB</text>
+
+        <line x1="462" y1="46" x2="480" y2="46" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Stage 3 & 4: VCA, Voicing & Envelopes -->
+        <rect x="482" y="6" width="256" height="80" rx="5" fill="#faf5ff" stroke="#9333ea" stroke-width="1.5"/>
+        <text x="490" y="18" font-size="8" font-weight="900" fill="#581c87">STAGES 3 &amp; 4: VOICING, VCA &amp; ENVELOPE CURVES</text>
+        <!-- Mini ADSR Curve -->
+        <path d="M 492 72 Q 496 30 508 28 Q 518 52 536 52 L 560 52 Q 570 72 586 72" fill="none" stroke="#9333ea" stroke-width="2"/>
+        <text x="538" y="46" text-anchor="middle" font-size="5.8" font-weight="700" fill="#6b21a8">Log Atk / Exp Dec</text>
+        <text x="596" y="34" font-size="6.3" font-weight="700" fill="#334155">&bull; Mono / Poly(6) / Para(12) / Uni</text>
+        <text x="596" y="45" font-size="6.3" font-weight="700" fill="#334155">&bull; Env Reset vs. Env Continue</text>
+        <text x="596" y="56" font-size="6.3" font-weight="700" fill="#334155">&bull; Quick Atk / Percussive Dec-Rel</text>
+        <text x="596" y="67" font-size="6.3" font-weight="700" fill="#7e22ce">&bull; CycEnv: RHF vs RFH/HRF spikes</text>
+        <text x="596" y="78" font-size="6.3" font-weight="700" fill="#be123c">&bull; Poly Allocation: Cycle/Reassign</text>
+
+        <line x1="738" y1="46" x2="756" y2="46" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Stage 5: Expressive Modulators -->
+        <rect x="758" y="6" width="198" height="80" rx="5" fill="#fffbeb" stroke="#d97706" stroke-width="1.5"/>
+        <text x="766" y="18" font-size="8" font-weight="900" fill="#78350f">STAGE 5: VELOCITY, AT &amp; KBD MOD</text>
+        <text x="766" y="33" font-size="6.3" font-weight="700" fill="#334155">&bull; Velo &rarr; VCA (Loudness)</text>
+        <text x="766" y="44" font-size="6.3" font-weight="700" fill="#334155">&bull; Velo &rarr; VCF (Brightness)</text>
+        <text x="766" y="55" font-size="6.3" font-weight="700" fill="#334155">&bull; Velo &rarr; Time (Hard hit = Long tail!)</text>
+        <text x="766" y="66" font-size="6.3" font-weight="700" fill="#b45309">&bull; Matrix VeloAT = Both (Hit &rarr; Press)</text>
+        <text x="766" y="77" font-size="6.3" font-weight="700" fill="#0284c7">&bull; Kbd Src: Linear / S-Crv / Rand / Voices</text>
+
+        <line x1="956" y1="46" x2="974" y2="46" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+        <!-- Stage 6: Digital FX Chain -->
+        <rect x="976" y="6" width="218" height="80" rx="5" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/>
+        <text x="984" y="18" font-size="8" font-weight="900" fill="#312e81">STAGE 6: FX 1 &rarr; FX 2 &rarr; FX 3 ROUTING</text>
+        <text x="984" y="34" font-size="6.3" font-weight="700" fill="#334155">&bull; Insert Mode: FX1 flows INTO FX2 &rarr; FX3</text>
+        <text x="984" y="45" font-size="6.3" font-weight="700" fill="#4338ca">&bull; Send Mode (Delay/Rev): Parallel bus</text>
+        <text x="984" y="56" font-size="6.3" font-weight="700" fill="#334155">&bull; Matrix Sidechain: Modulate Mod Depth</text>
+        <text x="984" y="67" font-size="6.3" font-weight="700" fill="#334155">&bull; Macros M1/M2: 4-param morph offsets</text>
+        <text x="984" y="78" font-size="6.3" font-weight="700" fill="#15803d">&bull; Stereo Master Out (+ Audio In Loopback)</text>
+      </svg>
+    </div>
+
+    <!-- 6-STAGE TECHNICAL DEEP DIVE CARDS (3x2 GRID) -->
+    <div class="grid grid-cols-12 gap-2.5 flex-1 text-xs leading-snug">
+
+      <!-- STAGE 1 CARD -->
+      <div id="s1" class="stage-card col-span-4 rounded-lg border-2 border-orange-500 bg-orange-50/30 p-2 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-orange-300 pb-1 mb-1">
+            <span class="font-extrabold text-orange-950 uppercase">1. Osc Levels, Mix &amp; Wavefolding Physics</span>
+            <span class="px-1.5 py-0.2 bg-orange-500 text-white rounded text-xs font-mono">Gain &amp; Harmonics</span>
+          </div>
+          <ul class="space-y-1 text-slate-800">
+            <li>&bull; <b>Dual-Role Volume Knobs:</b> In standard modes, <code class="font-bold">Osc 1/2 Volume</code> (<span class="text-sky-700 font-semibold">Shift+Vol = Mix</span>) sets the balance feeding the Analog Filter. High combined volume gently saturates the analog VCF input.</li>
+            <li>&bull; <b>Osc 2 Processor Gain Staging (<span class="text-sky-600 font-bold">Pale Blue LED</span>):</b> When Osc 2 is set to a Filter or <code class="font-mono">Destroy</code>, <b>Osc 1 Volume becomes Input Drive</b> into Osc 2, while <b>Osc 2 Volume becomes Dry/Wet Mix</b>!</li>
+            <li>&bull; <b>Why Wavefolding Sounds Subtle on Some Waves:</b> A wavefolder (<code class="font-mono">Waveshaper</code>, <code class="font-mono">BASS</code>, <code class="font-mono">Destroy</code>) folds the peaks of a wave back down across itself. If your source wave is already a bright square/saw or played in a high octave, the folded peaks blend into existing harmonics. Feeding it a <b>low-octave Sine/Triangle</b> reveals dramatic, vocal-like harmonic multiplication.</li>
+          </ul>
+        </div>
+        <div class="mt-1.5 p-1.5 rounded bg-white border border-orange-300 text-slate-900">
+          <b class="text-orange-700">&#9883; Try This to Hear It:</b> Load <code class="font-mono">Init Preset</code> &rarr; Set Osc 1 to <code class="font-mono">Waveshaper</code> (<code class="font-mono">Wave=25</code>, <code class="font-mono">Asym=0</code>). Play a low <b>C1/C2</b> and sweep <code class="font-mono">Timbre (Amount)</code> 0&rarr;100 to hear pure wavefolding. Now set Osc 2 to <code class="font-mono">Destroy</code>, set <code class="font-mono">Osc 2 Vol=100%</code>, and sweep <code class="font-mono">Osc 1 Vol</code> to hear input drive!
+        </div>
+      </div>
+
+      <!-- STAGE 2 CARD -->
+      <div id="s2" class="stage-card col-span-4 rounded-lg border-2 border-emerald-600 bg-emerald-50/30 p-2 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-emerald-300 pb-1 mb-1">
+            <span class="font-extrabold text-emerald-950 uppercase">2. Filter Slopes (12 vs 36 dB) &amp; Key Tracking</span>
+            <span class="px-1.5 py-0.2 bg-emerald-600 text-white rounded text-xs font-mono">Frequency &amp; Q</span>
+          </div>
+          <ul class="space-y-1 text-slate-800">
+            <li>&bull; <b>Slope Steepness:</b> The Analog SEM Filter has a gentle <b>12 dB/octave</b> slope&mdash;one octave above Cutoff is only 12 dB quieter, letting airy upper harmonics breathe. Need a surgical wall? Route Osc 1 into Osc 2's <code class="font-mono">Multi Filter</code> set to <b>LP24 or LP36 (36 dB/oct)</b>!</li>
+            <li>&bull; <b>Resonance (Q) &amp; Self-Oscillation:</b> Raising <code class="font-bold">Resonance</code> narrows and boosts the peak right at Cutoff. At <code class="font-mono">100</code>, the Analog Filter self-oscillates as a pure sine wave even with Osc 1 &amp; 2 Volumes at <code class="font-mono">0</code>!</li>
+            <li>&bull; <b>Keyboard Tracking (<code class="font-mono">Kbd &rarr; Cutoff</code>):</b> Without key tracking, high notes sound muffled and low notes sound overly bright. Setting Matrix <code class="font-mono">Keyboard &rarr; Cutoff = +50</code> locks the filter cutoff 1:1 to the played pitch across all 37 keys.</li>
+          </ul>
+        </div>
+        <div class="mt-1.5 p-1.5 rounded bg-white border border-emerald-300 text-slate-900">
+          <b class="text-emerald-700">&#9883; Try This to Hear It:</b> Turn <code class="font-mono">Osc 1 &amp; 2 Volume = 0</code>. Turn Analog Filter <code class="font-mono">Resonance = 100</code>. In Matrix, set <code class="font-mono">Keyboard &rarr; Cutoff = +50.0</code>. Play the keyboard and tune <code class="font-mono">Cutoff</code>&mdash;you are now playing the Analog Filter itself as a sine synthesizer!
+        </div>
+      </div>
+
+      <!-- STAGE 3 CARD -->
+      <div id="s3" class="stage-card col-span-4 rounded-lg border-2 border-purple-600 bg-purple-50/30 p-2 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-purple-300 pb-1 mb-1">
+            <span class="font-extrabold text-purple-950 uppercase">3. Voicing Modes, Paraphony &amp; Voice Stealing</span>
+            <span class="px-1.5 py-0.2 bg-purple-600 text-white rounded text-xs font-mono">6 vs 12 Voices</span>
+          </div>
+          <ul class="space-y-1 text-slate-800">
+            <li>&bull; <b>True Poly (6v) vs. Paraphonic (12v):</b> In <code class="font-mono">Poly</code>, each of the 6 voices has 2 Oscillators + its own Analog VCF + VCA. Switching to <code class="font-mono">Para</code> disables Osc 2 and repurposes all 12 oscillators as <b>12 voices grouped into 6 Voice Pairs</b>. Each voice has its own digital ADSR, while each pair shares an analog AHR Master Envelope!</li>
+            <li>&bull; <b>Poly Allocation (<code class="font-mono">Sound Edit &gt; Voice</code>):</b>
+              <code class="font-mono">Cycle</code> rotates through all 6 analog filters (subtle vintage variation);
+              <code class="font-mono">Reassign</code> re-uses the exact same voice when you repeat a note (like a real piano string);
+              <code class="font-mono">Reset</code> always grabs Voice 1 first.</li>
+            <li>&bull; <b>Bass-Safe Voice Stealing:</b> Whether <code class="font-mono">Poly Steal</code> is <code class="font-mono">Oldest</code>, <code class="font-mono">Lowest Velo</code>, or <code class="font-mono">None</code>, MiniFreak <b>never steals your lowest held bass note</b>!</li>
+          </ul>
+        </div>
+        <div class="mt-1.5 p-1.5 rounded bg-white border border-purple-300 text-slate-900">
+          <b class="text-purple-700">&#9883; Try This to Hear It:</b> Set a long <code class="font-mono">Release</code> and compare repeatedly tapping one key in <code class="font-mono">Poly Allocation = Cycle</code> (tails stack up across 6 voices and steal) vs. <code class="font-mono">Reassign</code> (each tap cleanly re-strikes the same single voice!).
+        </div>
+      </div>
+
+      <!-- STAGE 4 CARD -->
+      <div id="s4" class="stage-card col-span-4 rounded-lg border-2 border-rose-500 bg-rose-50/30 p-2 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-rose-300 pb-1 mb-1">
+            <span class="font-extrabold text-rose-950 uppercase">4. Envelope Curves, Stage Order &amp; Retriggering</span>
+            <span class="px-1.5 py-0.2 bg-rose-600 text-white rounded text-xs font-mono">Time &amp; Transients</span>
+          </div>
+          <ul class="space-y-1 text-slate-800">
+            <li>&bull; <b>VCA Envelope Curve Shapes (<code class="font-mono">Sound Edit &gt; Envelope</code>):</b> Switching Attack to <code class="font-mono">Quick</code> and Decay/Release to <code class="font-mono">Percussive</code> bends the slope so the initial drop is much steeper&mdash;turning soft notes into snappy plucks without shortening the tail.</li>
+            <li>&bull; <b>Cycling Env Curvature (<span class="text-sky-700 font-semibold">Shift + Rise/Fall</span>):</b> <code class="font-mono">50</code> = Linear. <code class="font-mono">&lt;50</code> = <b>Exponential</b> (slow build, sudden snap at end). <code class="font-mono">&gt;50</code> = <b>Logarithmic</b> (instant punchy rise, gradual settle).</li>
+            <li>&bull; <b>Stage Order (<code class="font-mono">RHF</code> vs. <code class="font-mono">RFH / HRF</code>):</b> In <code class="font-mono">RHF</code>, <code class="font-mono">Hold</code> pauses at <b>100% peak</b> (trapezoid drone). In <code class="font-mono">RFH</code> or <code class="font-mono">HRF</code>, <code class="font-mono">Hold</code> pauses at <b>0% floor</b>&mdash;creating repeating percussive spikes separated by silence!</li>
+            <li>&bull; <b><code class="font-mono">Env Reset</code> vs. <code class="font-mono">Env Continue</code>:</b> In Mono/Uni/Para, <code class="font-mono">Reset</code> drops to 0 on every key press (clicky/plucky); <code class="font-mono">Continue</code> rises smoothly from the previous note's current level.</li>
+          </ul>
+        </div>
+        <div class="mt-1.5 p-1.5 rounded bg-white border border-rose-300 text-slate-900">
+          <b class="text-rose-700">&#9883; Try This to Hear It:</b> Route <code class="font-mono">CycEnv &rarr; Cutoff (+60)</code> in <code class="font-mono">Loop</code> mode with short Rise/Fall and long Hold. Toggle <code class="font-mono">Sound Edit &gt; CycEnv &gt; Stage Order</code> from <code class="font-mono">RHF</code> (held open filter) to <code class="font-mono">RFH</code> (rhythmic gated plucks!).
+        </div>
+      </div>
+
+      <!-- STAGE 5 CARD -->
+      <div id="s5" class="stage-card col-span-4 rounded-lg border-2 border-amber-500 bg-amber-50/30 p-2 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-amber-300 pb-1 mb-1">
+            <span class="font-extrabold text-amber-950 uppercase">5. Expressive Dynamics: Velocity, AT &amp; Kbd Src</span>
+            <span class="px-1.5 py-0.2 bg-amber-600 text-white rounded text-xs font-mono">Touch &amp; Feel</span>
+          </div>
+          <ul class="space-y-1 text-slate-800">
+            <li>&bull; <b>4 Separate Velocity Paths (<code class="font-mono">Sound Edit &gt; Envelope</code>):</b> By default an Init patch ignores velocity! Dial in <code class="font-mono">Velo &gt; VCA</code> (volume dynamics), <code class="font-mono">Velo &gt; VCF</code> (or <span class="text-sky-700 font-semibold">Shift + Filter Env knob</span> for brightness), <code class="font-mono">Velo &gt; Env</code> (Matrix depth), and <code class="font-mono">Velo &gt; Time</code> (hard strikes ring out longer!).</li>
+            <li>&bull; <b><code class="font-mono">Matrix Src VeloAT = Both</code> (<code class="font-mono">Sound Edit &gt; Keyboard</code>):</b> The secret expressive weapon! Velocity sets the initial modulation value on key strike, and pressing harder into Aftertouch smoothly sweeps from that hit value up to 100%.</li>
+            <li>&bull; <b><code class="font-mono">Kbd Src</code> Modes:</b> Changes what the Matrix <code class="font-mono">Keyboard</code> row sends: <code class="font-mono">Linear</code> (centered at C3), <code class="font-mono">S-Curve</code> (gentle at extremes), <code class="font-mono">Random</code> (new random value per key press), or <code class="font-mono">Voices</code> (fixed offset per voice 1&ndash;6 for organic per-voice variation!).</li>
+          </ul>
+        </div>
+        <div class="mt-1.5 p-1.5 rounded bg-white border border-amber-300 text-slate-900">
+          <b class="text-amber-700">&#9883; Try This to Hear It:</b> Set <code class="font-mono">Sound Edit &gt; Keyboard &gt; Kbd Src = Voices</code>, then route <code class="font-mono">Keyboard &rarr; Timbre 1 (+25)</code> and <code class="font-mono">Pitch 1+2 (+0.08)</code>. Every voice in a chord now has its own vintage analog drift!
+        </div>
+      </div>
+
+      <!-- STAGE 6 CARD -->
+      <div id="s6" class="stage-card col-span-4 rounded-lg border-2 border-indigo-600 bg-indigo-50/30 p-2 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between border-b border-indigo-300 pb-1 mb-1">
+            <span class="font-extrabold text-indigo-950 uppercase">6. Matrix Sidechaining &amp; Insert vs. Send FX</span>
+            <span class="px-1.5 py-0.2 bg-indigo-600 text-white rounded text-xs font-mono">Mod Depth &amp; Routing</span>
+          </div>
+          <ul class="space-y-1 text-slate-800">
+            <li>&bull; <b>Modulating a Modulation (Sidechaining):</b> Want an LFO or Cycling Env to only kick in when you push the Wheel or press Aftertouch? Hold <code class="font-bold">Assign 1</code> + turn the <code class="font-bold">Matrix</code> encoder to target an existing Matrix point (e.g. <code class="font-mono">LFO1 &rarr; Cutoff</code>), or turn <code class="font-bold">Preset</code> to select <code class="font-mono">LFO1 AM</code>. Now route <code class="font-mono">Wheel &rarr; Assign 1</code>!</li>
+            <li>&bull; <b>Macros as Safe Experimentation Sandboxes:</b> Since Macros (<code class="font-mono">M1 / M2</code>) store 0&ndash;100% offsets over up to 4 parameters (including Matrix amounts!), assign risky tweaks to a Macro&mdash;returning the strip to <code class="font-mono">0</code> always restores your saved patch intact.</li>
+            <li>&bull; <b>Insert vs. Send FX Topologies (<code class="font-mono">Sound Edit + FX Select</code>):</b>
+              <b>Insert</b> runs <code class="font-mono">FX1 &rarr; FX2 &rarr; FX3</code> in series (e.g., Reverb <i>into</i> Distortion/Flanger for shoegaze walls).
+              <b>Send</b> taps the signal in parallel so Delay and Reverb don't smear each other or get crushed by FX 3!</li>
+          </ul>
+        </div>
+        <div class="mt-1.5 p-1.5 rounded bg-white border border-indigo-300 text-slate-900">
+          <b class="text-indigo-700">&#9883; Try This to Hear It:</b> Set <code class="font-mono">FX 1 = Reverb (Hall)</code> and <code class="font-mono">FX 2 = Distortion (Dual Fold)</code>. Play a chord with Reverb set to <b>Insert</b> (huge distorted reverb tail), then switch Reverb Routing to <b>Send</b> (gritty dry synth sitting in a crystal-clean hall!).
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function focusStage(stageId) {
+      const cards = document.querySelectorAll('.stage-card');
+      cards.forEach(c => {
+        c.classList.remove('stage-dim', 'stage-hi');
+        if (stageId === 'all') return;
+        if (c.id === stageId) {
+          c.classList.add('stage-hi');
+        } else {
+          c.classList.add('stage-dim');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
