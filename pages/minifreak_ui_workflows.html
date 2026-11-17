@@ -634,7 +634,8 @@
             <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + CycEnv Mode</code> &rarr; Cycling Env Menu</div>
             <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + LFO Select</code> &rarr; LFO Retrig &amp; Sync</div>
             <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + Touch Strip</code> &rarr; Keyboard Menu</div>
-            <div class="col-span-2 pt-0.5 border-t border-indigo-200"><code class="px-1 py-0.5 rounded bg-sky-100 text-sky-900 font-bold">Shift + Chord (Scales)</code> &rarr; Scale Config Menu &nbsp;|&nbsp; <code class="px-1 py-0.5 rounded bg-slate-200 text-slate-900 font-bold">Tap Sound Edit</code> = Cancel Save / Exit</div>
+            <div class="col-span-2 pt-0.5 border-t border-indigo-200"><code class="px-1 py-0.5 rounded bg-sky-100 text-sky-900 font-bold">Shift + Chord (Scales)</code> &rarr; Scale Config Menu</div>
+            <div class="col-span-2"><code class="px-1 py-0.5 rounded bg-slate-200 text-slate-900 font-bold">Sound Edit</code> &rarr; Cancel Save / Exit</div>
           </div>
         </div>
 
@@ -677,13 +678,13 @@
 
       <!-- MIDDLE 4 COLUMNS: PER-PRESET SOUND EDIT MENU MAP -->
       <div class="col-span-4 rounded-lg border-2 border-slate-800 bg-white p-1.5 flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between border-b-2 border-slate-800 pb-0.5 mb-1">
+        <div class="flex flex-col flex-1 justify-between">
+          <div class="flex items-center justify-between border-b-2 border-slate-800 pb-0.5 mb-0.5">
             <span class="font-extrabold text-slate-900 uppercase">Sound Edit Menus (Saved Per-Preset)</span>
             <span class="px-1.5 py-0.5 bg-slate-800 text-white rounded text-[10px] font-mono">White LED</span>
           </div>
 
-          <div class="space-y-1 text-slate-800">
+          <div class="space-y-0.5 text-slate-800 flex-1 flex flex-col justify-between">
             <div class="p-1 rounded bg-slate-50 border border-slate-200">
               <div class="font-bold text-slate-900">0. Preset Volume <span class="text-slate-500 font-normal">(Top item)</span></div>
               <div>Offsets current preset level (<code class="font-mono">-12 dB to +6 dB</code>) to match other patches.</div>
@@ -697,7 +698,7 @@
               <ul class="mt-0.5 space-y-0.5">
                 <li><b>Wavetable / Sample Select:</b> Browse Osc 1 tables/samples.</li>
                 <li><b>Osc1 / Osc2 Mod Quant:</b> Quantize pitch mod to scales (Chromatic, Oct, 5th, Maj/Min, Pentatonic, Phrygian).</li>
-                <li><b>Glide Mode:</b> <code class="font-mono">Time</code> (constant time), <code class="font-mono">Rate</code> (constant speed/semitone), or <code class="font-mono">Sync</code> &mdash; each with optional <b>Legato</b>.</li>
+                <li><b>Glide Mode:</b> <code class="font-mono">Time</code>, <code class="font-mono">Rate</code> (speed/semitone), or <code class="font-mono">Sync</code> (each w/ optional <b>Legato</b>).</li>
                 <li><b>Vibrato Depth &amp; Vib Rate:</b> Config for the 3rd Vibrato LFO.</li>
               </ul>
             </div>
@@ -707,7 +708,7 @@
                 <span>2. FX</span>
                 <span class="font-mono text-[10px] text-indigo-800">SE + FX Select</span>
               </div>
-              <div><b>Delay Routing &amp; Reverb Routing:</b> <code class="font-mono">Insert</code> (serial chain) vs. <code class="font-mono">Send</code> (parallel split; <code class="font-mono">Amount</code> knob becomes Send Level).</div>
+              <div><b>Delay Routing &amp; Reverb Routing:</b> <code class="font-mono">Insert</code> (serial chain) vs. <code class="font-mono">Send</code> (parallel split; <code class="font-mono">Amount</code> = Send Level).</div>
             </div>
 
             <div class="p-1 rounded bg-slate-50 border border-slate-200">
@@ -716,8 +717,8 @@
                 <span class="font-mono text-[10px] text-slate-600">SE + Env Mode</span>
               </div>
               <ul class="mt-0.5 space-y-0.5">
-                <li><b>Velo &gt; VCA / VCF / Env / Time:</b> Independent velocity sensitivity for Volume, Cutoff, Matrix Env depth, and Decay/Release extension.</li>
-                <li><b>Retrig Mode:</b> <code class="font-mono">Env Reset</code> (restarts from 0) vs. <code class="font-mono">Env Continue</code> (picks up from current level; huge in Mono/Para/Uni!).</li>
+                <li><b>Velo &gt; VCA / VCF / Env / Time:</b> Velocity depth for Vol, Cutoff, Matrix Env &amp; Dec/Rel.</li>
+                <li><b>Retrig Mode:</b> <code class="font-mono">Env Reset</code> (from 0) vs. <code class="font-mono">Env Continue</code> (from current level; huge in Mono/Para/Uni!).</li>
                 <li><b>Attack / Decay / Release Curves:</b> <code class="font-mono">Default</code> vs. <code class="font-mono">Quick</code> / <code class="font-mono">Percussive</code>.</li>
               </ul>
             </div>
@@ -728,69 +729,106 @@
                 <span class="font-mono text-[10px] text-emerald-800">SE + Env Mode</span>
               </div>
               <ul class="mt-0.5 space-y-0.5">
-                <li><b>Legato Mono:</b> Whether Mono/Uni-Mono retriggers on legato notes.</li>
+                <li><b>Legato Mono:</b> Retrigger on legato notes | <b>Osc Free Run:</b> Free phase vs. key-reset.</li>
                 <li><b>Unison Spread / Count (2&ndash;6) / Mode (Mono, Poly, Para)</b>.</li>
-                <li><b>Poly Allocation:</b> <code class="font-mono">Cycle</code> (round-robin), <code class="font-mono">Reassign</code> (same note reuses same voice), <code class="font-mono">Reset</code> (always starts Voice 1).</li>
+                <li><b>Poly Allocation:</b> <code class="font-mono">Cycle</code> (round-robin), <code class="font-mono">Reassign</code> (reuses voice), <code class="font-mono">Reset</code> (Voice 1).</li>
                 <li><b>Poly Steal Mode:</b> <code class="font-mono">Oldest</code>, <code class="font-mono">Lowest Velo</code>, <code class="font-mono">None</code> (<i>never steals lowest note!</i>).</li>
-                <li><b>Osc Free Run:</b> Free-running oscillator phase vs. key-reset.</li>
               </ul>
             </div>
 
+            <div class="p-1 rounded bg-teal-50/40 border border-teal-200">
+              <div class="font-bold text-teal-950 flex justify-between">
+                <span>5. Cycling Envelope</span>
+                <span class="font-mono text-[10px] text-teal-700">SE + CycEnv Mode</span>
+              </div>
+              <div><b>Retrig Src:</b> <code class="font-mono">Poly</code>, <code class="font-mono">Mono</code>, <code class="font-mono">Legato</code>, <code class="font-mono">LFO 1/2</code> | <b>Stage Order:</b> <code class="font-mono">RHF</code> (hold high) vs. <code class="font-mono">RFH/HRF</code> (hold 0) | <b>Tempo Sync</b>.</div>
+            </div>
+
             <div class="p-1 rounded bg-purple-50/50 border border-purple-200">
-              <div class="font-bold text-purple-950">5. Cycling Env | 6. LFO | 7. Keyboard | 8. Seq | 9. Scale</div>
-              <ul class="mt-0.5 space-y-0.5">
-                <li><b>Cycling Env:</b> <code class="font-mono">Retrig Src</code> (Poly/Mono/Legato/LFO1-2), <code class="font-mono">Stage Order</code> (<code class="font-mono">RHF</code> hold high vs <code class="font-mono">RFH/HRF</code> hold at 0), <code class="font-mono">Tempo Sync</code>.</li>
-                <li><b>LFO:</b> <code class="font-mono">LFO 1/2 Retrig</code>, <code class="font-mono">Sync Filter</code> (Straight/Triplet/Dotted), <code class="font-mono">Shaper Rate</code> (<code class="font-mono">Per Step</code> vs. <code class="font-mono">All Steps</code> = 16&times; faster).</li>
-                <li><b>Keyboard:</b> <code class="font-mono">Matrix Src VeloAT</code> (Velo / AT / Both), <code class="font-mono">Kbd Src</code> (Linear / S-Curve / Random / Voices), <code class="font-mono">Bend Range</code> (1&ndash;12 st).</li>
-                <li><b>Seq:</b> <code class="font-mono">Smooth Mod 1&ndash;4</code> (on/off), <code class="font-mono">-1 / +1 Semitone</code> saved transpose.</li>
-              </ul>
+              <div class="font-bold text-purple-950 flex justify-between">
+                <span>6. LFO</span>
+                <span class="font-mono text-[10px] text-purple-700">SE + LFO Select</span>
+              </div>
+              <div><b>LFO 1/2 Retrig</b> | <b>Sync Filter:</b> Straight / Triplet / Dotted | <b>Shaper Rate:</b> <code class="font-mono">Per Step</code> vs. <code class="font-mono">All Steps</code> (16&times; faster).</div>
+            </div>
+
+            <div class="p-1 rounded bg-amber-50/50 border border-amber-200">
+              <div class="font-bold text-amber-950 flex justify-between">
+                <span>7. Keyboard</span>
+                <span class="font-mono text-[10px] text-amber-700">SE + Touch Strip</span>
+              </div>
+              <div><b>Matrix Src VeloAT:</b> Velo / AT / Both | <b>Kbd Src:</b> Linear / S-Curve / Random / Voices | <b>Bend Range:</b> 1&ndash;12 st.</div>
+            </div>
+
+            <div class="p-1 rounded bg-slate-50 border border-slate-200">
+              <div class="font-bold text-slate-900">8. Seq</div>
+              <div><b>Smooth Mod 1&ndash;4:</b> Step smoothing on/off | <b>-1 / +1 Semitone:</b> Transpose saved seq.</div>
+            </div>
+
+            <div class="p-1 rounded bg-sky-50/40 border border-sky-200">
+              <div class="font-bold text-sky-950 flex justify-between">
+                <span>9. Scale Config</span>
+                <span class="font-mono text-[10px] text-sky-700">Shift + Chord</span>
+              </div>
+              <div><b>Scale:</b> Off/Global/User, Maj, Min, Dorian, Mixolydian, Blues, Pentatonic | <b>Root:</b> C&ndash;B.</div>
+            </div>
+
+            <div class="p-1 rounded bg-rose-50/50 border border-rose-200">
+              <div class="font-bold text-rose-950">10. Preset</div>
+              <div><b>View Snapshots:</b> Restore time-stamped auto-saves | <b>Details:</b> Type, Designer &amp; Rev #.</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- RIGHT 3 COLUMNS: GLOBAL UTILITY MENU + MINIFREAK V SYNC -->
+      <!-- RIGHT 3 COLUMNS: GLOBAL UTILITY MENU + MINIFREAK V SYNC & SAMPLE TRANSFER -->
       <div class="col-span-3 flex flex-col justify-between gap-1.5">
 
-        <div class="rounded-lg border-2 border-sky-600 bg-sky-50/30 p-1.5 flex-1">
-          <div class="flex items-center justify-between border-b-2 border-sky-600 pb-0.5 mb-1">
+        <div class="rounded-lg border-2 border-sky-600 bg-sky-50/30 p-1.5 flex-1 flex flex-col justify-between">
+          <div class="flex items-center justify-between border-b-2 border-sky-600 pb-0.5 mb-0.5">
             <span class="font-extrabold text-sky-950 uppercase">Utility Menu (Global)</span>
             <span class="px-1.5 py-0.5 bg-sky-600 text-white rounded text-[10px] font-mono">Shift + Sound Edit</span>
           </div>
 
-          <div class="space-y-1 text-slate-800">
+          <div class="space-y-0.5 text-slate-800 flex-1 flex flex-col justify-between">
             <div>
               <div class="font-bold text-sky-950">1. Preset Operations</div>
-              <div><code class="font-mono">Preset Copy / Paste</code> (Osc 1/2, FX 1/2/3, Seq+Mods, LFO Curve, Swap FX) | <code class="font-mono">Preset Erase</code> (Init, Reload, Matrix, Seq, Mods, Macro 1/2) | <code class="font-mono">Panel Mode</code> (<b>Favorite Panel</b> vs. <b>Knob Panel</b>).</div>
+              <div><code class="font-mono">Preset Copy / Paste</code> (Osc 1/2, FX 1&ndash;3, Seq+Mods, LFO Curve, Swap FX) | <code class="font-mono">Preset Erase</code> (Init, Reload, Matrix, Seq, Mods, Macro 1/2) | <code class="font-mono">Panel Mode</code> (<b>Favorite</b> vs. <b>Knob Panel</b>).</div>
             </div>
 
             <div class="border-t border-sky-200 pt-0.5">
               <div class="font-bold text-sky-950">2. Controls (Feel &amp; Response)</div>
-              <div><code class="font-mono">Knob Catch</code>: <b>Jump</b> (instant), <b>Hook</b> (wait till pass), <b>Scale</b> (smooth catch-up).</div>
-              <div><code class="font-mono">Velocity / AT Curve</code>: Linear, Log (light), Expo (heavy).</div>
-              <div><code class="font-mono">AT Start / End Sens</code>: Low, Mid, High pressure.</div>
-              <div><code class="font-mono">Touch Button Sens</code>: Low, <b>Medium (best for Shaper!)</b>, High.</div>
-              <div><code class="font-mono">Sustain Polarity</code>: Normally Open / Closed.</div>
+              <div><code class="font-mono">Knob Catch</code>: <b>Jump</b>, <b>Hook</b>, <b>Scale</b> | <code class="font-mono">Velo/AT Curve</code>: Lin, Log, Expo | <code class="font-mono">AT Sens</code>: Low/Mid/High | <code class="font-mono">Touch Sens</code>: Low, <b>Med</b>, High | <code class="font-mono">Sustain Polarity</code>.</div>
             </div>
 
             <div class="border-t border-sky-200 pt-0.5">
               <div class="font-bold text-sky-950">3. Audio &amp; Calibration</div>
-              <div><code class="font-mono">Audio In Mode</code>: <b>Line</b> vs. <b>Microphone</b> (Dynamic mics; no phantom power).</div>
-              <div><code class="font-mono">Audio In Gain</code>: <code class="font-mono">-9 dB to +24 dB</code>.</div>
-              <div><code class="font-mono">Master Tune</code> (&plusmn;50c) | <code class="font-mono">Stereo to Mono</code>.</div>
-              <div><code class="font-mono">Calib Cutoff</code> &amp; <code class="font-mono">Calib Analog</code> (1&ndash;2 min self-tune).</div>
+              <div><code class="font-mono">Audio In Mode</code>: <b>Line</b> vs. <b>Mic</b> (Dynamic) | <code class="font-mono">Audio In Gain</code> (<code class="font-mono">-9 to +24 dB</code>) | <code class="font-mono">Master Tune</code> (&plusmn;50c) | <code class="font-mono">Stereo to Mono</code> | <code class="font-mono">Calib Cutoff</code> &amp; <code class="font-mono">Calib Analog</code>.</div>
             </div>
 
             <div class="border-t border-sky-200 pt-0.5">
-              <div class="font-bold text-sky-950">4. Sync &amp; 5. MIDI</div>
-              <div><code class="font-mono">Metronome</code> (On/Off, Level, 1-Bar Rec Count-In).</div>
-              <div><code class="font-mono">Clock Source</code> (Auto/Int/USB/MIDI/Clock In), <code class="font-mono">PPQ</code>, <code class="font-mono">Global Tempo</code>.</div>
-              <div><code class="font-mono">MIDI Local Control</code> (On/Off) + <code class="font-mono">MIDI Seq/Synth</code> routing (4 modes: Normal, Controller+Module split, DAW transpose, etc.), <code class="font-mono">Knob Send CC</code>, <code class="font-mono">Program Change</code>.</div>
+              <div class="font-bold text-sky-950">4. Sync</div>
+              <div><code class="font-mono">Metronome</code> (On/Off, Level, 1-Bar Count-In) | <code class="font-mono">Clock Source</code> (Auto/Int/USB/MIDI/In) | <code class="font-mono">Clock/Transport Rx/Tx</code> | <code class="font-mono">PPQ</code> | <code class="font-mono">Global Tempo</code>.</div>
             </div>
 
             <div class="border-t border-sky-200 pt-0.5">
-              <div class="font-bold text-sky-950">6. Global Scale | 7. Misc | 8. Your Name</div>
-              <div><code class="font-mono">Global Scale/Root</code> | <code class="font-mono">LED Intensity</code> | <code class="font-mono">Your Name</code> (tags your patches &amp; adds your name to Filter list!).</div>
+              <div class="font-bold text-sky-950">5. MIDI</div>
+              <div><code class="font-mono">In/Out Channels</code> | <code class="font-mono">MIDI From/To</code> (USB/DIN/Both) | <code class="font-mono">Local Control</code> + <code class="font-mono">MIDI Seq/Synth</code> (4 routing modes) | <code class="font-mono">Knob Send CC</code> | <code class="font-mono">Program Change</code>.</div>
+            </div>
+
+            <div class="border-t border-sky-200 pt-0.5">
+              <div class="font-bold text-sky-950">6. Global Scale</div>
+              <div><code class="font-mono">Global Scale &amp; Root</code>: Default scale when preset Scale = Global.</div>
+            </div>
+
+            <div class="border-t border-sky-200 pt-0.5">
+              <div class="font-bold text-sky-950">7. Misc</div>
+              <div><code class="font-mono">LED Intensity</code> | <code class="font-mono">FW Version</code> | <code class="font-mono">Reset Settings</code> (keeps presets).</div>
+            </div>
+
+            <div class="border-t border-sky-200 pt-0.5">
+              <div class="font-bold text-sky-950">8. Your Name</div>
+              <div>Set your designer name (tags your patches &amp; adds to Filter list).</div>
             </div>
           </div>
         </div>
@@ -803,7 +841,20 @@
           <ul class="space-y-0.5 text-slate-800">
             <li><b>Standalone App:</b> Hardware preset overwrites software on connect.</li>
             <li><b>DAW Plugin:</b> Plugin preset overwrites hardware on connect!</li>
-            <li><b>Backup Memory:</b> Open Preset Browser &rarr; Click <b>MiniFreak</b> &rarr; <b>Backup to Computer</b>. Right-click or Cmd/Ctrl+Shift drag to restore slots.</li>
+            <li><b>Backup Memory:</b> Preset Browser &rarr; <b>MiniFreak</b> &rarr; <b>Backup to Computer</b> (right-click or Cmd/Ctrl+Shift drag to restore slots).</li>
+          </ul>
+        </div>
+
+        <!-- MINIFREAK V CUSTOM SAMPLE TRANSFER (v5.0) -->
+        <div class="rounded-lg border-2 border-emerald-600 bg-emerald-50/50 p-1.5">
+          <div class="flex items-center justify-between border-b border-emerald-200 pb-0.5 mb-0.5 whitespace-nowrap">
+            <span class="font-extrabold text-emerald-950 uppercase tracking-tight">Custom Sample Transfer (v5.0)</span>
+            <span class="px-1.5 py-0.5 bg-emerald-600 text-white rounded text-[10px] font-mono">MiniFreak V</span>
+          </div>
+          <ul class="space-y-0.5 text-slate-800">
+            <li><b>1. Open Sample UI in V:</b> Select a Wavetable/Sample-based engine in <b>MiniFreak V</b>, then <b>click the sample name</b> to bring up the UI.</li>
+            <li><b>2. Import Audio:</b> Click <b>Import</b> or <b>drag &amp; drop</b> audio into V (target: <code class="font-mono font-bold">12-bit, 32 kHz, max 6s</code>; user samples start with <code class="font-mono font-bold">USR</code>).</li>
+            <li><b>3. Send to Hardware:</b> Connect synth to reveal the <b>Hardware Management</b> section &rarr; click <b>Send</b> or <b>drag &amp; drop</b> to transfer.</li>
           </ul>
         </div>
 
