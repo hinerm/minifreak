@@ -1,916 +1,1866 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arturia MiniFreak — UI Workflow Infographic &amp; Menu Reference (14&quot; &times; 8.5&quot;)</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>if (!window.tailwind) { document.write('<script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"><\/script>'); }</script>
-  <style>
-    :root {
-      --background: #0b1120;
-      --foreground: #f8fafc;
-      --card: #111827;
-      --border: #1e293b;
-      --muted-foreground: #94a3b8;
-      --primary: #f97316;
-      --primary-foreground: #ffffff;
-    }
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      padding: 0.5rem 1rem;
-      background-color: var(--background);
-      color: var(--foreground);
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Arturia MiniFreak — UI Workflow Infographic &amp; Menu Reference (14&quot; &times; 8.5&quot;)</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>if (!window.tailwind) { document.write('<script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"><\/script>'); }</script>
+	<style>
+		:root {
+			--background: #0b1120;
+			--foreground: #f8fafc;
+			--card: #111827;
+			--border: #1e293b;
+			--muted-foreground: #94a3b8;
+			--primary: #f97316;
+			--primary-foreground: #ffffff;
+		}
 
-    /* Self-contained layout & color utilities */
-    .max-w-\[1400px\] { max-width: 1400px; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-    .mb-0\.5 { margin-bottom: 0.125rem; }
-    .mb-1 { margin-bottom: 0.25rem; }
-    .mb-1\.5 { margin-bottom: 0.375rem; }
-    .mb-2 { margin-bottom: 0.5rem; }
-    .mb-2\.5 { margin-bottom: 0.625rem; }
-    .mb-3 { margin-bottom: 0.75rem; }
-    .mb-6 { margin-bottom: 1.5rem; }
-    .mt-0\.5 { margin-top: 0.125rem; }
-    .mt-1 { margin-top: 0.25rem; }
-    .my-0\.5 { margin-top: 0.125rem; margin-bottom: 0.125rem; }
-    .p-0\.5 { padding: 0.125rem; }
-    .p-1 { padding: 0.25rem; }
-    .p-1\.5 { padding: 0.32rem 0.42rem; }
-    .p-2 { padding: 0.45rem; }
-    .p-2\.5 { padding: 0.55rem; }
-    .p-3 { padding: 0.75rem; }
-    .px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
-    .px-1\.5 { padding-left: 0.375rem; padding-right: 0.375rem; }
-    .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
-    .px-2\.5 { padding-left: 0.625rem; padding-right: 0.625rem; }
-    .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
-    .py-0\.5 { padding-top: 0.08rem; padding-bottom: 0.08rem; }
-    .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
-    .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
-    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-    .pb-0\.5 { padding-bottom: 0.1rem; }
-    .pb-1 { padding-bottom: 0.2rem; }
-    .pt-0\.5 { padding-top: 0.125rem; }
-    .pt-1 { padding-top: 0.25rem; }
-    .pr-1 { padding-right: 0.25rem; }
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
 
-    .flex { display: flex; }
-    .inline-flex { display: inline-flex; }
-    .grid { display: grid; }
-    .block { display: block; }
-    .hidden { display: none; }
-    .flex-col { flex-direction: column; }
-    .flex-wrap { flex-wrap: wrap; }
-    .flex-1 { flex: 1 1 0%; }
-    .min-h-0 { min-height: 0; }
-    .shrink-0 { flex-shrink: 0; }
-    .items-center { align-items: center; }
-    .items-baseline { align-items: baseline; }
-    .justify-between { justify-content: space-between; }
-    .justify-center { justify-content: center; }
-    .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
-    .col-span-2 { grid-column: span 2 / span 2; }
-    .col-span-3 { grid-column: span 3 / span 3; }
-    .col-span-4 { grid-column: span 4 / span 4; }
-    .col-span-5 { grid-column: span 5 / span 5; }
-    .gap-1 { gap: 0.25rem; }
-    .gap-1\.5 { gap: 0.35rem; }
-    .gap-2 { gap: 0.5rem; }
-    .gap-3 { gap: 0.75rem; }
-    .gap-x-2 { column-gap: 0.5rem; }
-    .gap-y-0\.5 { row-gap: 0.15rem; }
+		body {
+			margin: 0;
+			padding: 0.5rem 1rem;
+			background-color: var(--background);
+			color: var(--foreground);
+			font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+			-webkit-font-smoothing: antialiased;
+		}
 
-    .space-y-0\.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.08rem; }
-    .space-y-1 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.22rem; }
-    .divide-y > :not([hidden]) ~ :not([hidden]) { border-top: 1px solid #e2e8f0; }
+		code {
+			font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+		}
 
-    .w-full { width: 100%; }
-    .h-full { height: 100%; }
-    .h-auto { height: auto; }
-    .relative { position: relative; }
-    .overflow-hidden { overflow: hidden; }
-    .whitespace-nowrap { white-space: nowrap; }
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
 
-    .rounded { border-radius: 0.25rem; }
-    .rounded-md { border-radius: 0.375rem; }
-    .rounded-lg { border-radius: 0.42rem; }
-    .rounded-xl { border-radius: 0.6rem; }
-    .border { border-width: 1px; border-style: solid; }
-    .border-2 { border-width: 2px; border-style: solid; }
-    .border-b { border-bottom-width: 1px; border-bottom-style: solid; }
-    .border-b-2 { border-bottom-width: 2px; border-bottom-style: solid; }
-    .border-t { border-top-width: 1px; border-top-style: solid; }
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
 
-    .text-card { font-size: 9.8px; line-height: 1.19; }
-    .text-sheet { font-size: 10.4px; line-height: 1.22; }
-    .text-xs { font-size: 0.74rem; line-height: 1rem; }
-    .text-\[10px\] { font-size: 10px; line-height: 12px; }
-    .text-\[11px\] { font-size: 11px; line-height: 13.5px; }
-    .text-sm { font-size: 0.82rem; line-height: 1.1rem; }
-    .leading-tight { line-height: 1.16; }
-    .leading-snug { line-height: 1.2; }
-    .font-normal { font-weight: 400; }
-    .font-medium { font-weight: 500; }
-    .font-semibold { font-weight: 600; }
-    .font-bold { font-weight: 700; }
-    .font-extrabold { font-weight: 800; }
-    .font-black { font-weight: 900; }
-    .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-    .uppercase { text-transform: uppercase; }
-    .tracking-tight { letter-spacing: -0.02em; }
-    .tracking-tighter { letter-spacing: -0.04em; }
-    .tracking-wide { letter-spacing: 0.02em; }
-    .tracking-wider { letter-spacing: 0.04em; }
-    .text-left { text-align: left; }
+		/* Self-contained layout & color utilities */
+		.max-w-\[1400px\] {
+			max-width: 1400px;
+		}
 
-    /* Background Colors */
-    .bg-white { background-color: #ffffff; }
-    .bg-slate-50 { background-color: #f8fafc; }
-    .bg-slate-100 { background-color: #f1f5f9; }
-    .bg-slate-200 { background-color: #e2e8f0; }
-    .bg-slate-800 { background-color: #1e293b; }
-    .bg-slate-900 { background-color: #0f172a; }
-    .bg-slate-900\/95 { background-color: rgba(15, 23, 42, 0.95); }
-    .bg-sky-50 { background-color: #f0f9ff; }
-    .bg-sky-50\/40 { background-color: rgba(240, 249, 255, 0.55); }
-    .bg-sky-50\/30 { background-color: rgba(240, 249, 255, 0.45); }
-    .bg-sky-100 { background-color: #e0f2fe; }
-    .bg-sky-600 { background-color: #0284c7; }
-    .bg-orange-50\/40 { background-color: rgba(255, 247, 237, 0.55); }
-    .bg-orange-50\/50 { background-color: rgba(255, 247, 237, 0.65); }
-    .bg-orange-500 { background-color: #f97316; }
-    .bg-orange-600 { background-color: #ea580c; }
-    .bg-teal-50\/40 { background-color: rgba(240, 253, 250, 0.55); }
-    .bg-teal-600 { background-color: #0d9488; }
-    .bg-indigo-50 { background-color: #eef2ff; }
-    .bg-indigo-50\/40 { background-color: rgba(238, 242, 255, 0.55); }
-    .bg-indigo-50\/50 { background-color: rgba(238, 242, 255, 0.65); }
-    .bg-indigo-100 { background-color: #e0e7ff; }
-    .bg-indigo-600 { background-color: #4f46e5; }
-    .bg-rose-50\/50 { background-color: rgba(255, 241, 242, 0.6); }
-    .bg-rose-600 { background-color: #e11d48; }
-    .bg-emerald-50\/50 { background-color: rgba(236, 253, 245, 0.6); }
-    .bg-emerald-600 { background-color: #16a34a; }
-    .bg-purple-50\/50 { background-color: rgba(250, 245, 255, 0.6); }
-    .bg-purple-600 { background-color: #9333ea; }
-    .bg-amber-50 { background-color: #fffbeb; }
-    .bg-amber-50\/50 { background-color: rgba(255, 251, 235, 0.6); }
-    .bg-amber-600 { background-color: #d97706; }
+		.mx-auto {
+			margin-left: auto;
+			margin-right: auto;
+		}
 
-    /* Text Colors */
-    .text-white { color: #ffffff; }
-    .text-slate-300 { color: #cbd5e1; }
-    .text-slate-500 { color: #64748b; }
-    .text-slate-600 { color: #475569; }
-    .text-slate-700 { color: #334155; }
-    .text-slate-800 { color: #1e293b; }
-    .text-slate-900 { color: #0f172a; }
-    .text-slate-950 { color: #020617; }
-    .text-sky-600 { color: #0284c7; }
-    .text-sky-700 { color: #0369a1; }
-    .text-sky-800 { color: #075985; }
-    .text-sky-900 { color: #0c4a6e; }
-    .text-sky-950 { color: #082f49; }
-    .text-orange-700 { color: #c2410c; }
-    .text-orange-800 { color: #9a3412; }
-    .text-orange-950 { color: #431407; }
-    .text-teal-700 { color: #0f766e; }
-    .text-teal-950 { color: #042f2e; }
-    .text-indigo-700 { color: #4338ca; }
-    .text-indigo-800 { color: #3730a3; }
-    .text-indigo-900 { color: #312e81; }
-    .text-indigo-950 { color: #1e1b4b; }
-    .text-rose-600 { color: #e11d48; }
-    .text-rose-700 { color: #be123c; }
-    .text-rose-950 { color: #4c0519; }
-    .text-red-600 { color: #dc2626; }
-    .text-blue-600 { color: #2563eb; }
-    .text-emerald-700 { color: #047857; }
-    .text-emerald-800 { color: #065f46; }
-    .text-emerald-950 { color: #022c22; }
-    .text-purple-600 { color: #9333ea; }
-    .text-purple-700 { color: #7e22ce; }
-    .text-purple-950 { color: #3b0764; }
-    .text-amber-700 { color: #b45309; }
-    .text-amber-900 { color: #78350f; }
-    .text-amber-950 { color: #451a03; }
+		.mb-0\.5 {
+			margin-bottom: 0.125rem;
+		}
 
-    /* Border Colors */
-    .border-slate-200 { border-color: #e2e8f0; }
-    .border-slate-300 { border-color: #cbd5e1; }
-    .border-slate-400 { border-color: #94a3b8; }
-    .border-slate-700 { border-color: #334155; }
-    .border-slate-800 { border-color: #1e293b; }
-    .border-slate-900 { border-color: #0f172a; }
-    .border-sky-200 { border-color: #bae6fd; }
-    .border-sky-400 { border-color: #38bdf8; }
-    .border-sky-500 { border-color: #0ea5e9; }
-    .border-sky-600 { border-color: #0284c7; }
-    .border-orange-200 { border-color: #fed7aa; }
-    .border-orange-600 { border-color: #ea580c; }
-    .border-teal-200 { border-color: #99f6e4; }
-    .border-teal-600 { border-color: #0d9488; }
-    .border-indigo-200 { border-color: #c7d2fe; }
-    .border-indigo-400 { border-color: #818cf8; }
-    .border-indigo-600 { border-color: #4f46e5; }
-    .border-rose-200 { border-color: #fecdd3; }
-    .border-rose-600 { border-color: #e11d48; }
-    .border-emerald-200 { border-color: #a7f3d0; }
-    .border-emerald-600 { border-color: #16a34a; }
-    .border-purple-200 { border-color: #e9d5ff; }
-    .border-purple-600 { border-color: #9333ea; }
-    .border-amber-200 { border-color: #fde68a; }
-    .border-amber-400 { border-color: #fbbf24; }
-    .border-amber-500 { border-color: #f59e0b; }
-    .border-amber-600 { border-color: #d97706; }
+		.mb-1 {
+			margin-bottom: 0.25rem;
+		}
 
-    .shadow-md { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-    a { text-decoration: none; color: inherit; }
+		.mb-1\.5 {
+			margin-bottom: 0.375rem;
+		}
 
-    .print-sheet {
-      aspect-ratio: 14 / 8.5;
-    }
+		.mb-2 {
+			margin-bottom: 0.5rem;
+		}
 
-    @page {
-      size: 14in 8.5in;
-      margin: 0.14in;
-    }
-    @media print {
-      html, body {
-        margin: 0 !important;
-        padding: 0 !important;
-        width: 100% !important;
-        background: #ffffff !important;
-        color: #0f172a !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-      .no-print {
-        display: none !important;
-      }
-      .print-sheet {
-        box-sizing: border-box !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-        width: 13.70in !important;
-        height: 8.16in !important;
-        max-height: 8.16in !important;
-        aspect-ratio: auto !important;
-        overflow: hidden !important;
-        page-break-after: always !important;
-        break-after: page !important;
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
-        border: 1px solid #cbd5e1 !important;
-        border-radius: 6px !important;
-        box-shadow: none !important;
-        margin: 0 auto !important;
-        padding: 0.08in 0.10in !important;
-        background: #ffffff !important;
-        color: #0f172a !important;
-      }
-      .print-sheet:last-of-type {
-        page-break-after: auto !important;
-        break-after: auto !important;
-      }
-    }
-  </style>
+		.mb-2\.5 {
+			margin-bottom: 0.625rem;
+		}
+
+		.mb-3 {
+			margin-bottom: 0.75rem;
+		}
+
+		.mb-6 {
+			margin-bottom: 1.5rem;
+		}
+
+		.mt-0\.5 {
+			margin-top: 0.125rem;
+		}
+
+		.mt-1 {
+			margin-top: 0.25rem;
+		}
+
+		.my-0\.5 {
+			margin-top: 0.125rem;
+			margin-bottom: 0.125rem;
+		}
+
+		.p-0\.5 {
+			padding: 0.125rem;
+		}
+
+		.p-1 {
+			padding: 0.25rem;
+		}
+
+		.p-1\.5 {
+			padding: 0.32rem 0.42rem;
+		}
+
+		.p-2 {
+			padding: 0.45rem;
+		}
+
+		.p-2\.5 {
+			padding: 0.55rem;
+		}
+
+		.p-3 {
+			padding: 0.75rem;
+		}
+
+		.px-1 {
+			padding-left: 0.25rem;
+			padding-right: 0.25rem;
+		}
+
+		.px-1\.5 {
+			padding-left: 0.375rem;
+			padding-right: 0.375rem;
+		}
+
+		.px-2 {
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+		}
+
+		.px-2\.5 {
+			padding-left: 0.625rem;
+			padding-right: 0.625rem;
+		}
+
+		.px-3 {
+			padding-left: 0.75rem;
+			padding-right: 0.75rem;
+		}
+
+		.py-0\.5 {
+			padding-top: 0.08rem;
+			padding-bottom: 0.08rem;
+		}
+
+		.py-1 {
+			padding-top: 0.25rem;
+			padding-bottom: 0.25rem;
+		}
+
+		.py-1\.5 {
+			padding-top: 0.375rem;
+			padding-bottom: 0.375rem;
+		}
+
+		.py-2 {
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
+		}
+
+		.pb-0\.5 {
+			padding-bottom: 0.1rem;
+		}
+
+		.pb-1 {
+			padding-bottom: 0.2rem;
+		}
+
+		.pt-0\.5 {
+			padding-top: 0.125rem;
+		}
+
+		.pt-1 {
+			padding-top: 0.25rem;
+		}
+
+		.pr-1 {
+			padding-right: 0.25rem;
+		}
+
+		.flex {
+			display: flex;
+		}
+
+		.inline-flex {
+			display: inline-flex;
+		}
+
+		.grid {
+			display: grid;
+		}
+
+		.block {
+			display: block;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.flex-col {
+			flex-direction: column;
+		}
+
+		.flex-wrap {
+			flex-wrap: wrap;
+		}
+
+		.flex-1 {
+			flex: 1 1 0%;
+		}
+
+		.min-h-0 {
+			min-height: 0;
+		}
+
+		.shrink-0 {
+			flex-shrink: 0;
+		}
+
+		.items-center {
+			align-items: center;
+		}
+
+		.items-baseline {
+			align-items: baseline;
+		}
+
+		.justify-between {
+			justify-content: space-between;
+		}
+
+		.justify-center {
+			justify-content: center;
+		}
+
+		.grid-cols-2 {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.grid-cols-12 {
+			grid-template-columns: repeat(12, minmax(0, 1fr));
+		}
+
+		.col-span-2 {
+			grid-column: span 2 / span 2;
+		}
+
+		.col-span-3 {
+			grid-column: span 3 / span 3;
+		}
+
+		.col-span-4 {
+			grid-column: span 4 / span 4;
+		}
+
+		.col-span-5 {
+			grid-column: span 5 / span 5;
+		}
+
+		.gap-1 {
+			gap: 0.25rem;
+		}
+
+		.gap-1\.5 {
+			gap: 0.35rem;
+		}
+
+		.gap-2 {
+			gap: 0.5rem;
+		}
+
+		.gap-3 {
+			gap: 0.75rem;
+		}
+
+		.gap-x-2 {
+			column-gap: 0.5rem;
+		}
+
+		.gap-y-0\.5 {
+			row-gap: 0.15rem;
+		}
+
+		.space-y-0\.5> :not([hidden])~ :not([hidden]) {
+			margin-top: 0.08rem;
+		}
+
+		.space-y-1> :not([hidden])~ :not([hidden]) {
+			margin-top: 0.22rem;
+		}
+
+		.divide-y> :not([hidden])~ :not([hidden]) {
+			border-top: 1px solid #e2e8f0;
+		}
+
+		.w-full {
+			width: 100%;
+		}
+
+		.h-full {
+			height: 100%;
+		}
+
+		.h-auto {
+			height: auto;
+		}
+
+		.relative {
+			position: relative;
+		}
+
+		.overflow-hidden {
+			overflow: hidden;
+		}
+
+		.whitespace-nowrap {
+			white-space: nowrap;
+		}
+
+		.rounded {
+			border-radius: 0.25rem;
+		}
+
+		.rounded-md {
+			border-radius: 0.375rem;
+		}
+
+		.rounded-lg {
+			border-radius: 0.42rem;
+		}
+
+		.rounded-xl {
+			border-radius: 0.6rem;
+		}
+
+		.border {
+			border-width: 1px;
+			border-style: solid;
+		}
+
+		.border-2 {
+			border-width: 2px;
+			border-style: solid;
+		}
+
+		.border-b {
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+		}
+
+		.border-b-2 {
+			border-bottom-width: 2px;
+			border-bottom-style: solid;
+		}
+
+		.border-t {
+			border-top-width: 1px;
+			border-top-style: solid;
+		}
+
+		.text-card {
+			font-size: 9.8px;
+			line-height: 1.19;
+		}
+
+		.text-sheet {
+			font-size: 10.4px;
+			line-height: 1.22;
+		}
+
+		.text-xs {
+			font-size: 0.74rem;
+			line-height: 1rem;
+		}
+
+		.text-\[10px\] {
+			font-size: 10px;
+			line-height: 12px;
+		}
+
+		.text-\[11px\] {
+			font-size: 11px;
+			line-height: 13.5px;
+		}
+
+		.text-sm {
+			font-size: 0.82rem;
+			line-height: 1.1rem;
+		}
+
+		.leading-tight {
+			line-height: 1.16;
+		}
+
+		.leading-snug {
+			line-height: 1.2;
+		}
+
+		.font-normal {
+			font-weight: 400;
+		}
+
+		.font-medium {
+			font-weight: 500;
+		}
+
+		.font-semibold {
+			font-weight: 600;
+		}
+
+		.font-bold {
+			font-weight: 700;
+		}
+
+		.font-extrabold {
+			font-weight: 800;
+		}
+
+		.font-black {
+			font-weight: 900;
+		}
+
+		.font-mono {
+			font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		}
+
+		.uppercase {
+			text-transform: uppercase;
+		}
+
+		.tracking-tight {
+			letter-spacing: -0.02em;
+		}
+
+		.tracking-tighter {
+			letter-spacing: -0.04em;
+		}
+
+		.tracking-wide {
+			letter-spacing: 0.02em;
+		}
+
+		.tracking-wider {
+			letter-spacing: 0.04em;
+		}
+
+		.text-left {
+			text-align: left;
+		}
+
+		/* Background Colors */
+		.bg-white {
+			background-color: #ffffff;
+		}
+
+		.bg-slate-50 {
+			background-color: #f8fafc;
+		}
+
+		.bg-slate-100 {
+			background-color: #f1f5f9;
+		}
+
+		.bg-slate-200 {
+			background-color: #e2e8f0;
+		}
+
+		.bg-slate-800 {
+			background-color: #1e293b;
+		}
+
+		.bg-slate-900 {
+			background-color: #0f172a;
+		}
+
+		.bg-slate-900\/95 {
+			background-color: rgba(15, 23, 42, 0.95);
+		}
+
+		.bg-sky-50 {
+			background-color: #f0f9ff;
+		}
+
+		.bg-sky-50\/40 {
+			background-color: rgba(240, 249, 255, 0.55);
+		}
+
+		.bg-sky-50\/30 {
+			background-color: rgba(240, 249, 255, 0.45);
+		}
+
+		.bg-sky-100 {
+			background-color: #e0f2fe;
+		}
+
+		.bg-sky-600 {
+			background-color: #0284c7;
+		}
+
+		.bg-orange-50\/40 {
+			background-color: rgba(255, 247, 237, 0.55);
+		}
+
+		.bg-orange-50\/50 {
+			background-color: rgba(255, 247, 237, 0.65);
+		}
+
+		.bg-orange-500 {
+			background-color: #f97316;
+		}
+
+		.bg-orange-600 {
+			background-color: #ea580c;
+		}
+
+		.bg-teal-50\/40 {
+			background-color: rgba(240, 253, 250, 0.55);
+		}
+
+		.bg-teal-600 {
+			background-color: #0d9488;
+		}
+
+		.bg-indigo-50 {
+			background-color: #eef2ff;
+		}
+
+		.bg-indigo-50\/40 {
+			background-color: rgba(238, 242, 255, 0.55);
+		}
+
+		.bg-indigo-50\/50 {
+			background-color: rgba(238, 242, 255, 0.65);
+		}
+
+		.bg-indigo-100 {
+			background-color: #e0e7ff;
+		}
+
+		.bg-indigo-600 {
+			background-color: #4f46e5;
+		}
+
+		.bg-rose-50\/50 {
+			background-color: rgba(255, 241, 242, 0.6);
+		}
+
+		.bg-rose-600 {
+			background-color: #e11d48;
+		}
+
+		.bg-emerald-50\/50 {
+			background-color: rgba(236, 253, 245, 0.6);
+		}
+
+		.bg-emerald-600 {
+			background-color: #16a34a;
+		}
+
+		.bg-purple-50\/50 {
+			background-color: rgba(250, 245, 255, 0.6);
+		}
+
+		.bg-purple-600 {
+			background-color: #9333ea;
+		}
+
+		.bg-amber-50 {
+			background-color: #fffbeb;
+		}
+
+		.bg-amber-50\/50 {
+			background-color: rgba(255, 251, 235, 0.6);
+		}
+
+		.bg-amber-600 {
+			background-color: #d97706;
+		}
+
+		/* Text Colors */
+		.text-white {
+			color: #ffffff;
+		}
+
+		.text-slate-300 {
+			color: #cbd5e1;
+		}
+
+		.text-slate-500 {
+			color: #64748b;
+		}
+
+		.text-slate-600 {
+			color: #475569;
+		}
+
+		.text-slate-700 {
+			color: #334155;
+		}
+
+		.text-slate-800 {
+			color: #1e293b;
+		}
+
+		.text-slate-900 {
+			color: #0f172a;
+		}
+
+		.text-slate-950 {
+			color: #020617;
+		}
+
+		.text-sky-600 {
+			color: #0284c7;
+		}
+
+		.text-sky-700 {
+			color: #0369a1;
+		}
+
+		.text-sky-800 {
+			color: #075985;
+		}
+
+		.text-sky-900 {
+			color: #0c4a6e;
+		}
+
+		.text-sky-950 {
+			color: #082f49;
+		}
+
+		.text-orange-700 {
+			color: #c2410c;
+		}
+
+		.text-orange-800 {
+			color: #9a3412;
+		}
+
+		.text-orange-950 {
+			color: #431407;
+		}
+
+		.text-teal-700 {
+			color: #0f766e;
+		}
+
+		.text-teal-950 {
+			color: #042f2e;
+		}
+
+		.text-indigo-700 {
+			color: #4338ca;
+		}
+
+		.text-indigo-800 {
+			color: #3730a3;
+		}
+
+		.text-indigo-900 {
+			color: #312e81;
+		}
+
+		.text-indigo-950 {
+			color: #1e1b4b;
+		}
+
+		.text-rose-600 {
+			color: #e11d48;
+		}
+
+		.text-rose-700 {
+			color: #be123c;
+		}
+
+		.text-rose-950 {
+			color: #4c0519;
+		}
+
+		.text-red-600 {
+			color: #dc2626;
+		}
+
+		.text-blue-600 {
+			color: #2563eb;
+		}
+
+		.text-emerald-700 {
+			color: #047857;
+		}
+
+		.text-emerald-800 {
+			color: #065f46;
+		}
+
+		.text-emerald-950 {
+			color: #022c22;
+		}
+
+		.text-purple-600 {
+			color: #9333ea;
+		}
+
+		.text-purple-700 {
+			color: #7e22ce;
+		}
+
+		.text-purple-950 {
+			color: #3b0764;
+		}
+
+		.text-amber-700 {
+			color: #b45309;
+		}
+
+		.text-amber-900 {
+			color: #78350f;
+		}
+
+		.text-amber-950 {
+			color: #451a03;
+		}
+
+		/* Border Colors */
+		.border-slate-200 {
+			border-color: #e2e8f0;
+		}
+
+		.border-slate-300 {
+			border-color: #cbd5e1;
+		}
+
+		.border-slate-400 {
+			border-color: #94a3b8;
+		}
+
+		.border-slate-700 {
+			border-color: #334155;
+		}
+
+		.border-slate-800 {
+			border-color: #1e293b;
+		}
+
+		.border-slate-900 {
+			border-color: #0f172a;
+		}
+
+		.border-sky-200 {
+			border-color: #bae6fd;
+		}
+
+		.border-sky-400 {
+			border-color: #38bdf8;
+		}
+
+		.border-sky-500 {
+			border-color: #0ea5e9;
+		}
+
+		.border-sky-600 {
+			border-color: #0284c7;
+		}
+
+		.border-orange-200 {
+			border-color: #fed7aa;
+		}
+
+		.border-orange-600 {
+			border-color: #ea580c;
+		}
+
+		.border-teal-200 {
+			border-color: #99f6e4;
+		}
+
+		.border-teal-600 {
+			border-color: #0d9488;
+		}
+
+		.border-indigo-200 {
+			border-color: #c7d2fe;
+		}
+
+		.border-indigo-400 {
+			border-color: #818cf8;
+		}
+
+		.border-indigo-600 {
+			border-color: #4f46e5;
+		}
+
+		.border-rose-200 {
+			border-color: #fecdd3;
+		}
+
+		.border-rose-600 {
+			border-color: #e11d48;
+		}
+
+		.border-emerald-200 {
+			border-color: #a7f3d0;
+		}
+
+		.border-emerald-600 {
+			border-color: #16a34a;
+		}
+
+		.border-purple-200 {
+			border-color: #e9d5ff;
+		}
+
+		.border-purple-600 {
+			border-color: #9333ea;
+		}
+
+		.border-amber-200 {
+			border-color: #fde68a;
+		}
+
+		.border-amber-400 {
+			border-color: #fbbf24;
+		}
+
+		.border-amber-500 {
+			border-color: #f59e0b;
+		}
+
+		.border-amber-600 {
+			border-color: #d97706;
+		}
+
+		.shadow-md {
+			box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+		}
+
+		.shadow-lg {
+			box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		.print-sheet {
+			aspect-ratio: 14 / 8.5;
+		}
+
+		@page {
+			size: 14in 8.5in;
+			margin: 0.14in;
+		}
+
+		@media print {
+
+			html,
+			body {
+				margin: 0 !important;
+				padding: 0 !important;
+				width: 100% !important;
+				background: #ffffff !important;
+				color: #0f172a !important;
+				-webkit-print-color-adjust: exact !important;
+				print-color-adjust: exact !important;
+			}
+
+			.no-print {
+				display: none !important;
+			}
+
+			.print-sheet {
+				box-sizing: border-box !important;
+				display: flex !important;
+				flex-direction: column !important;
+				justify-content: space-between !important;
+				width: 13.70in !important;
+				height: 8.16in !important;
+				max-height: 8.16in !important;
+				aspect-ratio: auto !important;
+				overflow: hidden !important;
+				page-break-after: always !important;
+				break-after: page !important;
+				page-break-inside: avoid !important;
+				break-inside: avoid !important;
+				border: 1px solid #cbd5e1 !important;
+				border-radius: 6px !important;
+				box-shadow: none !important;
+				margin: 0 auto !important;
+				padding: 0.08in 0.10in !important;
+				background: #ffffff !important;
+				color: #0f172a !important;
+			}
+
+			.print-sheet:last-of-type {
+				page-break-after: auto !important;
+				break-after: auto !important;
+			}
+		}
+	</style>
 </head>
+
 <body class="bg-[var(--background)] text-[var(--foreground)] antialiased p-2 md:p-4 m-0">
 
-  <!-- Site Navigation Bar (Hidden on Print) -->
-  <nav class="no-print max-w-[1400px] mx-auto mb-2.5 px-3 py-2 rounded-xl bg-slate-900/95 border border-slate-800 shadow-md flex flex-wrap items-center justify-between gap-2 text-xs">
-    <a href="../index.html" class="flex items-center gap-2 font-black tracking-tight text-white hover:text-orange-400 transition-colors">
-      <span class="px-2 py-0.5 rounded bg-orange-500 text-slate-950 font-black">_MINIFREAK</span>
-      <span class="text-sm font-bold">Documentation Suite</span>
-    </a>
-    <div class="flex flex-wrap items-center gap-1.5">
-      <a href="../index.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
-      <a href="minifreak_ui_workflows.html" class="px-2.5 py-1.5 rounded-lg font-semibold bg-orange-500 text-white shadow-sm">1. UI Workflows &amp; Menus</a>
-      <a href="minifreak_sound_vibes_guide.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-amber-300 hover:bg-slate-800 transition-colors">2. Sound &ldquo;Vibe &amp; Flavor&rdquo; Guide</a>
-      <a href="minifreak_technical_roadmap.html" class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-sky-300 hover:bg-slate-800 transition-colors">3. Technical &amp; Signal Roadmap</a>
-    </div>
-  </nav>
-
-  <!-- Screen Toolbar (Hidden on Print) -->
-  <div class="no-print max-w-[1400px] mx-auto mb-3 p-3 rounded-xl bg-[var(--card)] border border-[var(--border)] flex flex-wrap items-center justify-between gap-3">
-    <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-orange-500 text-white">Doc 1 of 3</span>
-      <div>
-        <h1 class="text-sm font-bold leading-tight">MiniFreak UI Workflow Infographic &amp; Complete Menu Reference</h1>
-        <p class="text-xs text-[var(--muted-foreground)]">Single source of truth formatted for 14&quot; &times; 8.5&quot; Legal Landscape (2 pages: Front Hardware Map &amp; Back Menu Reference)</p>
-      </div>
-    </div>
-
-    <div class="flex flex-wrap items-center gap-2 text-xs">
-      <div class="flex items-center gap-1 bg-[var(--background)] p-1 rounded-lg border border-[var(--border)]">
-        <button onclick="setSheetView('both')" id="btn-sheet-both" class="px-2.5 py-1 rounded font-semibold bg-orange-500 text-white">Both Sheets</button>
-        <button onclick="setSheetView('sheet1')" id="btn-sheet-1" class="px-2.5 py-1 rounded font-medium text-slate-300 hover:text-white">Sheet 1: Hardware Map</button>
-        <button onclick="setSheetView('sheet2')" id="btn-sheet-2" class="px-2.5 py-1 rounded font-medium text-slate-300 hover:text-white">Sheet 2: Quick-Action &amp; Menus</button>
-      </div>
-      <a href="../assets/minifreak_annotated_ui.png" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold">
-        Open High-Res PNG &nearr;
-      </a>
-      <button onclick="window.print()" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold cursor-pointer">
-        Print 14&quot;&times;8.5&quot; (2 Pages)
-      </button>
-    </div>
-  </div>
-
-  <!-- ===================================================================== -->
-  <!-- SHEET 1: HARDWARE PANEL WORKFLOWS & MODAL COLOR SHIFTS (FRONT PAGE)   -->
-  <!-- ===================================================================== -->
-  <div id="sheet-1" class="print-sheet max-w-[1400px] mx-auto mb-6 rounded-xl bg-white text-slate-900 border border-slate-300 shadow-lg p-2 flex flex-col justify-between">
-
-    <!-- HEADER BAR + CONTROL GRAMMAR LEGEND -->
-    <div class="shrink-0 flex items-center justify-between border-b-2 border-slate-900 pb-0.5 mb-1 gap-2">
-      <div class="flex items-center gap-2 whitespace-nowrap">
-        <span class="bg-slate-900 text-white font-black tracking-tighter px-2 py-0.5 rounded text-xs">_MINIFREAK</span>
-        <h2 class="text-sm font-extrabold uppercase tracking-wide text-slate-900">Hardware UI Workflow &amp; Modal Shift Map</h2>
-        <span class="text-[10px] text-slate-500 font-semibold">Outlines match card borders</span>
-      </div>
-
-      <!-- Color & Interaction Grammar Pills -->
-      <div class="flex items-center gap-1 text-[10px] whitespace-nowrap">
-        <span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-300 font-semibold text-slate-800"><b>White Label:</b> Primary</span>
-        <span class="px-1.5 py-0.5 rounded bg-sky-50 border border-sky-400 font-semibold text-sky-800"><b>Blue Label:</b> Hold <code class="font-bold">Shift</code></span>
-        <span class="px-1.5 py-0.5 rounded bg-amber-50 border border-amber-400 font-semibold text-amber-900"><b>Encoders:</b> Turn | Click | Hold+Turn | Hold 1s</span>
-        <span class="px-1.5 py-0.5 rounded bg-indigo-50 border border-indigo-400 font-semibold text-indigo-900"><b>Menu Jump:</b> <code class="font-bold">Sound Edit</code> + Btn</span>
-      </div>
-    </div>
-
-    <!-- TOP ROW: 4 WORKFLOW CALLOUT BOXES FOR UPPER & MAIN PANEL SECTIONS -->
-    <div class="shrink-0 grid grid-cols-12 gap-1.5 mb-1 text-card">
-
-      <!-- 1. MODULATION MATRIX & LEFT PERFORMANCE CONTROLS (CYAN #0284c7) -->
-      <div class="col-span-3 rounded-lg border-2 border-sky-600 bg-sky-50/40 p-1.5">
-        <div class="flex items-center justify-between border-b border-sky-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-sky-950 uppercase tracking-tight">1. Mod Matrix &amp; Left Controls</span>
-          <span class="px-1.5 py-0.5 bg-sky-600 text-white rounded text-[10px] font-bold">Cyan Outline</span>
-        </div>
-        <ul class="space-y-0.5 text-slate-700">
-          <li><b>Matrix (7&times;13):</b> Turn <code class="font-bold">Matrix</code> = L&rarr;R | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Up/Down | Click (<span class="text-red-600 font-semibold">Amt LED</span>) = edit | <b>Hold+Turn</b> = quick offset | <b>Hold 1s</b> = clear (<code class="font-mono">0</code>)</li>
-          <li><b>Assign 1&ndash;3 (9 slots):</b> <span class="text-sky-700 font-semibold">Shift+Assign 1&ndash;3</span> = Page 1&ndash;3 | <b>Hold <code class="font-bold">Assign</code> + Turn Knob</b> (<code class="font-bold">Matrix</code> = mod depth | <code class="font-bold">Preset</code> = <code class="font-mono">VCA</code>/<code class="font-mono">Uni</code>/<code class="font-mono">LFO AM</code>)</li>
-          <li><b>Hold/Tie:</b> Toggles key/Arp sustain (or holds Seq transpose) | In Seq Step Rec: tap = Rest, hold keys + tap = Tie</li>
-          <li><b>Chord/Scales:</b> Tap = toggle Chord | <span class="text-sky-700 font-semibold">Shift+Chord</span> = Scale Config &nbsp;|&nbsp; <b>Glide:</b> Portamento time (<code class="font-bold">SE+Osc</code> = Time/Rate/Sync/Legato)</li>
-        </ul>
-      </div>
-
-      <!-- 2. DIGITAL OSCILLATORS (ORANGE #ea580c) -->
-      <div class="col-span-3 rounded-lg border-2 border-orange-600 bg-orange-50/40 p-1.5">
-        <div class="flex items-center justify-between border-b border-orange-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-orange-950 uppercase tracking-tight">2. Digital Oscillators (1 &amp; 2)</span>
-          <span class="px-1.5 py-0.5 bg-orange-600 text-white rounded text-[10px] font-bold">Orange Outline</span>
-        </div>
-        <ul class="space-y-0.5 text-slate-700">
-          <li><b>Select &amp; Params:</b> Tap <code class="font-bold">Select</code> = Osc 1/2 | Orange <code class="font-bold">Wave</code> | <code class="font-bold">Timbre</code> | <code class="font-bold">Shape</code> knobs map to 3 model-specific OLED icons</li>
-          <li><b>Tune/Oct Encoder:</b> Turn = Semitones (&plusmn;48) | <b>Click</b> (<code class="font-mono">Fine</code> LED) = Cents | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Octaves</li>
-          <li><b>Wavetable &amp; Sample (Osc 1):</b> <span class="text-sky-700 font-semibold">Shift+Turn <code class="font-bold">Type</code></span> (or <code class="font-bold">SE + Osc Select</code>) browses tables/samples (shared by 7 Granular types)</li>
-          <li><b>Osc 2 Filter / Destroy:</b> <code class="font-bold">Select</code> LED 2 turns <span class="text-sky-600 font-bold">Pale Blue</span> (<code class="font-bold">Osc 1 Vol</code> = Input Drive | <code class="font-bold">Osc 2 Vol</code> = Dry/Wet)</li>
-        </ul>
-      </div>
-
-      <!-- 3. ANALOG FILTER, CYCLING ENV & VOICING (TEAL #0d9488) -->
-      <div class="col-span-3 rounded-lg border-2 border-teal-600 bg-teal-50/40 p-1.5">
-        <div class="flex items-center justify-between border-b border-teal-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-teal-950 uppercase tracking-tight">3. Filter, CycEnv &amp; Voicing</span>
-          <span class="px-1.5 py-0.5 bg-teal-600 text-white rounded text-[10px] font-bold">Teal Outline</span>
-        </div>
-        <ul class="space-y-0.5 text-slate-700">
-          <li><b>Analog VCF (12 dB):</b> <code class="font-bold">Type</code> = LPF | BPF | HPF | <code class="font-bold">Env/Velo</code> (<code class="font-mono">0</code> @ center) = Env depth | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Velo &rarr; VCF Env (<code class="font-mono">Kbd&rarr;Cut=50</code> tracks 1:1)</li>
-          <li><b>Cycling Env:</b> <code class="font-bold">Mode</code> = <b>Env</b> (ADSD) | <b>Run</b> (Mono free loop) | <b>Loop</b> (Poly retrig loop) | <span class="text-sky-700 font-semibold">Shift+Rise/Fall</span> = Curve (Exp | Lin | Log)</li>
-          <li><b>Envelope &amp; Voicing:</b> <code class="font-bold">ADSR</code> = VCA amp | <code class="font-bold">Mode</code> = <b>Mono</b> | <b>Poly</b> (6v) | <b>Para</b> (12v, Osc 2 off) | <b>Uni</b> (2&ndash;6v) | <code class="font-bold">SE+Mode</code> = Env &amp; Voice menus</li>
-        </ul>
-      </div>
-
-      <!-- 4. DIGITAL FX & TEMPO/METRONOME (INDIGO #4f46e5) -->
-      <div class="col-span-3 rounded-lg border-2 border-indigo-600 bg-indigo-50/40 p-1.5">
-        <div class="flex items-center justify-between border-b border-indigo-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-indigo-950 uppercase tracking-tight">4. Digital FX (1&ndash;3) &amp; Tempo</span>
-          <span class="px-1.5 py-0.5 bg-indigo-600 text-white rounded text-[10px] font-bold">Indigo Outline</span>
-        </div>
-        <ul class="space-y-0.5 text-slate-700">
-          <li><b>FX Select LEDs:</b> <b>Bright</b> = Editing | <b>Dim</b> = Active (On) | <b>Unlit</b> = Bypassed (Off)</li>
-          <li><b>Type/Sub Encoder:</b> <b>Click</b> = FX On/Off | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Subtype preset (<code class="font-bold">Master</code> = main &amp; headphone output)</li>
-          <li><b>Insert vs. Send:</b> <code class="font-bold">SE + FX Select</code> sets Delay / Reverb to Insert (serial) or Send (parallel; <code class="font-bold">Amount</code> = Send Level)</li>
-          <li><b>Tempo/Swing Encoder:</b> Turn = BPM (30&ndash;240) | <b>Click+Turn</b> = Time Div (<b>Hold+Turn</b> locks family) | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Swing</li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- CENTER: TRUE HARDWARE PHOTO WITH PRECISION COLOR-CODED OVERLAYS -->
-    <div class="flex-1 min-h-0 w-full rounded-xl border-2 border-slate-800 bg-white p-0.5 flex items-center justify-center overflow-hidden">
-      <svg id="minifreak-photo-svg" viewBox="12 2 1476 586" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; max-height: 100%; display: block; border-radius: 6px;">
-        <image href="../assets/minifreak_cropped.jpg" x="0" y="0" width="1500" height="641" preserveAspectRatio="xMidYMin slice"/>
-
-        <!-- ================= 1. MOD MATRIX & LEFT CONTROLS (CYAN #0284c7) ================= -->
-        <rect x="34" y="27" width="334" height="116" rx="6" fill="none" stroke="#0284c7" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="306" cy="102" r="24.5" fill="none" stroke="#0284c7" stroke-width="2.6"/>
-
-        <rect x="34" y="165" width="334" height="65" rx="6" fill="none" stroke="#0284c7" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <rect x="104" y="170" width="84" height="36" rx="18" fill="none" stroke="#0284c7" stroke-width="2.6"/>
-        <g class="svg-badge">
-          <rect x="82" y="144" width="128" height="19" rx="4" fill="#0284c7"/>
-          <text x="146" y="157.5" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">Both &lt; &gt; = Reset Oct</text>
-        </g>
-
-        <!-- ================= 2. DIGITAL OSCILLATORS 1 & 2 (ORANGE #ea580c) ================= -->
-        <rect x="384" y="29" width="438" height="101" rx="6" fill="none" stroke="#ea580c" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="407" cy="91" r="14.5" fill="none" stroke="#ea580c" stroke-width="2.6"/>
-        <circle cx="476" cy="85" r="24" fill="none" stroke="#ea580c" stroke-width="2.6"/>
-        <circle cx="793.5" cy="85.5" r="20.5" fill="none" stroke="#ea580c" stroke-width="2.6"/>
-        <g class="svg-badge">
-          <rect x="384" y="4" width="152" height="21" rx="4" fill="#ea580c"/>
-          <text x="460" y="18.5" text-anchor="middle" font-size="11.2" font-weight="800" fill="#ffffff">Hold Select = Peek OLED</text>
-        </g>
-        <g class="svg-badge">
-          <rect x="686" y="4" width="144" height="21" rx="4" fill="#ea580c"/>
-          <text x="758" y="18.5" text-anchor="middle" font-size="11.2" font-weight="800" fill="#ffffff">Shift+Vol = Osc 1/2 Mix</text>
-        </g>
-
-        <!-- ================= 3. FILTER, CYCLING ENV & VOICING/ADSR (TEAL #0d9488) ================= -->
-        <rect x="844" y="29" width="244" height="101" rx="6" fill="none" stroke="#0d9488" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <rect x="844" y="135" width="244" height="95" rx="6" fill="none" stroke="#0d9488" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <rect x="1104" y="135" width="288" height="95" rx="6" fill="none" stroke="#0d9488" stroke-width="3.2" stroke-dasharray="7 4"/>
-
-        <!-- ================= 4. DIGITAL FX, MASTER & TEMPO (INDIGO #4f46e5) ================= -->
-        <rect x="1104" y="29" width="358" height="101" rx="6" fill="none" stroke="#4f46e5" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="1204" cy="85.5" r="24" fill="none" stroke="#4f46e5" stroke-width="2.6"/>
-
-        <rect x="1398" y="135" width="64" height="95" rx="6" fill="none" stroke="#4f46e5" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="1432" cy="183" r="25" fill="none" stroke="#4f46e5" stroke-width="2.6"/>
-        <g class="svg-badge">
-          <rect x="1340" y="225" width="140" height="20" rx="4" fill="#4f46e5"/>
-          <text x="1410" y="239" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">Shift+Click = Metronome</text>
-        </g>
-
-        <!-- ================= MODAL C: LFO 1 & 2 (PURPLE #9333ea) ================= -->
-        <rect x="384" y="135" width="178" height="95" rx="6" fill="none" stroke="#9333ea" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="476" cy="183.5" r="24" fill="none" stroke="#9333ea" stroke-width="2.6"/>
-
-        <!-- ================= MODAL A: CENTRAL DISPLAY & PRESETS (RED #e11d48) ================= -->
-        <rect x="570" y="148" width="265" height="82" rx="6" fill="none" stroke="#e11d48" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="794" cy="185.5" r="24" fill="none" stroke="#e11d48" stroke-width="2.6"/>
-
-        <!-- ================= MODAL D: TOUCH STRIPS (4 OPEN-BOTTOM OUTLINES) ================= -->
-        <rect x="26" y="252" width="172" height="56" rx="5" fill="none" stroke="#d97706" stroke-width="3.2"/>
-
-        <path d="M 29,504 V 356 Q 29,349 36,349 H 226 Q 233,349 233,356 V 504" fill="none" stroke="#d97706" stroke-width="3.0" stroke-dasharray="7 4"/>
-        <path d="M 37,504 V 362 Q 37,356 43,356 H 219 Q 225,356 225,362 V 504" fill="none" stroke="#0284c7" stroke-width="2.8" stroke-dasharray="6 3"/>
-        <path d="M 45,504 V 368 Q 45,363 50,363 H 212 Q 217,363 217,368 V 504" fill="none" stroke="#16a34a" stroke-width="2.6" stroke-dasharray="5 3"/>
-        <path d="M 53,504 V 374 Q 53,370 57,370 H 205 Q 209,370 209,374 V 504" fill="none" stroke="#9333ea" stroke-width="2.5" stroke-dasharray="4 3"/>
-
-        <rect x="18" y="504" width="226" height="80" rx="6" fill="#0f172a" fill-opacity="0.95" stroke="#d97706" stroke-width="2.4"/>
-        <text x="131" y="519" text-anchor="middle" font-size="10.8" font-weight="800" fill="#fbbf24">TOUCH STRIPS: 1 (L) | 2 (R)</text>
-        <text x="131" y="534" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fde68a">Modes: Bend/Wheel | M1/M2 | Gate/Spice</text>
-        <text x="131" y="549" text-anchor="middle" font-size="9.5" font-weight="700" fill="#38bdf8">Hold Bend/Wheel (Vib): Rate | Depth</text>
-        <text x="131" y="564" text-anchor="middle" font-size="9.5" font-weight="700" fill="#4ade80">Seq Hold Step: Note Length | Velocity</text>
-        <text x="131" y="578" text-anchor="middle" font-size="9.5" font-weight="700" fill="#d8b4fe">Shaper Hold Step: Amplitude | Curve</text>
-
-        <!-- ================= STEP BAR: OVERALL MODE OUTLINES (GREEN, PURPLE, RED) ================= -->
-        <rect x="252" y="245" width="1105" height="68" rx="6" fill="none" stroke="#16a34a" stroke-width="3.2"/>
-        <rect x="513" y="250" width="839" height="58" rx="5" fill="none" stroke="#9333ea" stroke-width="2.6" stroke-dasharray="6 3"/>
-        <rect x="518" y="255" width="792" height="48" rx="4" fill="none" stroke="#e11d48" stroke-width="2.6" stroke-dasharray="5 3"/>
-
-        <!-- ================= STEP BAR MODE-DEDICATED PAD BREAKDOWN (OVER TOP OF KEYS) ================= -->
-        <g>
-          <rect x="252" y="326" width="1105" height="90" rx="6" fill="#0f172a" fill-opacity="0.94" stroke="#16a34a" stroke-width="2.4"/>
-          <line x1="542" y1="326" x2="542" y2="416" stroke="#475569" stroke-width="1.5"/>
-          <line x1="827" y1="326" x2="827" y2="416" stroke="#475569" stroke-width="1.5"/>
-          <line x1="1092" y1="326" x2="1092" y2="416" stroke="#475569" stroke-width="1.5"/>
-
-          <text x="397" y="343" text-anchor="middle" font-size="11.2" font-weight="800" fill="#4ade80">ARP MODE PADS</text>
-          <text x="397" y="360" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">1&ndash;4: Up | Down | UpDwn | Rand</text>
-          <text x="397" y="376" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">5&ndash;8: Order | Poly | Walk | Ptrn &nbsp;|&nbsp; 9&ndash;12: Oct 1&ndash;4</text>
-          <text x="397" y="392" text-anchor="middle" font-size="9.6" font-weight="700" fill="#fbbf24">13&ndash;16: Repeat | Ratchet | RandOct (latch) | Mutate</text>
-          <text x="397" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#cbd5e1">Last Step + Pad 1&ndash;16: Pattern mode length</text>
-
-          <text x="684.5" y="343" text-anchor="middle" font-size="11.2" font-weight="800" fill="#4ade80">SEQ &amp; MODS PADS</text>
-          <text x="684.5" y="360" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Hold Off | Arp | Seq + Pad/Page = Copy | Paste | Erase</text>
-          <text x="684.5" y="376" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Pads 1&ndash;16: Tap = Toggle step | Hold = Edit step</text>
-          <text x="684.5" y="392" text-anchor="middle" font-size="9.6" font-weight="700" fill="#38bdf8">Pages 16&ndash;64: Switch page | Shift+Page = Extend seq</text>
-          <text x="684.5" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#fbbf24">Last Step + Pad/Page: Sequence length (1&ndash;64)</text>
-
-          <text x="959.5" y="343" text-anchor="middle" font-size="11.2" font-weight="800" fill="#fda4af">FAVORITES PADS</text>
-          <text x="959.5" y="360" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Shift+Save: 64 slots (Pads 1&ndash;16 &times; Pages 16&ndash;64)</text>
-          <text x="959.5" y="376" text-anchor="middle" font-size="9.6" font-weight="700" fill="#93c5fd">Pad LEDs: Blue = Saved | <tspan fill="#fda4af">Red = Active preset</tspan></text>
-          <text x="959.5" y="392" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Tap Blue Pad = Load | Hold Save + Pad = Store</text>
-          <text x="959.5" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#cbd5e1">Hold Seq + Pad = Clear | Sound Edit = Exit</text>
-
-          <text x="1224.5" y="343" text-anchor="middle" font-size="11.2" font-weight="800" fill="#d8b4fe">LFO SHAPER PADS</text>
-          <text x="1224.5" y="360" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Shift+LFO Select: Edit wave (Purple step LEDs)</text>
-          <text x="1224.5" y="376" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">1&ndash;16: Tap = Toggle | Hold = Edit | 1st+End = Seg</text>
-          <text x="1224.5" y="392" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Long-Hold Pad: Latch Step Edit (White flash)</text>
-          <text x="1224.5" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#fbbf24">Pages 16&ndash;64: Slope (/ \ ^ -) | Last Step+Pad = Len</text>
-        </g>
-
-        <!-- ================= KEYBED WORKFLOW CALLOUT (LOWER KEYS, y: 514..554) ================= -->
-        <rect x="300" y="514" width="1070" height="40" rx="6" fill="#0f172a" fill-opacity="0.94" stroke="#d97706" stroke-width="2.4"/>
-        <text x="835" y="530" text-anchor="middle" font-size="11.4" font-weight="800" fill="#fbbf24">37-KEY VELOCITY + AFTERTOUCH KEYBED SHORTCUTS (Poly Voice Stealing Never Steals Lowest Note)</text>
-        <text x="835" y="546" text-anchor="middle" font-size="10.4" font-weight="700" fill="#f8fafc">
-          <tspan fill="#38bdf8">Hold Chord + Keys</tspan> = Store Chord &nbsp;|&nbsp; <tspan fill="#4ade80">Seq Stopped + Hold Key</tspan> = Transpose &amp; Play &nbsp;|&nbsp; <tspan fill="#fbbf24">Seq Playing + Shift + Key</tspan> = Transpose Live &nbsp;|&nbsp; <tspan fill="#d8b4fe">User Scale</tspan> = Tap Keys
-        </text>
-      </svg>
-    </div>
-
-    <!-- BOTTOM ROW: THE 4 MODAL SHIFT WORKFLOW CARDS (COLOR-CODED TO MATCH OUTLINES) -->
-    <div class="shrink-0 grid grid-cols-12 gap-1.5 mt-1 text-card">
-
-      <!-- MODAL A: PRESETS, MENUS & FAVORITES (RED #e11d48) -->
-      <div class="col-span-3 rounded-lg border-2 border-rose-600 bg-rose-50/50 p-1.5">
-        <div class="flex items-center justify-between border-b border-rose-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-rose-950 uppercase tracking-tight">Modal A: Presets, Save &amp; Menus</span>
-          <span class="px-1.5 py-0.5 bg-rose-600 text-white rounded text-[10px] font-bold">Red Outline</span>
-        </div>
-        <ul class="space-y-0.5 text-slate-700">
-          <li><b>Browse &amp; Init:</b> Turn <code class="font-bold">Preset</code> &rarr; Click = load | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Category Filter | <b>Hold 2s</b> = <b>Init Preset</b></li>
-          <li><b>Save &amp; Rename:</b> Tap <code class="font-bold">Save</code> 2&times; (overwrite) | Click <code class="font-bold">Preset</code> = <b>Slot # &rarr; Type &rarr; Name</b> (<i>Turn</i>=Char | <i>Shift</i>=A/a/0 | <i>Click</i>=Next | <i>Hold+Turn</i>=Pos)</li>
-          <li><b>Menus &amp; Panel:</b> <code class="font-bold">Sound Edit</code> (White) = Preset Menu (<code class="font-bold">SE+Btn</code> jumps; tap cancels) | <span class="text-sky-700 font-semibold">Shift+SE</span> (Blue) = Global <code class="font-bold">Utility</code> (<span class="text-sky-700 font-semibold">Shift+Save</span> = Favs/Panel)</li>
-        </ul>
-      </div>
-
-      <!-- MODAL B: ARPEGGIATOR, SEQUENCER & 4 MOD LANES (GREEN #16a34a) -->
-      <div class="col-span-3 rounded-lg border-2 border-emerald-600 bg-emerald-50/50 p-1.5">
-        <div class="flex items-center justify-between border-b border-emerald-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-emerald-950 uppercase tracking-tight">Modal B: Arp, Seq &amp; Mod Recording</span>
-          <span class="px-1.5 py-0.5 bg-emerald-600 text-white rounded text-[10px] font-bold">Green Outline</span>
-        </div>
-        <ul class="space-y-0.5 text-slate-700">
-          <li><b>Arp &rarr; Seq Transfer:</b> While playing Arp, <b>long-press <code class="font-bold">Record</code></b> to copy active Arp notes into the Sequencer</li>
-          <li><b>Step vs. Live Rec:</b> <code class="font-bold">Rec</code> Stopped = Step Rec (up to 6 notes/step) | <code class="font-bold">Rec</code> Playing = Live Rec | <span class="text-sky-700 font-semibold">Shift+Rec</span> = <span class="text-blue-600 font-bold">Blue Overdub</span> vs <span class="text-red-600 font-bold">Red Replace</span></li>
-          <li><b>Step Note Select:</b> In Step Rec or while holding a Step pad, turn <code class="font-bold">Preset</code> = pick chord note | <b>Long-click <code class="font-bold">Preset</code></b> = delete note/step</li>
-          <li><b>4 Mod Lanes (<code class="font-bold">Mods</code>):</b> Tap <code class="font-bold">Mods</code> &rarr; Rec + turn knob/strip, OR hold Step + turn knob | Turn <code class="font-bold">Preset</code> = lane 1&ndash;4 (<b>Long-click</b> = clear)</li>
-        </ul>
-      </div>
-
-      <!-- MODAL C: LFO (1 & 2) & SHAPER WAVE EDIT (PURPLE #9333ea) -->
-      <div class="col-span-3 rounded-lg border-2 border-purple-600 bg-purple-50/50 p-1.5">
-        <div class="flex items-center justify-between border-b border-purple-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-purple-950 uppercase tracking-tight">Modal C: LFO 1&ndash;2 &amp; Shaper Waves</span>
-          <span class="px-1.5 py-0.5 bg-purple-600 text-white rounded text-[10px] font-bold">Purple Outline</span>
-        </div>
-        <ul class="space-y-0.5 text-slate-700">
-          <li><b>LFO 1 &amp; 2:</b> Tap <code class="font-bold">Select</code> = 1/2 (LEDs: <b>Yellow</b> <code class="font-mono">+</code> | <b>Red</b> <code class="font-mono">-</code>) | <b>Click <code class="font-bold">Rate</code></b> = Sync | <span class="text-sky-700 font-semibold">Shift+Rate</span> = Retrig (<code class="font-mono">Free</code>, <code class="font-mono">Poly</code>, <code class="font-mono">Mono</code>, <code class="font-mono">Legato</code>, <code class="font-mono">One</code>&hellip;)</li>
-          <li><b>Load Shaper Wave:</b> Turn <code class="font-bold">Wave</code> to <b>Shaper</b>, then <span class="text-sky-700 font-semibold">Shift+Turn <code class="font-bold">Wave</code></span> previews Preset + 16 Factory + 8 User waves (release <code class="font-bold">Shift</code> to load)</li>
-          <li><b>Save Shaper Wave:</b> Presets auto-save 1 Shaper/LFO | In Shaper Edit, <b>Hold <code class="font-bold">Save</code> + <code class="font-bold">LFO Select</code></b> &rarr; <code class="font-bold">Preset</code> stores User Wave 1&ndash;8</li>
-        </ul>
-      </div>
-
-      <!-- MODAL D: TOUCH STRIPS & KEYBED (AMBER #d97706) -->
-      <div class="col-span-3 rounded-lg border-2 border-amber-600 bg-amber-50/50 p-1.5">
-        <div class="flex items-center justify-between border-b border-amber-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-amber-950 uppercase tracking-tight">Modal D: Vibrato, Macros &amp; Spice/Dice</span>
-          <span class="px-1.5 py-0.5 bg-amber-600 text-white rounded text-[10px] font-bold">Amber Outline</span>
-        </div>
-        <ul class="space-y-0.5 text-slate-700">
-          <li><b>Vibrato (<span class="text-sky-700 font-semibold">Shift+Bend/Wheel</span>):</b> Toggles 3rd triangle LFO (top Wheel LED = <span class="text-blue-600 font-bold">Blue</span>; stays active across strip modes; <code class="font-bold">SE+Osc</code> also edits)</li>
-          <li><b>Macro Assign (<span class="text-sky-700 font-semibold">Shift+Macros</span>):</b> Strips pulse White &rarr; tap Strip 1 (<code class="font-bold">M1</code>) or 2 (<code class="font-bold">M2</code>) &rarr; turn up to 4 knobs (<code class="font-bold">Matrix</code>/<code class="font-bold">Preset</code> = custom; <b>Long-click</b> = clear)</li>
-          <li><b>Gate, Spice &amp; Dice:</b> <code class="font-bold">Gate</code> = step length | <code class="font-bold">Spice</code> morphs Vel/Oct/Gate/Step/Env non-destructively | <span class="text-sky-700 font-semibold">Shift+Gate/Spice</span> = roll <b>Dice</b></li>
-          <li><b>Keyboard Menu Jump:</b> <b>Hold <code class="font-bold">Sound Edit</code> + tap Touch Strip</b> opens <code class="font-mono">Bend Range</code> | <code class="font-mono">Matrix Src VeloAT</code> | <code class="font-mono">Kbd Src</code></li>
-        </ul>
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- ===================================================================== -->
-  <!-- SHEET 2: "IF YOU WANT TO DO X..." & COMPLETE MENU MAP (BACK PAGE)     -->
-  <!-- ===================================================================== -->
-  <div id="sheet-2" class="print-sheet max-w-[1400px] mx-auto rounded-xl bg-white text-slate-900 border border-slate-300 shadow-lg p-2.5 flex flex-col justify-between">
-
-    <!-- HEADER BAR -->
-    <div class="shrink-0 flex items-center justify-between border-b-2 border-slate-900 pb-1 mb-1.5">
-      <div class="flex items-center gap-2 whitespace-nowrap">
-        <span class="bg-slate-900 text-white font-black tracking-tighter px-2 py-0.5 rounded text-xs">_MINIFREAK</span>
-        <h2 class="text-sm font-extrabold uppercase tracking-wide text-slate-900">Quick-Action Lookup (&ldquo;If I Want to Do X...&rdquo;) &amp; Complete Menu Reference</h2>
-      </div>
-      <div class="flex items-center gap-1.5 text-[11px] whitespace-nowrap">
-        <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-400 font-bold">Sound Edit (White LED) = Per-Preset Settings</span>
-        <span class="px-2 py-0.5 rounded bg-sky-100 border border-sky-500 font-bold text-sky-900">Shift + Sound Edit (Blue LED) = Global Utility Menu</span>
-      </div>
-    </div>
-
-    <!-- MAIN 12-COLUMN GRID -->
-    <div class="grid grid-cols-12 gap-2 flex-1 min-h-0 text-sheet">
-
-      <!-- LEFT 5 COLUMNS: "IF YOU WANT TO DO X, DO THIS" + HARDWARE SHORTCUTS -->
-      <div class="col-span-5 flex flex-col justify-between gap-1.5">
-
-        <!-- FAST HARDWARE MENU JUMP SHORTCUTS (NO BULLETS BEFORE + SYMBOLS!) -->
-        <div class="rounded-lg border-2 border-indigo-600 bg-indigo-50/40 p-1.5">
-          <div class="font-extrabold text-indigo-950 uppercase tracking-tight border-b border-indigo-200 pb-0.5 mb-1 flex justify-between">
-            <span>Instant Menu Shortcuts (No Scrolling!)</span>
-            <span class="font-mono text-indigo-700">Hold Sound Edit (SE) + Button</span>
-          </div>
-          <div class="grid grid-cols-2 gap-x-2 gap-y-0.5 text-slate-800">
-            <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + Osc Select</code> &rarr; Osc / WT-Sample</div>
-            <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + FX Select</code> &rarr; Delay/Reverb Send</div>
-            <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + Env Mode</code> &rarr; Env &harr; Voice Menu</div>
-            <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + CycEnv Mode</code> &rarr; Cycling Env Menu</div>
-            <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + LFO Select</code> &rarr; LFO Retrig &amp; Sync</div>
-            <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + Touch Strip</code> &rarr; Keyboard Menu</div>
-            <div class="col-span-2 pt-0.5 border-t border-indigo-200"><code class="px-1 py-0.5 rounded bg-sky-100 text-sky-900 font-bold">Shift + Chord (Scales)</code> &rarr; Scale Config Menu</div>
-            <div class="col-span-2"><code class="px-1 py-0.5 rounded bg-slate-200 text-slate-900 font-bold">Sound Edit</code> &rarr; Cancel Save / Exit</div>
-          </div>
-        </div>
-
-        <!-- "IF YOU WANT TO DO X..." TASK TABLE -->
-        <div class="rounded-lg border-2 border-slate-800 bg-slate-50 p-1.5 flex-1 flex flex-col justify-between">
-          <div>
-            <div class="font-extrabold text-slate-900 uppercase tracking-tight border-b border-slate-300 pb-0.5 mb-0.5">
-              &ldquo;If I Want To Do X, Where Do I Go?&rdquo; (Top 16 Workflows)
-            </div>
-            <table class="w-full text-left border-collapse">
-              <thead>
-                <tr class="border-b border-slate-300 text-slate-500">
-                  <th class="py-0.5 pr-1 font-bold">Goal / Task</th>
-                  <th class="py-0.5 font-bold">Exact Button / Menu Path</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y text-slate-800">
-                <tr><td class="py-0.5 pr-1 font-semibold">Start a clean patch from scratch</td><td class="py-0.5"><b>Long-press <code class="font-bold">Preset/Edit</code></b> (or <code class="font-mono">Utility &gt; Preset Ops &gt; Erase &gt; Init</code>)</td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Undo a bad edit / restore state</td><td class="py-0.5"><code class="font-mono">Sound Edit &gt; Preset &gt; View Snapshots</code> (time-stamped auto-saves!)</td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Copy Osc, FX, Seq, or LFO to patch</td><td class="py-0.5"><code class="font-mono">Utility &gt; Preset Ops &gt; Preset Copy</code> &rarr; switch preset &rarr; <code class="font-mono">Preset Paste</code></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Swap FX 1, FX 2, or FX 3 order</td><td class="py-0.5"><code class="font-mono">Utility &gt; Preset Ops &gt; Preset Paste &gt; Swap FX 1/2/3</code></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Run Delay/Reverb in parallel</td><td class="py-0.5"><code class="font-bold">SE + FX Select</code> &rarr; set Delay/Reverb Routing = <b>Send</b></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Quantize pitch mod to a scale</td><td class="py-0.5"><code class="font-bold">SE + Osc Select</code> &rarr; <code class="font-mono">Osc1/2 Mod Quant</code></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Lock keyboard to a scale / key</td><td class="py-0.5"><code class="font-bold text-sky-700">Shift + Chord</code> (<code class="font-mono">Scale Config</code>) &rarr; pick Scale &amp; Root (or <code class="font-mono">User</code>)</td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Make velocity control loudness</td><td class="py-0.5"><code class="font-bold">SE + Env Mode</code> &rarr; <code class="font-mono">Envelope &gt; Velo &gt; VCA</code></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Use Velocity + Aftertouch together</td><td class="py-0.5"><code class="font-bold">SE + Touch Strip</code> &rarr; <code class="font-mono">Matrix Src VeloAT = Both</code></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Adjust Unison voices &amp; detune</td><td class="py-0.5"><code class="font-bold">SE + Env Mode</code> (2&times;) &rarr; <code class="font-mono">Voice &gt; Unison Count / Spread / Mode</code></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Legato glide only when overlapping</td><td class="py-0.5"><code class="font-bold">SE + Osc Select</code> &rarr; <code class="font-mono">Glide Mode = Time/Rate/Sync Legato</code></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Stop step pads flickering in Shaper</td><td class="py-0.5"><code class="font-mono">Utility &gt; Controls &gt; Touch Button Sens = Medium</code></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Prevent analog knob value jumps</td><td class="py-0.5"><code class="font-mono">Utility &gt; Controls &gt; Knob Catch = Hook</code> or <code class="font-mono">Scale</code></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Plug a Mic or Synth into Audio In</td><td class="py-0.5">Set Osc 1 = <code class="font-mono">Audio In</code> (or FX = <code class="font-mono">Vocoder Ext</code>) + <code class="font-mono">Utility &gt; Audio &gt; In Mode/Gain</code></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Keep same BPM when changing patch</td><td class="py-0.5"><code class="font-mono">Utility &gt; Sync &gt; Global Tempo = On</code></td></tr>
-                <tr><td class="py-0.5 pr-1 font-semibold">Tune self-oscillating Analog Filter</td><td class="py-0.5"><code class="font-mono">Utility &gt; Audio &gt; Calib Cutoff</code> (1 min) &amp; <code class="font-mono">Calib Analog</code> (2 min)</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- MIDDLE 4 COLUMNS: PER-PRESET SOUND EDIT MENU MAP -->
-      <div class="col-span-4 rounded-lg border-2 border-slate-800 bg-white p-1.5 flex flex-col justify-between">
-        <div class="flex flex-col flex-1 justify-between">
-          <div class="flex items-center justify-between border-b-2 border-slate-800 pb-0.5 mb-0.5">
-            <span class="font-extrabold text-slate-900 uppercase">Sound Edit Menus (Saved Per-Preset)</span>
-            <span class="px-1.5 py-0.5 bg-slate-800 text-white rounded text-[10px] font-mono">White LED</span>
-          </div>
-
-          <div class="space-y-0.5 text-slate-800 flex-1 flex flex-col justify-between">
-            <div class="p-1 rounded bg-slate-50 border border-slate-200">
-              <div class="font-bold text-slate-900">0. Preset Volume <span class="text-slate-500 font-normal">(Top item)</span></div>
-              <div>Offsets current preset level (<code class="font-mono">-12 dB to +6 dB</code>) to match other patches.</div>
-            </div>
-
-            <div class="p-1 rounded bg-orange-50/50 border border-orange-200">
-              <div class="font-bold text-orange-950 flex justify-between">
-                <span>1. Osc <span class="text-orange-700 font-normal">(Manual calls this &ldquo;Pitch&rdquo; in ch. 5/9/12!)</span></span>
-                <span class="font-mono text-[10px] text-orange-800">SE + Osc Select</span>
-              </div>
-              <ul class="mt-0.5 space-y-0.5">
-                <li><b>Wavetable / Sample Select:</b> Browse Osc 1 tables/samples.</li>
-                <li><b>Osc1 / Osc2 Mod Quant:</b> Quantize pitch mod to scales (Chromatic, Oct, 5th, Maj/Min, Pentatonic, Phrygian).</li>
-                <li><b>Glide Mode:</b> <code class="font-mono">Time</code>, <code class="font-mono">Rate</code> (speed/semitone), or <code class="font-mono">Sync</code> (each w/ optional <b>Legato</b>).</li>
-                <li><b>Vibrato Depth &amp; Vib Rate:</b> Config for the 3rd Vibrato LFO.</li>
-              </ul>
-            </div>
-
-            <div class="p-1 rounded bg-indigo-50/50 border border-indigo-200">
-              <div class="font-bold text-indigo-950 flex justify-between">
-                <span>2. FX</span>
-                <span class="font-mono text-[10px] text-indigo-800">SE + FX Select</span>
-              </div>
-              <div><b>Delay Routing &amp; Reverb Routing:</b> <code class="font-mono">Insert</code> (serial chain) vs. <code class="font-mono">Send</code> (parallel split; <code class="font-mono">Amount</code> = Send Level).</div>
-            </div>
-
-            <div class="p-1 rounded bg-slate-50 border border-slate-200">
-              <div class="font-bold text-slate-900 flex justify-between">
-                <span>3. Envelope (VCA ADSR)</span>
-                <span class="font-mono text-[10px] text-slate-600">SE + Env Mode</span>
-              </div>
-              <ul class="mt-0.5 space-y-0.5">
-                <li><b>Velo &gt; VCA / VCF / Env / Time:</b> Velocity depth for Vol, Cutoff, Matrix Env &amp; Dec/Rel.</li>
-                <li><b>Retrig Mode:</b> <code class="font-mono">Env Reset</code> (from 0) vs. <code class="font-mono">Env Continue</code> (from current level; huge in Mono/Para/Uni!).</li>
-                <li><b>Attack / Decay / Release Curves:</b> <code class="font-mono">Default</code> vs. <code class="font-mono">Quick</code> / <code class="font-mono">Percussive</code>.</li>
-              </ul>
-            </div>
-
-            <div class="p-1 rounded bg-emerald-50/50 border border-emerald-200">
-              <div class="font-bold text-emerald-950 flex justify-between">
-                <span>4. Voice <span class="text-emerald-700 font-normal">(Manual ch. 12.3 mislabels &ldquo;Keyboard&rdquo;)</span></span>
-                <span class="font-mono text-[10px] text-emerald-800">SE + Env Mode</span>
-              </div>
-              <ul class="mt-0.5 space-y-0.5">
-                <li><b>Legato Mono:</b> Retrigger on legato notes | <b>Osc Free Run:</b> Free phase vs. key-reset.</li>
-                <li><b>Unison Spread / Count (2&ndash;6) / Mode (Mono, Poly, Para)</b>.</li>
-                <li><b>Poly Allocation:</b> <code class="font-mono">Cycle</code> (round-robin), <code class="font-mono">Reassign</code> (reuses voice), <code class="font-mono">Reset</code> (Voice 1).</li>
-                <li><b>Poly Steal Mode:</b> <code class="font-mono">Oldest</code>, <code class="font-mono">Lowest Velo</code>, <code class="font-mono">None</code> (<i>never steals lowest note!</i>).</li>
-              </ul>
-            </div>
-
-            <div class="p-1 rounded bg-teal-50/40 border border-teal-200">
-              <div class="font-bold text-teal-950 flex justify-between">
-                <span>5. Cycling Envelope</span>
-                <span class="font-mono text-[10px] text-teal-700">SE + CycEnv Mode</span>
-              </div>
-              <div><b>Retrig Src:</b> <code class="font-mono">Poly</code>, <code class="font-mono">Mono</code>, <code class="font-mono">Legato</code>, <code class="font-mono">LFO 1/2</code> | <b>Stage Order:</b> <code class="font-mono">RHF</code> (hold high) vs. <code class="font-mono">RFH/HRF</code> (hold 0) | <b>Tempo Sync</b>.</div>
-            </div>
-
-            <div class="p-1 rounded bg-purple-50/50 border border-purple-200">
-              <div class="font-bold text-purple-950 flex justify-between">
-                <span>6. LFO</span>
-                <span class="font-mono text-[10px] text-purple-700">SE + LFO Select</span>
-              </div>
-              <div><b>LFO 1/2 Retrig</b> | <b>Sync Filter:</b> Straight / Triplet / Dotted | <b>Shaper Rate:</b> <code class="font-mono">Per Step</code> vs. <code class="font-mono">All Steps</code> (16&times; faster).</div>
-            </div>
-
-            <div class="p-1 rounded bg-amber-50/50 border border-amber-200">
-              <div class="font-bold text-amber-950 flex justify-between">
-                <span>7. Keyboard</span>
-                <span class="font-mono text-[10px] text-amber-700">SE + Touch Strip</span>
-              </div>
-              <div><b>Matrix Src VeloAT:</b> Velo / AT / Both | <b>Kbd Src:</b> Linear / S-Curve / Random / Voices | <b>Bend Range:</b> 1&ndash;12 st.</div>
-            </div>
-
-            <div class="p-1 rounded bg-slate-50 border border-slate-200">
-              <div class="font-bold text-slate-900">8. Seq</div>
-              <div><b>Smooth Mod 1&ndash;4:</b> Step smoothing on/off | <b>-1 / +1 Semitone:</b> Transpose saved seq.</div>
-            </div>
-
-            <div class="p-1 rounded bg-sky-50/40 border border-sky-200">
-              <div class="font-bold text-sky-950 flex justify-between">
-                <span>9. Scale Config</span>
-                <span class="font-mono text-[10px] text-sky-700">Shift + Chord</span>
-              </div>
-              <div><b>Scale:</b> Off/Global/User, Maj, Min, Dorian, Mixolydian, Blues, Pentatonic | <b>Root:</b> C&ndash;B.</div>
-            </div>
-
-            <div class="p-1 rounded bg-rose-50/50 border border-rose-200">
-              <div class="font-bold text-rose-950">10. Preset</div>
-              <div><b>View Snapshots:</b> Restore time-stamped auto-saves | <b>Details:</b> Type, Designer &amp; Rev #.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RIGHT 3 COLUMNS: GLOBAL UTILITY MENU + MINIFREAK V SYNC & SAMPLE TRANSFER -->
-      <div class="col-span-3 flex flex-col justify-between gap-1.5">
-
-        <div class="rounded-lg border-2 border-sky-600 bg-sky-50/30 p-1.5 flex-1 flex flex-col justify-between">
-          <div class="flex items-center justify-between border-b-2 border-sky-600 pb-0.5 mb-0.5">
-            <span class="font-extrabold text-sky-950 uppercase">Utility Menu (Global)</span>
-            <span class="px-1.5 py-0.5 bg-sky-600 text-white rounded text-[10px] font-mono">Shift + Sound Edit</span>
-          </div>
-
-          <div class="space-y-0.5 text-slate-800 flex-1 flex flex-col justify-between">
-            <div>
-              <div class="font-bold text-sky-950">1. Preset Operations</div>
-              <div><code class="font-mono">Preset Copy / Paste</code> (Osc 1/2, FX 1&ndash;3, Seq+Mods, LFO Curve, Swap FX) | <code class="font-mono">Preset Erase</code> (Init, Reload, Matrix, Seq, Mods, Macro 1/2) | <code class="font-mono">Panel Mode</code> (<b>Favorite</b> vs. <b>Knob Panel</b>).</div>
-            </div>
-
-            <div class="border-t border-sky-200 pt-0.5">
-              <div class="font-bold text-sky-950">2. Controls (Feel &amp; Response)</div>
-              <div><code class="font-mono">Knob Catch</code>: <b>Jump</b>, <b>Hook</b>, <b>Scale</b> | <code class="font-mono">Velo/AT Curve</code>: Lin, Log, Expo | <code class="font-mono">AT Sens</code>: Low/Mid/High | <code class="font-mono">Touch Sens</code>: Low, <b>Med</b>, High | <code class="font-mono">Sustain Polarity</code>.</div>
-            </div>
-
-            <div class="border-t border-sky-200 pt-0.5">
-              <div class="font-bold text-sky-950">3. Audio &amp; Calibration</div>
-              <div><code class="font-mono">Audio In Mode</code>: <b>Line</b> vs. <b>Mic</b> (Dynamic) | <code class="font-mono">Audio In Gain</code> (<code class="font-mono">-9 to +24 dB</code>) | <code class="font-mono">Master Tune</code> (&plusmn;50c) | <code class="font-mono">Stereo to Mono</code> | <code class="font-mono">Calib Cutoff</code> &amp; <code class="font-mono">Calib Analog</code>.</div>
-            </div>
-
-            <div class="border-t border-sky-200 pt-0.5">
-              <div class="font-bold text-sky-950">4. Sync</div>
-              <div><code class="font-mono">Metronome</code> (On/Off, Level, 1-Bar Count-In) | <code class="font-mono">Clock Source</code> (Auto/Int/USB/MIDI/In) | <code class="font-mono">Clock/Transport Rx/Tx</code> | <code class="font-mono">PPQ</code> | <code class="font-mono">Global Tempo</code>.</div>
-            </div>
-
-            <div class="border-t border-sky-200 pt-0.5">
-              <div class="font-bold text-sky-950">5. MIDI</div>
-              <div><code class="font-mono">In/Out Channels</code> | <code class="font-mono">MIDI From/To</code> (USB/DIN/Both) | <code class="font-mono">Local Control</code> + <code class="font-mono">MIDI Seq/Synth</code> (4 routing modes) | <code class="font-mono">Knob Send CC</code> | <code class="font-mono">Program Change</code>.</div>
-            </div>
-
-            <div class="border-t border-sky-200 pt-0.5">
-              <div class="font-bold text-sky-950">6. Global Scale</div>
-              <div><code class="font-mono">Global Scale &amp; Root</code>: Default scale when preset Scale = Global.</div>
-            </div>
-
-            <div class="border-t border-sky-200 pt-0.5">
-              <div class="font-bold text-sky-950">7. Misc</div>
-              <div><code class="font-mono">LED Intensity</code> | <code class="font-mono">FW Version</code> | <code class="font-mono">Reset Settings</code> (keeps presets).</div>
-            </div>
-
-            <div class="border-t border-sky-200 pt-0.5">
-              <div class="font-bold text-sky-950">8. Your Name</div>
-              <div>Set your designer name (tags your patches &amp; adds to Filter list).</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- MINIFREAK V SYNC BOX -->
-        <div class="rounded-lg border-2 border-amber-500 bg-amber-50/50 p-1.5">
-          <div class="font-extrabold text-amber-950 uppercase tracking-tight border-b border-amber-200 pb-0.5 mb-0.5">
-            MiniFreak V Software Sync Rules
-          </div>
-          <ul class="space-y-0.5 text-slate-800">
-            <li><b>Standalone App:</b> Hardware preset overwrites software on connect.</li>
-            <li><b>DAW Plugin:</b> Plugin preset overwrites hardware on connect!</li>
-            <li><b>Backup Memory:</b> Preset Browser &rarr; <b>MiniFreak</b> &rarr; <b>Backup to Computer</b> (right-click or Cmd/Ctrl+Shift drag to restore slots).</li>
-          </ul>
-        </div>
-
-        <!-- MINIFREAK V CUSTOM SAMPLE TRANSFER (v5.0) -->
-        <div class="rounded-lg border-2 border-emerald-600 bg-emerald-50/50 p-1.5">
-          <div class="flex items-center justify-between border-b border-emerald-200 pb-0.5 mb-0.5 whitespace-nowrap">
-            <span class="font-extrabold text-emerald-950 uppercase tracking-tight">Custom Sample Transfer (v5.0)</span>
-            <span class="px-1.5 py-0.5 bg-emerald-600 text-white rounded text-[10px] font-mono">MiniFreak V</span>
-          </div>
-          <ul class="space-y-0.5 text-slate-800">
-            <li><b>1. Open Sample UI in V:</b> Select a Wavetable/Sample-based engine in <b>MiniFreak V</b>, then <b>click the sample name</b> to bring up the UI.</li>
-            <li><b>2. Import Audio:</b> Click <b>Import</b> or <b>drag &amp; drop</b> audio into V (target: <code class="font-mono font-bold">12-bit, 32 kHz, max 6s</code>; user samples start with <code class="font-mono font-bold">USR</code>).</li>
-            <li><b>3. Send to Hardware:</b> Connect synth to reveal the <b>Hardware Management</b> section &rarr; click <b>Send</b> or <b>drag &amp; drop</b> to transfer.</li>
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <script>
-    function fitSvgBadges() {
-      document.querySelectorAll('.svg-badge').forEach(g => {
-        const rect = g.querySelector('rect');
-        const text = g.querySelector('text');
-        if (rect && text && typeof text.getComputedTextLength === 'function') {
-          const len = text.getComputedTextLength();
-          if (len > 0) {
-            const cx = parseFloat(text.getAttribute('x'));
-            const w = Math.ceil(len + 18);
-            const rx = Math.max(14, Math.min(1486 - w, Math.round(cx - w / 2)));
-            rect.setAttribute('width', w);
-            rect.setAttribute('x', rx);
-            text.setAttribute('x', rx + w / 2);
-          }
-        }
-      });
-    }
-    window.addEventListener('DOMContentLoaded', fitSvgBadges);
-    window.addEventListener('load', fitSvgBadges);
-
-    function setSheetView(view) {
-      const s1 = document.getElementById('sheet-1');
-      const s2 = document.getElementById('sheet-2');
-      const bBoth = document.getElementById('btn-sheet-both');
-      const b1 = document.getElementById('btn-sheet-1');
-      const b2 = document.getElementById('btn-sheet-2');
-
-      [bBoth, b1, b2].forEach(b => {
-        b.className = 'px-2.5 py-1 rounded font-medium text-slate-300 hover:text-white';
-      });
-
-      if (view === 'sheet1') {
-        s1.style.display = 'flex';
-        s2.style.display = 'none';
-        b1.className = 'px-2.5 py-1 rounded font-semibold bg-orange-500 text-white';
-      } else if (view === 'sheet2') {
-        s1.style.display = 'none';
-        s2.style.display = 'flex';
-        b2.className = 'px-2.5 py-1 rounded font-semibold bg-orange-500 text-white';
-      } else {
-        s1.style.display = 'flex';
-        s2.style.display = 'flex';
-        bBoth.className = 'px-2.5 py-1 rounded font-semibold bg-orange-500 text-white';
-      }
-      fitSvgBadges();
-    }
-  </script>
+	<!-- Site Navigation Bar (Hidden on Print) -->
+	<nav
+		class="no-print max-w-[1400px] mx-auto mb-2.5 px-3 py-2 rounded-xl bg-slate-900/95 border border-slate-800 shadow-md flex flex-wrap items-center justify-between gap-2 text-xs">
+		<a href="../index.html"
+			class="flex items-center gap-2 font-black tracking-tight text-white hover:text-orange-400 transition-colors">
+			<span class="px-2 py-0.5 rounded bg-orange-500 text-slate-950 font-black">_MINIFREAK</span>
+			<span class="text-sm font-bold">Documentation Suite</span>
+		</a>
+		<div class="flex flex-wrap items-center gap-1.5">
+			<a href="../index.html"
+				class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">Home</a>
+			<a href="minifreak_ui_workflows.html"
+				class="px-2.5 py-1.5 rounded-lg font-semibold bg-orange-500 text-white shadow-sm">1. UI Workflows &amp;
+				Menus</a>
+			<a href="minifreak_sound_vibes_guide.html"
+				class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-amber-300 hover:bg-slate-800 transition-colors">2.
+				Sound &ldquo;Vibe &amp; Flavor&rdquo; Guide</a>
+			<a href="minifreak_technical_roadmap.html"
+				class="px-2.5 py-1.5 rounded-lg font-medium text-slate-300 hover:text-sky-300 hover:bg-slate-800 transition-colors">3.
+				Technical &amp; Signal Roadmap</a>
+		</div>
+	</nav>
+
+	<!-- Screen Toolbar (Hidden on Print) -->
+	<div
+		class="no-print max-w-[1400px] mx-auto mb-3 p-3 rounded-xl bg-[var(--card)] border border-[var(--border)] flex flex-wrap items-center justify-between gap-3">
+		<div class="flex items-center gap-3">
+			<span class="px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-orange-500 text-white">Doc
+				1 of 3</span>
+			<div>
+				<h1 class="text-sm font-bold leading-tight">MiniFreak UI Workflow Infographic &amp; Complete Menu
+					Reference</h1>
+				<p class="text-xs text-[var(--muted-foreground)]">Single source of truth formatted for 14&quot; &times;
+					8.5&quot; Legal Landscape (2 pages: Front Hardware Map &amp; Back Menu Reference)</p>
+			</div>
+		</div>
+
+		<div class="flex flex-wrap items-center gap-2 text-xs">
+			<div class="flex items-center gap-1 bg-[var(--background)] p-1 rounded-lg border border-[var(--border)]">
+				<button onclick="setSheetView('both')" id="btn-sheet-both"
+					class="px-2.5 py-1 rounded font-semibold bg-orange-500 text-white">Both Sheets</button>
+				<button onclick="setSheetView('sheet1')" id="btn-sheet-1"
+					class="px-2.5 py-1 rounded font-medium text-slate-300 hover:text-white">Sheet 1: Hardware
+					Map</button>
+				<button onclick="setSheetView('sheet2')" id="btn-sheet-2"
+					class="px-2.5 py-1 rounded font-medium text-slate-300 hover:text-white">Sheet 2: Quick-Action &amp;
+					Menus</button>
+			</div>
+			<a href="../assets/minifreak_annotated_ui.png" target="_blank" rel="noopener"
+				class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-semibold">
+				Open High-Res PNG &nearr;
+			</a>
+			<button onclick="window.print()"
+				class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold cursor-pointer">
+				Print 14&quot;&times;8.5&quot; (2 Pages)
+			</button>
+		</div>
+	</div>
+
+	<!-- ===================================================================== -->
+	<!-- SHEET 1: HARDWARE PANEL WORKFLOWS & MODAL COLOR SHIFTS (FRONT PAGE)   -->
+	<!-- ===================================================================== -->
+	<div id="sheet-1"
+		class="print-sheet max-w-[1400px] mx-auto mb-6 rounded-xl bg-white text-slate-900 border border-slate-300 shadow-lg p-2 flex flex-col justify-between">
+
+		<!-- HEADER BAR + CONTROL GRAMMAR LEGEND -->
+		<div class="shrink-0 flex items-center justify-between border-b-2 border-slate-900 pb-0.5 mb-1 gap-2">
+			<div class="flex items-center gap-2 whitespace-nowrap">
+				<span
+					class="bg-slate-900 text-white font-black tracking-tighter px-2 py-0.5 rounded text-xs">_MINIFREAK</span>
+				<h2 class="text-sm font-extrabold uppercase tracking-wide text-slate-900">Hardware UI Workflow &amp;
+					Modal Shift Map</h2>
+				<span class="text-[10px] text-slate-500 font-semibold">Component boarders match cards</span>
+			</div>
+		</div>
+
+		<!-- TOP ROW: 4 WORKFLOW CALLOUT BOXES FOR UPPER & MAIN PANEL SECTIONS -->
+		<div class="shrink-0 grid grid-cols-12 gap-1.5 mb-1 text-card">
+
+			<!-- 1. MODULATION MATRIX & LEFT PERFORMANCE CONTROLS (CYAN #0284c7) -->
+			<div class="col-span-3 rounded-lg border-2 border-sky-600 bg-sky-50/40 p-1.5">
+				<div class="flex items-center justify-between border-b border-sky-200 pb-0.5 mb-0.5 whitespace-nowrap">
+					<span class="font-extrabold text-sky-950 uppercase tracking-tight">1. Mod Matrix &amp; Left
+						Controls</span>
+					<span class="px-1.5 py-0.5 bg-sky-600 text-white rounded text-[10px] font-bold">Cyan Outline</span>
+				</div>
+				<ul class="space-y-0.5 text-slate-700">
+					<li><b>Matrix (7&times;13):</b> Turn <code class="font-bold">Matrix</code> = L&rarr;R | <span
+							class="text-sky-700 font-semibold">Shift+Turn</span> = Up/Down | Click (<span
+							class="text-red-600 font-semibold">Amt LED</span>) = edit | <b>Hold+Turn</b> = quick offset
+						| <b>Hold 1s</b> = clear (<code class="font-mono">0</code>)</li>
+					<li><b>Assign 1&ndash;3 (9 slots):</b> <span class="text-sky-700 font-semibold">Shift+Assign
+							1&ndash;3</span> = Page 1&ndash;3 | <b>Hold <code class="font-bold">Assign</code> + Turn
+							Knob</b> (<code class="font-bold">Matrix</code> = mod depth | <code
+							class="font-bold">Preset</code> = <code class="font-mono">VCA</code>/<code
+							class="font-mono">Uni</code>/<code class="font-mono">LFO AM</code>)</li>
+					<li><b>Hold/Tie:</b> Toggles key/Arp sustain (or holds Seq transpose) | In Seq Step Rec: tap = Rest,
+						hold keys + tap = Tie</li>
+					<li><b>Chord/Scales:</b> Tap = toggle Chord | <span
+							class="text-sky-700 font-semibold">Shift+Chord</span> = Scale Config &nbsp;|&nbsp;
+						<b>Glide:</b> Portamento time (<code class="font-bold">SE+Osc</code> = Time/Rate/Sync/Legato)
+					</li>
+				</ul>
+			</div>
+
+			<!-- 2. DIGITAL OSCILLATORS (ORANGE #ea580c) -->
+			<div class="col-span-3 rounded-lg border-2 border-orange-600 bg-orange-50/40 p-1.5">
+				<div
+					class="flex items-center justify-between border-b border-orange-200 pb-0.5 mb-0.5 whitespace-nowrap">
+					<span class="font-extrabold text-orange-950 uppercase tracking-tight">2. Digital Oscillators (1
+						&amp; 2)</span>
+					<span class="px-1.5 py-0.5 bg-orange-600 text-white rounded text-[10px] font-bold">Orange
+						Outline</span>
+				</div>
+				<ul class="space-y-0.5 text-slate-700">
+					<li><b>Select &amp; Params:</b> Tap <code class="font-bold">Select</code> = Osc 1/2 | Orange <code
+							class="font-bold">Wave</code> | <code class="font-bold">Timbre</code> | <code
+							class="font-bold">Shape</code> knobs map to 3 model-specific OLED icons</li>
+					<li><b>Tune/Oct Encoder:</b> Turn = Semitones (&plusmn;48) | <b>Click</b> (<code
+							class="font-mono">Fine</code> LED) = Cents | <span
+							class="text-sky-700 font-semibold">Shift+Turn</span> = Octaves</li>
+					<li><b>Wavetable &amp; Sample (Osc 1):</b> <span class="text-sky-700 font-semibold">Shift+Turn <code
+								class="font-bold">Type</code></span> (or <code class="font-bold">SE + Osc Select</code>)
+						browses tables/samples (shared by 7 Granular types)</li>
+					<li><b>Osc 2 Filter / Destroy:</b> <code class="font-bold">Select</code> LED 2 turns <span
+							class="text-sky-600 font-bold">Pale Blue</span> (<code class="font-bold">Osc 1 Vol</code> =
+						Input Drive | <code class="font-bold">Osc 2 Vol</code> = Dry/Wet)</li>
+				</ul>
+			</div>
+
+			<!-- 3. ANALOG FILTER, CYCLING ENV & VOICING (TEAL #0d9488) -->
+			<div class="col-span-3 rounded-lg border-2 border-teal-600 bg-teal-50/40 p-1.5">
+				<div class="flex items-center justify-between border-b border-teal-200 pb-0.5 mb-0.5 whitespace-nowrap">
+					<span class="font-extrabold text-teal-950 uppercase tracking-tight">3. Filter, CycEnv &amp;
+						Voicing</span>
+					<span class="px-1.5 py-0.5 bg-teal-600 text-white rounded text-[10px] font-bold">Teal Outline</span>
+				</div>
+				<ul class="space-y-0.5 text-slate-700">
+					<li><b>Analog VCF (12 dB):</b> <code class="font-bold">Type</code> = LPF | BPF | HPF | <code
+							class="font-bold">Env/Velo</code> (<code class="font-mono">0</code> @ center) = Env depth |
+						<span class="text-sky-700 font-semibold">Shift+Turn</span> = Velo &rarr; VCF Env (<code
+							class="font-mono">Kbd&rarr;Cut=50</code> tracks 1:1)
+					</li>
+					<li><b>Cycling Env:</b> <code class="font-bold">Mode</code> = <b>Env</b> (ADSD) | <b>Run</b> (Mono
+						free loop) | <b>Loop</b> (Poly retrig loop) | <span
+							class="text-sky-700 font-semibold">Shift+Rise/Fall</span> = Curve (Exp | Lin | Log)</li>
+					<li><b>Envelope &amp; Voicing:</b> <code class="font-bold">ADSR</code> = VCA amp | <code
+							class="font-bold">Mode</code> = <b>Mono</b> | <b>Poly</b> (6v) | <b>Para</b> (12v, Osc 2
+						off) | <b>Uni</b> (2&ndash;6v) | <code class="font-bold">SE+Mode</code> = Env &amp; Voice menus
+					</li>
+				</ul>
+			</div>
+
+			<!-- 4. DIGITAL FX & TEMPO/METRONOME (INDIGO #4f46e5) -->
+			<div class="col-span-3 rounded-lg border-2 border-indigo-600 bg-indigo-50/40 p-1.5">
+				<div
+					class="flex items-center justify-between border-b border-indigo-200 pb-0.5 mb-0.5 whitespace-nowrap">
+					<span class="font-extrabold text-indigo-950 uppercase tracking-tight">4. Digital FX (1&ndash;3)
+						&amp; Tempo</span>
+					<span class="px-1.5 py-0.5 bg-indigo-600 text-white rounded text-[10px] font-bold">Indigo
+						Outline</span>
+				</div>
+				<ul class="space-y-0.5 text-slate-700">
+					<li><b>FX Select LEDs:</b> <b>Bright</b> = Editing | <b>Dim</b> = Active (On) | <b>Unlit</b> =
+						Bypassed (Off)</li>
+					<li><b>Type/Sub Encoder:</b> <b>Click</b> = FX On/Off | <span
+							class="text-sky-700 font-semibold">Shift+Turn</span> = Subtype preset (<code
+							class="font-bold">Master</code> = main &amp; headphone output)</li>
+					<li><b>Insert vs. Send:</b> <code class="font-bold">SE + FX Select</code> sets Delay / Reverb to
+						Insert (serial) or Send (parallel; <code class="font-bold">Amount</code> = Send Level)</li>
+					<li><b>Tempo/Swing Encoder:</b> Turn = BPM (30&ndash;240) | <b>Click+Turn</b> = Time Div
+						(<b>Hold+Turn</b> locks family) | <span class="text-sky-700 font-semibold">Shift+Turn</span> =
+						Swing</li>
+				</ul>
+			</div>
+
+		</div>
+
+		<!-- CENTER: TRUE HARDWARE PHOTO WITH PRECISION COLOR-CODED OVERLAYS -->
+		<div
+			class="flex-1 min-h-0 w-full rounded-xl border-2 border-slate-800 bg-white p-0.5 flex items-center justify-center overflow-hidden">
+			<svg id="minifreak-photo-svg" viewBox="12 2 1476 586" preserveAspectRatio="xMidYMid meet"
+				style="width: 100%; height: 100%; max-height: 100%; display: block; border-radius: 6px;">
+				<image href="../assets/minifreak_cropped.jpg" x="0" y="0" width="1500" height="641"
+					preserveAspectRatio="xMidYMin slice" />
+
+				<!-- ================= 1. MOD MATRIX & LEFT CONTROLS (CYAN #0284c7) ================= -->
+				<rect x="34" y="27" width="334" height="116" rx="6" fill="none" stroke="#0284c7" stroke-width="3.2"
+					stroke-dasharray="7 4" />
+				<circle cx="306" cy="102" r="24.5" fill="none" stroke="#0284c7" stroke-width="2.6" />
+
+				<rect x="34" y="165" width="334" height="65" rx="6" fill="none" stroke="#0284c7" stroke-width="3.2"
+					stroke-dasharray="7 4" />
+				<rect x="104" y="170" width="84" height="36" rx="18" fill="none" stroke="#0284c7" stroke-width="2.6" />
+				<g class="svg-badge">
+					<rect x="82" y="144" width="128" height="19" rx="4" fill="#0284c7" />
+					<text x="146" y="157.5" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">Both
+						&lt; &gt; = Reset Oct</text>
+				</g>
+
+				<!-- ================= 2. DIGITAL OSCILLATORS 1 & 2 (ORANGE #ea580c) ================= -->
+				<rect x="384" y="29" width="438" height="101" rx="6" fill="none" stroke="#ea580c" stroke-width="3.2"
+					stroke-dasharray="7 4" />
+				<circle cx="407" cy="91" r="14.5" fill="none" stroke="#ea580c" stroke-width="2.6" />
+				<circle cx="476" cy="85" r="24" fill="none" stroke="#ea580c" stroke-width="2.6" />
+				<circle cx="793.5" cy="85.5" r="20.5" fill="none" stroke="#ea580c" stroke-width="2.6" />
+				<g class="svg-badge">
+					<rect x="384" y="4" width="152" height="21" rx="4" fill="#ea580c" />
+					<text x="460" y="18.5" text-anchor="middle" font-size="11.2" font-weight="800" fill="#ffffff">Hold
+						Select = Peek OLED</text>
+				</g>
+				<g class="svg-badge">
+					<rect x="686" y="4" width="144" height="21" rx="4" fill="#ea580c" />
+					<text x="758" y="18.5" text-anchor="middle" font-size="11.2" font-weight="800"
+						fill="#ffffff">Shift+Vol = Osc 1/2 Mix</text>
+				</g>
+
+				<!-- ================= 3. FILTER, CYCLING ENV & VOICING/ADSR (TEAL #0d9488) ================= -->
+				<rect x="844" y="29" width="244" height="101" rx="6" fill="none" stroke="#0d9488" stroke-width="3.2"
+					stroke-dasharray="7 4" />
+				<rect x="844" y="135" width="244" height="95" rx="6" fill="none" stroke="#0d9488" stroke-width="3.2"
+					stroke-dasharray="7 4" />
+				<rect x="1104" y="135" width="288" height="95" rx="6" fill="none" stroke="#0d9488" stroke-width="3.2"
+					stroke-dasharray="7 4" />
+
+				<!-- ================= 4. DIGITAL FX, MASTER & TEMPO (INDIGO #4f46e5) ================= -->
+				<rect x="1104" y="29" width="358" height="101" rx="6" fill="none" stroke="#4f46e5" stroke-width="3.2"
+					stroke-dasharray="7 4" />
+				<circle cx="1204" cy="85.5" r="24" fill="none" stroke="#4f46e5" stroke-width="2.6" />
+
+				<rect x="1398" y="135" width="64" height="95" rx="6" fill="none" stroke="#4f46e5" stroke-width="3.2"
+					stroke-dasharray="7 4" />
+				<circle cx="1432" cy="183" r="25" fill="none" stroke="#4f46e5" stroke-width="2.6" />
+				<g class="svg-badge">
+					<rect x="1340" y="225" width="140" height="20" rx="4" fill="#4f46e5" />
+					<text x="1410" y="239" text-anchor="middle" font-size="11" font-weight="800"
+						fill="#ffffff">Shift+Click = Metronome</text>
+				</g>
+
+				<!-- ================= MODAL C: LFO 1 & 2 (PURPLE #9333ea) ================= -->
+				<rect x="384" y="135" width="178" height="95" rx="6" fill="none" stroke="#9333ea" stroke-width="3.2"
+					stroke-dasharray="7 4" />
+				<circle cx="476" cy="183.5" r="24" fill="none" stroke="#9333ea" stroke-width="2.6" />
+
+				<!-- ================= MODAL A: CENTRAL DISPLAY & PRESETS (RED #e11d48) ================= -->
+				<rect x="570" y="148" width="265" height="82" rx="6" fill="none" stroke="#e11d48" stroke-width="3.2"
+					stroke-dasharray="7 4" />
+				<circle cx="794" cy="185.5" r="24" fill="none" stroke="#e11d48" stroke-width="2.6" />
+
+				<!-- ================= MODAL D: TOUCH STRIPS (4 OPEN-BOTTOM OUTLINES) ================= -->
+				<rect x="26" y="252" width="172" height="56" rx="5" fill="none" stroke="#d97706" stroke-width="3.2" />
+
+				<path d="M 29,504 V 356 Q 29,349 36,349 H 226 Q 233,349 233,356 V 504" fill="none" stroke="#d97706"
+					stroke-width="3.0" stroke-dasharray="7 4" />
+				<path d="M 37,504 V 362 Q 37,356 43,356 H 219 Q 225,356 225,362 V 504" fill="none" stroke="#0284c7"
+					stroke-width="2.8" stroke-dasharray="6 3" />
+				<path d="M 45,504 V 368 Q 45,363 50,363 H 212 Q 217,363 217,368 V 504" fill="none" stroke="#16a34a"
+					stroke-width="2.6" stroke-dasharray="5 3" />
+				<path d="M 53,504 V 374 Q 53,370 57,370 H 205 Q 209,370 209,374 V 504" fill="none" stroke="#9333ea"
+					stroke-width="2.5" stroke-dasharray="4 3" />
+
+				<rect x="18" y="504" width="226" height="80" rx="6" fill="#0f172a" fill-opacity="0.95" stroke="#d97706"
+					stroke-width="2.4" />
+				<text x="131" y="519" text-anchor="middle" font-size="10.8" font-weight="800" fill="#fbbf24">TOUCH
+					STRIPS: 1 (L) | 2 (R)</text>
+				<text x="131" y="534" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fde68a">Modes:
+					Bend/Wheel | M1/M2 | Gate/Spice</text>
+				<text x="131" y="549" text-anchor="middle" font-size="9.5" font-weight="700" fill="#38bdf8">Hold
+					Bend/Wheel (Vib): Rate | Depth</text>
+				<text x="131" y="564" text-anchor="middle" font-size="9.5" font-weight="700" fill="#4ade80">Seq Hold
+					Step: Note Length | Velocity</text>
+				<text x="131" y="578" text-anchor="middle" font-size="9.5" font-weight="700" fill="#d8b4fe">Shaper Hold
+					Step: Amplitude | Curve</text>
+
+				<!-- ================= STEP BAR: OVERALL MODE OUTLINES (GREEN, PURPLE, RED) ================= -->
+				<rect x="252" y="245" width="1105" height="68" rx="6" fill="none" stroke="#16a34a" stroke-width="3.2" />
+				<rect x="513" y="250" width="839" height="58" rx="5" fill="none" stroke="#9333ea" stroke-width="2.6"
+					stroke-dasharray="6 3" />
+				<rect x="518" y="255" width="792" height="48" rx="4" fill="none" stroke="#e11d48" stroke-width="2.6"
+					stroke-dasharray="5 3" />
+
+				<!-- ================= STEP BAR MODE-DEDICATED PAD BREAKDOWN (OVER TOP OF KEYS) ================= -->
+				<g>
+					<rect x="252" y="326" width="1105" height="90" rx="6" fill="#0f172a" fill-opacity="0.94"
+						stroke="#16a34a" stroke-width="2.4" />
+					<line x1="542" y1="326" x2="542" y2="416" stroke="#475569" stroke-width="1.5" />
+					<line x1="827" y1="326" x2="827" y2="416" stroke="#475569" stroke-width="1.5" />
+					<line x1="1092" y1="326" x2="1092" y2="416" stroke="#475569" stroke-width="1.5" />
+
+					<text x="397" y="343" text-anchor="middle" font-size="11.2" font-weight="800" fill="#4ade80">ARP
+						MODE PADS</text>
+					<text x="397" y="360" text-anchor="middle" font-size="9.6" font-weight="700"
+						fill="#f8fafc">1&ndash;4: Up | Down | UpDwn | Rand</text>
+					<text x="397" y="376" text-anchor="middle" font-size="9.6" font-weight="700"
+						fill="#f8fafc">5&ndash;8: Order | Poly | Walk | Ptrn &nbsp;|&nbsp; 9&ndash;12: Oct
+						1&ndash;4</text>
+					<text x="397" y="392" text-anchor="middle" font-size="9.6" font-weight="700"
+						fill="#fbbf24">13&ndash;16: Repeat | Ratchet | RandOct (latch) | Mutate</text>
+					<text x="397" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#cbd5e1">Last
+						Step + Pad 1&ndash;16: Pattern mode length</text>
+
+					<text x="684.5" y="343" text-anchor="middle" font-size="11.2" font-weight="800" fill="#4ade80">SEQ
+						&amp; MODS PADS</text>
+					<text x="684.5" y="360" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Hold
+						Off | Arp | Seq + Pad/Page = Copy | Paste | Erase</text>
+					<text x="684.5" y="376" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Pads
+						1&ndash;16: Tap = Toggle step | Hold = Edit step</text>
+					<text x="684.5" y="392" text-anchor="middle" font-size="9.6" font-weight="700" fill="#38bdf8">Pages
+						16&ndash;64: Switch page | Shift+Page = Extend seq</text>
+					<text x="684.5" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#fbbf24">Last
+						Step + Pad/Page: Sequence length (1&ndash;64)</text>
+
+					<text x="959.5" y="343" text-anchor="middle" font-size="11.2" font-weight="800"
+						fill="#fda4af">FAVORITES PADS</text>
+					<text x="959.5" y="360" text-anchor="middle" font-size="9.6" font-weight="700"
+						fill="#f8fafc">Shift+Save: 64 slots (Pads 1&ndash;16 &times; Pages 16&ndash;64)</text>
+					<text x="959.5" y="376" text-anchor="middle" font-size="9.6" font-weight="700" fill="#93c5fd">Pad
+						LEDs: Blue = Saved | <tspan fill="#fda4af">Red = Active preset</tspan></text>
+					<text x="959.5" y="392" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Tap
+						Blue Pad = Load | Hold Save + Pad = Store</text>
+					<text x="959.5" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#cbd5e1">Hold
+						Seq + Pad = Clear | Sound Edit = Exit</text>
+
+					<text x="1224.5" y="343" text-anchor="middle" font-size="11.2" font-weight="800" fill="#d8b4fe">LFO
+						SHAPER PADS</text>
+					<text x="1224.5" y="360" text-anchor="middle" font-size="9.6" font-weight="700"
+						fill="#f8fafc">Shift+LFO Select: Edit wave (Purple step LEDs)</text>
+					<text x="1224.5" y="376" text-anchor="middle" font-size="9.6" font-weight="700"
+						fill="#f8fafc">1&ndash;16: Tap = Toggle | Hold = Edit | 1st+End = Seg</text>
+					<text x="1224.5" y="392" text-anchor="middle" font-size="9.6" font-weight="700"
+						fill="#f8fafc">Long-Hold Pad: Latch Step Edit (White flash)</text>
+					<text x="1224.5" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#fbbf24">Pages
+						16&ndash;64: Slope (/ \ ^ -) | Last Step+Pad = Len</text>
+				</g>
+
+				<!-- ================= KEYBED WORKFLOW CALLOUT (LOWER KEYS, y: 514..554) ================= -->
+				<rect x="300" y="514" width="1070" height="40" rx="6" fill="#0f172a" fill-opacity="0.94"
+					stroke="#d97706" stroke-width="2.4" />
+				<text x="835" y="530" text-anchor="middle" font-size="11.4" font-weight="800" fill="#fbbf24">37-KEY
+					VELOCITY + AFTERTOUCH KEYBED SHORTCUTS (Poly Voice Stealing Never Steals Lowest Note)</text>
+				<text x="835" y="546" text-anchor="middle" font-size="10.4" font-weight="700" fill="#f8fafc">
+					<tspan fill="#38bdf8">Hold Chord + Keys</tspan> = Store Chord &nbsp;|&nbsp; <tspan fill="#4ade80">
+						Seq Stopped + Hold Key</tspan> = Transpose &amp; Play &nbsp;|&nbsp; <tspan fill="#fbbf24">Seq
+						Playing + Shift + Key</tspan> = Transpose Live &nbsp;|&nbsp; <tspan fill="#d8b4fe">User Scale
+					</tspan> = Tap Keys
+				</text>
+			</svg>
+		</div>
+
+		<!-- BOTTOM ROW: THE 4 MODAL SHIFT WORKFLOW CARDS (COLOR-CODED TO MATCH OUTLINES) -->
+		<div class="shrink-0 grid grid-cols-12 gap-1.5 mt-1 text-card">
+
+			<!-- MODAL A (AMBER #d97706) -->
+			<div class="col-span-3 rounded-lg border-2 border-amber-600 bg-amber-50/50 p-1.5">
+				<div
+					class="flex items-center justify-between border-b border-amber-200 pb-0.5 mb-0.5 whitespace-nowrap">
+					<span class="font-extrabold text-amber-950 uppercase tracking-tight">Modal A: Vibrato, Macros &amp;
+						Spice/Dice</span>
+					<span class="px-1.5 py-0.5 bg-amber-600 text-white rounded text-[10px] font-bold">Amber
+						Outline</span>
+				</div>
+				<ul class="space-y-0.5 text-slate-700">
+					<li><b>Vibrato (<span class="text-sky-700 font-semibold">Shift+Bend/Wheel</span>):</b> Toggles 3rd
+						triangle LFO (top Wheel LED = <span class="text-blue-600 font-bold">Blue</span>; stays active
+						across strip modes; <code class="font-bold">SE+Osc</code> also edits)</li>
+					<li><b>Macro Assign (<span class="text-sky-700 font-semibold">Shift+Macros</span>):</b> Strips pulse
+						White &rarr; tap Strip 1 (<code class="font-bold">M1</code>) or 2 (<code
+							class="font-bold">M2</code>) &rarr; turn up to 4 knobs (<code
+							class="font-bold">Matrix</code>/<code class="font-bold">Preset</code> = custom;
+						<b>Long-click</b> = clear)
+					</li>
+					<li><b>Gate, Spice &amp; Dice:</b> <code class="font-bold">Gate</code> = step length | <code
+							class="font-bold">Spice</code> morphs Vel/Oct/Gate/Step/Env non-destructively | <span
+							class="text-sky-700 font-semibold">Shift+Gate/Spice</span> = roll <b>Dice</b></li>
+					<li><b>Keyboard Menu Jump:</b> <b>Hold <code class="font-bold">Sound Edit</code> + tap Touch
+							Strip</b> opens <code class="font-mono">Bend Range</code> | <code
+							class="font-mono">Matrix Src VeloAT</code> | <code class="font-mono">Kbd Src</code></li>
+				</ul>
+			</div>
+
+			<!-- MODAL B (GREEN #16a34a) -->
+			<div class="col-span-3 rounded-lg border-2 border-emerald-600 bg-emerald-50/50 p-1.5">
+				<div
+					class="flex items-center justify-between border-b border-emerald-200 pb-0.5 mb-0.5 whitespace-nowrap">
+					<span class="font-extrabold text-emerald-950 uppercase tracking-tight">Modal B: Arp, Seq &amp; Mod
+						Recording</span>
+					<span class="px-1.5 py-0.5 bg-emerald-600 text-white rounded text-[10px] font-bold">Green
+						Outline</span>
+				</div>
+				<ul class="space-y-0.5 text-slate-700">
+					<li><b>Arp &rarr; Seq Transfer:</b> While playing Arp, <b>long-press <code
+								class="font-bold">Record</code></b> to copy active Arp notes into the Sequencer</li>
+					<li><b>Step vs. Live Rec:</b> <code class="font-bold">Rec</code> Stopped = Step Rec (up to 6
+						notes/step) | <code class="font-bold">Rec</code> Playing = Live Rec | <span
+							class="text-sky-700 font-semibold">Shift+Rec</span> = <span
+							class="text-blue-600 font-bold">Blue Overdub</span> vs <span
+							class="text-red-600 font-bold">Red Replace</span></li>
+					<li><b>Step Note Select:</b> In Step Rec or while holding a Step pad, turn <code
+							class="font-bold">Preset</code> = pick chord note | <b>Long-click <code
+								class="font-bold">Preset</code></b> = delete note/step</li>
+					<li><b>4 Mod Lanes (<code class="font-bold">Mods</code>):</b> Tap <code
+							class="font-bold">Mods</code> &rarr; Rec + turn knob/strip, OR hold Step + turn knob | Turn
+						<code class="font-bold">Preset</code> = lane 1&ndash;4 (<b>Long-click</b> = clear)
+					</li>
+				</ul>
+			</div>
+
+			<!-- MODAL C (PURPLE #9333ea) -->
+			<div class="col-span-3 rounded-lg border-2 border-purple-600 bg-purple-50/50 p-1.5">
+				<div
+					class="flex items-center justify-between border-b border-purple-200 pb-0.5 mb-0.5 whitespace-nowrap">
+					<span class="font-extrabold text-purple-950 uppercase tracking-tight">Modal C: LFO 1&ndash;2 &amp;
+						Shaper Waves</span>
+					<span class="px-1.5 py-0.5 bg-purple-600 text-white rounded text-[10px] font-bold">Purple
+						Outline</span>
+				</div>
+				<ul class="space-y-0.5 text-slate-700">
+					<li><b>LFO 1 &amp; 2:</b> Tap <code class="font-bold">Select</code> = 1/2 (LEDs: <b>Yellow</b> <code
+							class="font-mono">+</code> | <b>Red</b> <code class="font-mono">-</code>) | <b>Click <code
+								class="font-bold">Rate</code></b> = Sync | <span
+							class="text-sky-700 font-semibold">Shift+Rate</span> = Retrig (<code
+							class="font-mono">Free</code>, <code class="font-mono">Poly</code>, <code
+							class="font-mono">Mono</code>, <code class="font-mono">Legato</code>, <code
+							class="font-mono">One</code>&hellip;)</li>
+					<li><b>Load Shaper Wave:</b> Turn <code class="font-bold">Wave</code> to <b>Shaper</b>, then <span
+							class="text-sky-700 font-semibold">Shift+Turn <code class="font-bold">Wave</code></span>
+						previews Preset + 16 Factory + 8 User waves (release <code class="font-bold">Shift</code> to
+						load)</li>
+					<li><b>Save Shaper Wave:</b> Presets auto-save 1 Shaper/LFO | In Shaper Edit, <b>Hold <code
+								class="font-bold">Save</code> + <code class="font-bold">LFO Select</code></b> &rarr;
+						<code class="font-bold">Preset</code> stores User Wave 1&ndash;8
+					</li>
+				</ul>
+			</div>
+
+			<!-- MODAL D (RED #e11d48) -->
+			<div class="col-span-3 rounded-lg border-2 border-rose-600 bg-rose-50/50 p-1.5">
+				<div class="flex items-center justify-between border-b border-rose-200 pb-0.5 mb-0.5 whitespace-nowrap">
+					<span class="font-extrabold text-rose-950 uppercase tracking-tight">Modal D: Presets, Save &amp;
+						Menus</span>
+					<span class="px-1.5 py-0.5 bg-rose-600 text-white rounded text-[10px] font-bold">Red Outline</span>
+				</div>
+				<ul class="space-y-0.5 text-slate-700">
+					<li><b>Browse &amp; Init:</b> Turn <code class="font-bold">Preset</code> &rarr; Click = load | <span
+							class="text-sky-700 font-semibold">Shift+Turn</span> = Category Filter | <b>Hold 2s</b> =
+						<b>Init Preset</b>
+					</li>
+					<li><b>Save &amp; Rename:</b> Tap <code class="font-bold">Save</code> 2&times; (overwrite) | Click
+						<code class="font-bold">Preset</code> = <b>Slot # &rarr; Type &rarr; Name</b> (<i>Turn</i>=Char
+						| <i>Shift</i>=A/a/0 | <i>Click</i>=Next | <i>Hold+Turn</i>=Pos)
+					</li>
+					<li><b>Menus &amp; Panel:</b> <code class="font-bold">Sound Edit</code> (White) = Preset Menu (<code
+							class="font-bold">SE+Btn</code> jumps; tap cancels) | <span
+							class="text-sky-700 font-semibold">Shift+SE</span> (Blue) = Global <code
+							class="font-bold">Utility</code> (<span class="text-sky-700 font-semibold">Shift+Save</span>
+						= Favs/Panel)</li>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- ===================================================================== -->
+	<!-- SHEET 2: "IF YOU WANT TO DO X..." & COMPLETE MENU MAP (BACK PAGE)     -->
+	<!-- ===================================================================== -->
+	<div id="sheet-2"
+		class="print-sheet max-w-[1400px] mx-auto rounded-xl bg-white text-slate-900 border border-slate-300 shadow-lg p-2.5 flex flex-col justify-between">
+
+		<!-- HEADER BAR -->
+		<div class="shrink-0 flex items-center justify-between border-b-2 border-slate-900 pb-1 mb-1.5">
+			<div class="flex items-center gap-2 whitespace-nowrap">
+				<span
+					class="bg-slate-900 text-white font-black tracking-tighter px-2 py-0.5 rounded text-xs">_MINIFREAK</span>
+				<h2 class="text-sm font-extrabold uppercase tracking-wide text-slate-900">Quick-Action Lookup (&ldquo;If
+					I Want to Do X...&rdquo;) &amp; Complete Menu Reference</h2>
+			</div>
+			<div class="flex items-center gap-1.5 text-[11px] whitespace-nowrap">
+				<span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-400 font-bold">Sound Edit (White LED)
+					= Per-Preset Settings</span>
+				<span class="px-2 py-0.5 rounded bg-sky-100 border border-sky-500 font-bold text-sky-900">Shift + Sound
+					Edit (Blue LED) = Global Utility Menu</span>
+			</div>
+		</div>
+
+		<!-- MAIN 12-COLUMN GRID -->
+		<div class="grid grid-cols-12 gap-2 flex-1 min-h-0 text-sheet">
+
+			<!-- LEFT 5 COLUMNS: "IF YOU WANT TO DO X, DO THIS" + HARDWARE SHORTCUTS -->
+			<div class="col-span-5 flex flex-col justify-between gap-1.5">
+
+				<!-- FAST HARDWARE MENU JUMP SHORTCUTS (NO BULLETS BEFORE + SYMBOLS!) -->
+				<div class="rounded-lg border-2 border-indigo-600 bg-indigo-50/40 p-1.5">
+					<div
+						class="font-extrabold text-indigo-950 uppercase tracking-tight border-b border-indigo-200 pb-0.5 mb-1 flex justify-between">
+						<span>Instant Menu Shortcuts (No Scrolling!)</span>
+						<span class="font-mono text-indigo-700">Hold Sound Edit (SE) + Button</span>
+					</div>
+					<div class="grid grid-cols-2 gap-x-2 gap-y-0.5 text-slate-800">
+						<div><code
+								class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + Osc Select</code>
+							&rarr; Osc / WT-Sample</div>
+						<div><code
+								class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + FX Select</code>
+							&rarr; Delay/Reverb Send</div>
+						<div><code
+								class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + Env Mode</code>
+							&rarr; Env &harr; Voice Menu</div>
+						<div><code
+								class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + CycEnv Mode</code>
+							&rarr; Cycling Env Menu</div>
+						<div><code
+								class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + LFO Select</code>
+							&rarr; LFO Retrig &amp; Sync</div>
+						<div><code
+								class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + Touch Strip</code>
+							&rarr; Keyboard Menu</div>
+						<div class="col-span-2 pt-0.5 border-t border-indigo-200"><code
+								class="px-1 py-0.5 rounded bg-sky-100 text-sky-900 font-bold">Shift + Chord (Scales)</code>
+							&rarr; Scale Config Menu</div>
+						<div class="col-span-2"><code
+								class="px-1 py-0.5 rounded bg-slate-200 text-slate-900 font-bold">Sound Edit</code>
+							&rarr; Cancel Save / Exit</div>
+					</div>
+				</div>
+
+				<!-- "IF YOU WANT TO DO X..." TASK TABLE -->
+				<div
+					class="rounded-lg border-2 border-slate-800 bg-slate-50 p-1.5 flex-1 flex flex-col justify-between">
+					<div>
+						<div
+							class="font-extrabold text-slate-900 uppercase tracking-tight border-b border-slate-300 pb-0.5 mb-0.5">
+							&ldquo;If I Want To Do X, Where Do I Go?&rdquo; (Top 16 Workflows)
+						</div>
+						<table class="w-full text-left border-collapse">
+							<thead>
+								<tr class="border-b border-slate-300 text-slate-500">
+									<th class="py-0.5 pr-1 font-bold">Goal / Task</th>
+									<th class="py-0.5 font-bold">Exact Button / Menu Path</th>
+								</tr>
+							</thead>
+							<tbody class="divide-y text-slate-800">
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Start a clean patch from scratch</td>
+									<td class="py-0.5"><b>Long-press <code class="font-bold">Preset/Edit</code></b> (or
+										<code class="font-mono">Utility &gt; Preset Ops &gt; Erase &gt; Init</code>)
+									</td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Undo a bad edit / restore state</td>
+									<td class="py-0.5"><code
+											class="font-mono">Sound Edit &gt; Preset &gt; View Snapshots</code>
+										(time-stamped auto-saves!)</td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Copy Osc, FX, Seq, or LFO to patch</td>
+									<td class="py-0.5"><code
+											class="font-mono">Utility &gt; Preset Ops &gt; Preset Copy</code> &rarr;
+										switch preset &rarr; <code class="font-mono">Preset Paste</code></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Swap FX 1, FX 2, or FX 3 order</td>
+									<td class="py-0.5"><code
+											class="font-mono">Utility &gt; Preset Ops &gt; Preset Paste &gt; Swap FX 1/2/3</code>
+									</td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Run Delay/Reverb in parallel</td>
+									<td class="py-0.5"><code class="font-bold">SE + FX Select</code> &rarr; set
+										Delay/Reverb Routing = <b>Send</b></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Quantize pitch mod to a scale</td>
+									<td class="py-0.5"><code class="font-bold">SE + Osc Select</code> &rarr; <code
+											class="font-mono">Osc1/2 Mod Quant</code></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Lock keyboard to a scale / key</td>
+									<td class="py-0.5"><code class="font-bold text-sky-700">Shift + Chord</code> (<code
+											class="font-mono">Scale Config</code>) &rarr; pick Scale &amp; Root (or
+										<code class="font-mono">User</code>)
+									</td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Make velocity control loudness</td>
+									<td class="py-0.5"><code class="font-bold">SE + Env Mode</code> &rarr; <code
+											class="font-mono">Envelope &gt; Velo &gt; VCA</code></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Use Velocity + Aftertouch together</td>
+									<td class="py-0.5"><code class="font-bold">SE + Touch Strip</code> &rarr; <code
+											class="font-mono">Matrix Src VeloAT = Both</code></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Adjust Unison voices &amp; detune</td>
+									<td class="py-0.5"><code class="font-bold">SE + Env Mode</code> (2&times;) &rarr;
+										<code class="font-mono">Voice &gt; Unison Count / Spread / Mode</code>
+									</td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Legato glide only when overlapping</td>
+									<td class="py-0.5"><code class="font-bold">SE + Osc Select</code> &rarr; <code
+											class="font-mono">Glide Mode = Time/Rate/Sync Legato</code></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Stop step pads flickering in Shaper</td>
+									<td class="py-0.5"><code
+											class="font-mono">Utility &gt; Controls &gt; Touch Button Sens = Medium</code>
+									</td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Prevent analog knob value jumps</td>
+									<td class="py-0.5"><code
+											class="font-mono">Utility &gt; Controls &gt; Knob Catch = Hook</code> or
+										<code class="font-mono">Scale</code>
+									</td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Plug a Mic or Synth into Audio In</td>
+									<td class="py-0.5">Set Osc 1 = <code class="font-mono">Audio In</code> (or FX =
+										<code class="font-mono">Vocoder Ext</code>) + <code
+											class="font-mono">Utility &gt; Audio &gt; In Mode/Gain</code>
+									</td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Keep same BPM when changing patch</td>
+									<td class="py-0.5"><code
+											class="font-mono">Utility &gt; Sync &gt; Global Tempo = On</code></td>
+								</tr>
+								<tr>
+									<td class="py-0.5 pr-1 font-semibold">Tune self-oscillating Analog Filter</td>
+									<td class="py-0.5"><code
+											class="font-mono">Utility &gt; Audio &gt; Calib Cutoff</code> (1 min) &amp;
+										<code class="font-mono">Calib Analog</code> (2 min)
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- MIDDLE 4 COLUMNS: PER-PRESET SOUND EDIT MENU MAP -->
+			<div class="col-span-4 rounded-lg border-2 border-slate-800 bg-white p-1.5 flex flex-col justify-between">
+				<div class="flex flex-col flex-1 justify-between">
+					<div class="flex items-center justify-between border-b-2 border-slate-800 pb-0.5 mb-0.5">
+						<span class="font-extrabold text-slate-900 uppercase">Sound Edit Menus (Saved Per-Preset)</span>
+						<span class="px-1.5 py-0.5 bg-slate-800 text-white rounded text-[10px] font-mono">White
+							LED</span>
+					</div>
+
+					<div class="space-y-0.5 text-slate-800 flex-1 flex flex-col justify-between">
+						<div class="p-1 rounded bg-slate-50 border border-slate-200">
+							<div class="font-bold text-slate-900">0. Preset Volume <span
+									class="text-slate-500 font-normal">(Top item)</span></div>
+							<div>Offsets current preset level (<code class="font-mono">-12 dB to +6 dB</code>) to match
+								other patches.</div>
+						</div>
+
+						<div class="p-1 rounded bg-orange-50/50 border border-orange-200">
+							<div class="font-bold text-orange-950 flex justify-between">
+								<span>1. Osc <span class="text-orange-700 font-normal">(Manual calls this
+										&ldquo;Pitch&rdquo; in ch. 5/9/12!)</span></span>
+								<span class="font-mono text-[10px] text-orange-800">SE + Osc Select</span>
+							</div>
+							<ul class="mt-0.5 space-y-0.5">
+								<li><b>Wavetable / Sample Select:</b> Browse Osc 1 tables/samples.</li>
+								<li><b>Osc1 / Osc2 Mod Quant:</b> Quantize pitch mod to scales (Chromatic, Oct, 5th,
+									Maj/Min, Pentatonic, Phrygian).</li>
+								<li><b>Glide Mode:</b> <code class="font-mono">Time</code>, <code
+										class="font-mono">Rate</code> (speed/semitone), or <code
+										class="font-mono">Sync</code> (each w/ optional <b>Legato</b>).</li>
+								<li><b>Vibrato Depth &amp; Vib Rate:</b> Config for the 3rd Vibrato LFO.</li>
+							</ul>
+						</div>
+
+						<div class="p-1 rounded bg-indigo-50/50 border border-indigo-200">
+							<div class="font-bold text-indigo-950 flex justify-between">
+								<span>2. FX</span>
+								<span class="font-mono text-[10px] text-indigo-800">SE + FX Select</span>
+							</div>
+							<div><b>Delay Routing &amp; Reverb Routing:</b> <code class="font-mono">Insert</code>
+								(serial chain) vs. <code class="font-mono">Send</code> (parallel split; <code
+									class="font-mono">Amount</code> = Send Level).</div>
+						</div>
+
+						<div class="p-1 rounded bg-slate-50 border border-slate-200">
+							<div class="font-bold text-slate-900 flex justify-between">
+								<span>3. Envelope (VCA ADSR)</span>
+								<span class="font-mono text-[10px] text-slate-600">SE + Env Mode</span>
+							</div>
+							<ul class="mt-0.5 space-y-0.5">
+								<li><b>Velo &gt; VCA / VCF / Env / Time:</b> Velocity depth for Vol, Cutoff, Matrix Env
+									&amp; Dec/Rel.</li>
+								<li><b>Retrig Mode:</b> <code class="font-mono">Env Reset</code> (from 0) vs. <code
+										class="font-mono">Env Continue</code> (from current level; huge in
+									Mono/Para/Uni!).</li>
+								<li><b>Attack / Decay / Release Curves:</b> <code class="font-mono">Default</code> vs.
+									<code class="font-mono">Quick</code> / <code class="font-mono">Percussive</code>.
+								</li>
+							</ul>
+						</div>
+
+						<div class="p-1 rounded bg-emerald-50/50 border border-emerald-200">
+							<div class="font-bold text-emerald-950 flex justify-between">
+								<span>4. Voice <span class="text-emerald-700 font-normal">(Manual ch. 12.3 mislabels
+										&ldquo;Keyboard&rdquo;)</span></span>
+								<span class="font-mono text-[10px] text-emerald-800">SE + Env Mode</span>
+							</div>
+							<ul class="mt-0.5 space-y-0.5">
+								<li><b>Legato Mono:</b> Retrigger on legato notes | <b>Osc Free Run:</b> Free phase vs.
+									key-reset.</li>
+								<li><b>Unison Spread / Count (2&ndash;6) / Mode (Mono, Poly, Para)</b>.</li>
+								<li><b>Poly Allocation:</b> <code class="font-mono">Cycle</code> (round-robin), <code
+										class="font-mono">Reassign</code> (reuses voice), <code
+										class="font-mono">Reset</code> (Voice 1).</li>
+								<li><b>Poly Steal Mode:</b> <code class="font-mono">Oldest</code>, <code
+										class="font-mono">Lowest Velo</code>, <code class="font-mono">None</code>
+									(<i>never steals lowest note!</i>).</li>
+							</ul>
+						</div>
+
+						<div class="p-1 rounded bg-teal-50/40 border border-teal-200">
+							<div class="font-bold text-teal-950 flex justify-between">
+								<span>5. Cycling Envelope</span>
+								<span class="font-mono text-[10px] text-teal-700">SE + CycEnv Mode</span>
+							</div>
+							<div><b>Retrig Src:</b> <code class="font-mono">Poly</code>, <code
+									class="font-mono">Mono</code>, <code class="font-mono">Legato</code>, <code
+									class="font-mono">LFO 1/2</code> | <b>Stage Order:</b> <code
+									class="font-mono">RHF</code> (hold high) vs. <code class="font-mono">RFH/HRF</code>
+								(hold 0) | <b>Tempo Sync</b>.</div>
+						</div>
+
+						<div class="p-1 rounded bg-purple-50/50 border border-purple-200">
+							<div class="font-bold text-purple-950 flex justify-between">
+								<span>6. LFO</span>
+								<span class="font-mono text-[10px] text-purple-700">SE + LFO Select</span>
+							</div>
+							<div><b>LFO 1/2 Retrig</b> | <b>Sync Filter:</b> Straight / Triplet / Dotted | <b>Shaper
+									Rate:</b> <code class="font-mono">Per Step</code> vs. <code
+									class="font-mono">All Steps</code> (16&times; faster).</div>
+						</div>
+
+						<div class="p-1 rounded bg-amber-50/50 border border-amber-200">
+							<div class="font-bold text-amber-950 flex justify-between">
+								<span>7. Keyboard</span>
+								<span class="font-mono text-[10px] text-amber-700">SE + Touch Strip</span>
+							</div>
+							<div><b>Matrix Src VeloAT:</b> Velo / AT / Both | <b>Kbd Src:</b> Linear / S-Curve / Random
+								/ Voices | <b>Bend Range:</b> 1&ndash;12 st.</div>
+						</div>
+
+						<div class="p-1 rounded bg-slate-50 border border-slate-200">
+							<div class="font-bold text-slate-900">8. Seq</div>
+							<div><b>Smooth Mod 1&ndash;4:</b> Step smoothing on/off | <b>-1 / +1 Semitone:</b> Transpose
+								saved seq.</div>
+						</div>
+
+						<div class="p-1 rounded bg-sky-50/40 border border-sky-200">
+							<div class="font-bold text-sky-950 flex justify-between">
+								<span>9. Scale Config</span>
+								<span class="font-mono text-[10px] text-sky-700">Shift + Chord</span>
+							</div>
+							<div><b>Scale:</b> Off/Global/User, Maj, Min, Dorian, Mixolydian, Blues, Pentatonic |
+								<b>Root:</b> C&ndash;B.
+							</div>
+						</div>
+
+						<div class="p-1 rounded bg-rose-50/50 border border-rose-200">
+							<div class="font-bold text-rose-950">10. Preset</div>
+							<div><b>View Snapshots:</b> Restore time-stamped auto-saves | <b>Details:</b> Type, Designer
+								&amp; Rev #.</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- RIGHT 3 COLUMNS: GLOBAL UTILITY MENU + MINIFREAK V SYNC & SAMPLE TRANSFER -->
+			<div class="col-span-3 flex flex-col justify-between gap-1.5">
+
+				<div class="rounded-lg border-2 border-sky-600 bg-sky-50/30 p-1.5 flex-1 flex flex-col justify-between">
+					<div class="flex items-center justify-between border-b-2 border-sky-600 pb-0.5 mb-0.5">
+						<span class="font-extrabold text-sky-950 uppercase">Utility Menu (Global)</span>
+						<span class="px-1.5 py-0.5 bg-sky-600 text-white rounded text-[10px] font-mono">Shift + Sound
+							Edit</span>
+					</div>
+
+					<div class="space-y-0.5 text-slate-800 flex-1 flex flex-col justify-between">
+						<div>
+							<div class="font-bold text-sky-950">1. Preset Operations</div>
+							<div><code class="font-mono">Preset Copy / Paste</code> (Osc 1/2, FX 1&ndash;3, Seq+Mods,
+								LFO Curve, Swap FX) | <code class="font-mono">Preset Erase</code> (Init, Reload, Matrix,
+								Seq, Mods, Macro 1/2) | <code class="font-mono">Panel Mode</code> (<b>Favorite</b> vs.
+								<b>Knob Panel</b>).
+							</div>
+						</div>
+
+						<div class="border-t border-sky-200 pt-0.5">
+							<div class="font-bold text-sky-950">2. Controls (Feel &amp; Response)</div>
+							<div><code class="font-mono">Knob Catch</code>: <b>Jump</b>, <b>Hook</b>, <b>Scale</b> |
+								<code class="font-mono">Velo/AT Curve</code>: Lin, Log, Expo | <code
+									class="font-mono">AT Sens</code>: Low/Mid/High | <code
+									class="font-mono">Touch Sens</code>: Low, <b>Med</b>, High | <code
+									class="font-mono">Sustain Polarity</code>.
+							</div>
+						</div>
+
+						<div class="border-t border-sky-200 pt-0.5">
+							<div class="font-bold text-sky-950">3. Audio &amp; Calibration</div>
+							<div><code class="font-mono">Audio In Mode</code>: <b>Line</b> vs. <b>Mic</b> (Dynamic) |
+								<code class="font-mono">Audio In Gain</code> (<code
+									class="font-mono">-9 to +24 dB</code>) | <code class="font-mono">Master Tune</code>
+								(&plusmn;50c) | <code class="font-mono">Stereo to Mono</code> | <code
+									class="font-mono">Calib Cutoff</code> &amp; <code
+									class="font-mono">Calib Analog</code>.
+							</div>
+						</div>
+
+						<div class="border-t border-sky-200 pt-0.5">
+							<div class="font-bold text-sky-950">4. Sync</div>
+							<div><code class="font-mono">Metronome</code> (On/Off, Level, 1-Bar Count-In) | <code
+									class="font-mono">Clock Source</code> (Auto/Int/USB/MIDI/In) | <code
+									class="font-mono">Clock/Transport Rx/Tx</code> | <code class="font-mono">PPQ</code>
+								| <code class="font-mono">Global Tempo</code>.</div>
+						</div>
+
+						<div class="border-t border-sky-200 pt-0.5">
+							<div class="font-bold text-sky-950">5. MIDI</div>
+							<div><code class="font-mono">In/Out Channels</code> | <code
+									class="font-mono">MIDI From/To</code> (USB/DIN/Both) | <code
+									class="font-mono">Local Control</code> + <code
+									class="font-mono">MIDI Seq/Synth</code> (4 routing modes) | <code
+									class="font-mono">Knob Send CC</code> | <code
+									class="font-mono">Program Change</code>.</div>
+						</div>
+
+						<div class="border-t border-sky-200 pt-0.5">
+							<div class="font-bold text-sky-950">6. Global Scale</div>
+							<div><code class="font-mono">Global Scale &amp; Root</code>: Default scale when preset Scale
+								= Global.</div>
+						</div>
+
+						<div class="border-t border-sky-200 pt-0.5">
+							<div class="font-bold text-sky-950">7. Misc</div>
+							<div><code class="font-mono">LED Intensity</code> | <code
+									class="font-mono">FW Version</code> | <code class="font-mono">Reset Settings</code>
+								(keeps presets).</div>
+						</div>
+
+						<div class="border-t border-sky-200 pt-0.5">
+							<div class="font-bold text-sky-950">8. Your Name</div>
+							<div>Set your designer name (tags your patches &amp; adds to Filter list).</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- MINIFREAK V SYNC BOX -->
+				<div class="rounded-lg border-2 border-amber-500 bg-amber-50/50 p-1.5">
+					<div
+						class="font-extrabold text-amber-950 uppercase tracking-tight border-b border-amber-200 pb-0.5 mb-0.5">
+						MiniFreak V Software Sync Rules
+					</div>
+					<ul class="space-y-0.5 text-slate-800">
+						<li><b>Standalone App:</b> Hardware preset overwrites software on connect.</li>
+						<li><b>DAW Plugin:</b> Plugin preset overwrites hardware on connect!</li>
+						<li><b>Backup Memory:</b> Preset Browser &rarr; <b>MiniFreak</b> &rarr; <b>Backup to
+								Computer</b> (right-click or Cmd/Ctrl+Shift drag to restore slots).</li>
+					</ul>
+				</div>
+
+				<!-- MINIFREAK V CUSTOM SAMPLE TRANSFER (v5.0) -->
+				<div class="rounded-lg border-2 border-emerald-600 bg-emerald-50/50 p-1.5">
+					<div
+						class="flex items-center justify-between border-b border-emerald-200 pb-0.5 mb-0.5 whitespace-nowrap">
+						<span class="font-extrabold text-emerald-950 uppercase tracking-tight">Custom Sample Transfer
+							(v5.0)</span>
+						<span class="px-1.5 py-0.5 bg-emerald-600 text-white rounded text-[10px] font-mono">MiniFreak
+							V</span>
+					</div>
+					<ul class="space-y-0.5 text-slate-800">
+						<li><b>1. Open Sample UI in V:</b> Select a Wavetable/Sample-based engine in <b>MiniFreak V</b>,
+							then <b>click the sample name</b> to bring up the UI.</li>
+						<li><b>2. Import Audio:</b> Click <b>Import</b> or <b>drag &amp; drop</b> audio into V (target:
+							<code class="font-mono font-bold">12-bit, 32 kHz, max 6s</code>; user samples start with
+							<code class="font-mono font-bold">USR</code>).
+						</li>
+						<li><b>3. Send to Hardware:</b> Connect synth to reveal the <b>Hardware Management</b> section
+							&rarr; click <b>Send</b> or <b>drag &amp; drop</b> to transfer.</li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<script>
+		function fitSvgBadges() {
+			document.querySelectorAll('.svg-badge').forEach(g => {
+				const rect = g.querySelector('rect');
+				const text = g.querySelector('text');
+				if (rect && text && typeof text.getComputedTextLength === 'function') {
+					const len = text.getComputedTextLength();
+					if (len > 0) {
+						const cx = parseFloat(text.getAttribute('x'));
+						const w = Math.ceil(len + 18);
+						const rx = Math.max(14, Math.min(1486 - w, Math.round(cx - w / 2)));
+						rect.setAttribute('width', w);
+						rect.setAttribute('x', rx);
+						text.setAttribute('x', rx + w / 2);
+					}
+				}
+			});
+		}
+		window.addEventListener('DOMContentLoaded', fitSvgBadges);
+		window.addEventListener('load', fitSvgBadges);
+
+		function setSheetView(view) {
+			const s1 = document.getElementById('sheet-1');
+			const s2 = document.getElementById('sheet-2');
+			const bBoth = document.getElementById('btn-sheet-both');
+			const b1 = document.getElementById('btn-sheet-1');
+			const b2 = document.getElementById('btn-sheet-2');
+
+			[bBoth, b1, b2].forEach(b => {
+				b.className = 'px-2.5 py-1 rounded font-medium text-slate-300 hover:text-white';
+			});
+
+			if (view === 'sheet1') {
+				s1.style.display = 'flex';
+				s2.style.display = 'none';
+				b1.className = 'px-2.5 py-1 rounded font-semibold bg-orange-500 text-white';
+			} else if (view === 'sheet2') {
+				s1.style.display = 'none';
+				s2.style.display = 'flex';
+				b2.className = 'px-2.5 py-1 rounded font-semibold bg-orange-500 text-white';
+			} else {
+				s1.style.display = 'flex';
+				s2.style.display = 'flex';
+				bBoth.className = 'px-2.5 py-1 rounded font-semibold bg-orange-500 text-white';
+			}
+			fitSvgBadges();
+		}
+	</script>
 </body>
+
 </html>
