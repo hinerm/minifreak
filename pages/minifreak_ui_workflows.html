@@ -357,7 +357,7 @@
       <div class="flex items-center gap-1 text-[10px] whitespace-nowrap">
         <span class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-300 font-semibold text-slate-800"><b>White Label:</b> Primary</span>
         <span class="px-1.5 py-0.5 rounded bg-sky-50 border border-sky-400 font-semibold text-sky-800"><b>Blue Label:</b> Hold <code class="font-bold">Shift</code></span>
-        <span class="px-1.5 py-0.5 rounded bg-amber-50 border border-amber-400 font-semibold text-amber-900"><b>Encoders:</b> Turn &bull; Click &bull; Hold+Turn &bull; Hold 1s</span>
+        <span class="px-1.5 py-0.5 rounded bg-amber-50 border border-amber-400 font-semibold text-amber-900"><b>Encoders:</b> Turn | Click | Hold+Turn | Hold 1s</span>
         <span class="px-1.5 py-0.5 rounded bg-indigo-50 border border-indigo-400 font-semibold text-indigo-900"><b>Menu Jump:</b> <code class="font-bold">Sound Edit</code> + Btn</span>
       </div>
     </div>
@@ -372,10 +372,10 @@
           <span class="px-1.5 py-0.5 bg-sky-600 text-white rounded text-[10px] font-bold">Cyan Outline</span>
         </div>
         <ul class="space-y-0.5 text-slate-700">
-          <li>&bull; <b>Matrix (7&times;13):</b> Turn <code class="font-bold">Matrix</code> (L&rarr;R), <span class="text-sky-700 font-semibold">Shift+Turn</span> (Up/Down). Click (<span class="text-red-600 font-semibold">Amt LED</span>) &rarr; Turn &rarr; Click. <b>Hold+Turn</b> = fast offset; <b>Hold 1s</b> = reset <code class="font-mono">0</code>.</li>
-          <li>&bull; <b>Assign 1&ndash;3 (9 slots):</b> <span class="text-sky-700 font-semibold">Shift+Assign 1&ndash;3</span> = Page 1&ndash;3. <b>Hold <code class="font-bold">Assign</code> + Turn Knob</b> (or turn <code class="font-bold">Matrix</code> for Mod Amount, or <code class="font-bold">Preset</code> for other targets).</li>
-          <li>&bull; <b>Octave / Hold:</b> Press <b>both <code class="font-bold">Octave &lt; &gt;</code></b> = reset <code class="font-mono">0</code>. <code class="font-bold">Hold/Rest</code> latches keys/Arp (Rest/Tie in Seq).</li>
-          <li>&bull; <b>Chord / Glide:</b> <b>Hold <code class="font-bold">Chord</code> + Keys</b> = set chord; <span class="text-sky-700 font-semibold">Shift+Chord</span> = Scale Config.</li>
+          <li><b>Matrix (7&times;13):</b> Turn <code class="font-bold">Matrix</code> = L&rarr;R | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Up/Down | Click (<span class="text-red-600 font-semibold">Amt LED</span>) = edit | <b>Hold+Turn</b> = quick offset | <b>Hold 1s</b> = clear (<code class="font-mono">0</code>)</li>
+          <li><b>Assign 1&ndash;3 (9 slots):</b> <span class="text-sky-700 font-semibold">Shift+Assign 1&ndash;3</span> = Page 1&ndash;3 | <b>Hold <code class="font-bold">Assign</code> + Turn Knob</b> (<code class="font-bold">Matrix</code> = mod depth | <code class="font-bold">Preset</code> = <code class="font-mono">VCA</code>/<code class="font-mono">Uni</code>/<code class="font-mono">LFO AM</code>)</li>
+          <li><b>Hold/Tie:</b> Toggles key/Arp sustain (or holds Seq transpose) | In Seq Step Rec: tap = Rest, hold keys + tap = Tie</li>
+          <li><b>Chord/Scales:</b> Tap = toggle Chord | <span class="text-sky-700 font-semibold">Shift+Chord</span> = Scale Config &nbsp;|&nbsp; <b>Glide:</b> Portamento time (<code class="font-bold">SE+Osc</code> = Time/Rate/Sync/Legato)</li>
         </ul>
       </div>
 
@@ -386,10 +386,10 @@
           <span class="px-1.5 py-0.5 bg-orange-600 text-white rounded text-[10px] font-bold">Orange Outline</span>
         </div>
         <ul class="space-y-0.5 text-slate-700">
-          <li>&bull; <b>Select / Peek:</b> Tap <code class="font-bold">Select</code> (Osc 1/2). <b>Long-press <code class="font-bold">Select</code></b> = peek knob values on OLED without changing sound!</li>
-          <li>&bull; <b>Tune Encoder:</b> Turn = Semitones (&plusmn;48) &bull; <b>Click</b> = Fine cents &bull; <span class="text-sky-700 font-semibold">Shift+Turn</span> = Octaves.</li>
-          <li>&bull; <b>Pick Sample / Wavetable (Osc 1):</b> <span class="text-sky-700 font-semibold">Shift+Turn <code class="font-bold">Type</code></span> (or <code class="font-bold">Sound Edit + Select</code>).</li>
-          <li>&bull; <b>Mix vs. Filter Mode:</b> <span class="text-sky-700 font-semibold">Shift+Volume</span> balances Osc 1/2. When Osc 2 = Filter/Destroy, LED 2 turns <span class="text-sky-600 font-bold">Pale Blue</span> (<code class="font-bold">Vol 1</code> = Drive; <code class="font-bold">Vol 2</code> = Wet).</li>
+          <li><b>Select &amp; Params:</b> Tap <code class="font-bold">Select</code> = Osc 1/2 | Orange <code class="font-bold">Wave</code> | <code class="font-bold">Timbre</code> | <code class="font-bold">Shape</code> knobs map to 3 model-specific OLED icons</li>
+          <li><b>Tune/Oct Encoder:</b> Turn = Semitones (&plusmn;48) | <b>Click</b> (<code class="font-mono">Fine</code> LED) = Cents | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Octaves</li>
+          <li><b>Wavetable &amp; Sample (Osc 1):</b> <span class="text-sky-700 font-semibold">Shift+Turn <code class="font-bold">Type</code></span> (or <code class="font-bold">SE + Osc Select</code>) browses tables/samples (shared by 7 Granular types)</li>
+          <li><b>Osc 2 Filter / Destroy:</b> <code class="font-bold">Select</code> LED 2 turns <span class="text-sky-600 font-bold">Pale Blue</span> (<code class="font-bold">Osc 1 Vol</code> = Input Drive | <code class="font-bold">Osc 2 Vol</code> = Dry/Wet)</li>
         </ul>
       </div>
 
@@ -400,9 +400,9 @@
           <span class="px-1.5 py-0.5 bg-teal-600 text-white rounded text-[10px] font-bold">Teal Outline</span>
         </div>
         <ul class="space-y-0.5 text-slate-700">
-          <li>&bull; <b>Analog VCF (12 dB):</b> <code class="font-bold">Type</code> = LPF / BPF / HPF. <code class="font-bold">Env/Velo</code> (0 @ center) sets Env depth; <span class="text-sky-700 font-semibold">Shift+Turn</span> sets <b>Velocity &rarr; VCF Env</b> (<code class="font-bold">Kbd &rarr; Cutoff = 50</code> tracks 1:1).</li>
-          <li>&bull; <b>Cycling Env:</b> <code class="font-bold">Mode</code> = <b>Env</b> (ADSD), <b>Run</b> (Mono free loop), <b>Loop</b> (Poly retrig loop). <span class="text-sky-700 font-semibold">Shift+Rise/Fall</span> = Stage Curve (Exp &harr; Lin &harr; Log).</li>
-          <li>&bull; <b>VCA Env &amp; Voicing <code class="font-bold">Mode</code>:</b> <b>Mono</b> &bull; <b>Poly</b> (6v) &bull; <b>Para</b> (12v, Osc 2 off) &bull; <b>Uni</b> (up to 6 stacked). <code class="font-bold">SE + Mode</code> = Env &amp; Voice menus.</li>
+          <li><b>Analog VCF (12 dB):</b> <code class="font-bold">Type</code> = LPF | BPF | HPF | <code class="font-bold">Env/Velo</code> (<code class="font-mono">0</code> @ center) = Env depth | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Velo &rarr; VCF Env (<code class="font-mono">Kbd&rarr;Cut=50</code> tracks 1:1)</li>
+          <li><b>Cycling Env:</b> <code class="font-bold">Mode</code> = <b>Env</b> (ADSD) | <b>Run</b> (Mono free loop) | <b>Loop</b> (Poly retrig loop) | <span class="text-sky-700 font-semibold">Shift+Rise/Fall</span> = Curve (Exp | Lin | Log)</li>
+          <li><b>Envelope &amp; Voicing:</b> <code class="font-bold">ADSR</code> = VCA amp | <code class="font-bold">Mode</code> = <b>Mono</b> | <b>Poly</b> (6v) | <b>Para</b> (12v, Osc 2 off) | <b>Uni</b> (2&ndash;6v) | <code class="font-bold">SE+Mode</code> = Env &amp; Voice menus</li>
         </ul>
       </div>
 
@@ -413,10 +413,10 @@
           <span class="px-1.5 py-0.5 bg-indigo-600 text-white rounded text-[10px] font-bold">Indigo Outline</span>
         </div>
         <ul class="space-y-0.5 text-slate-700">
-          <li>&bull; <b>FX Select LEDs:</b> <b>Bright</b> = Editing &bull; <b>Dim</b> = Active (On) &bull; <b>Unlit</b> = Bypassed (Off).</li>
-          <li>&bull; <b>Toggle &amp; Subtype:</b> <b>Click <code class="font-bold">Type/Sub</code></b> = On/Off &bull; <span class="text-sky-700 font-semibold">Shift+Turn <code class="font-bold">Type/Sub</code></span> = Subtype preset.</li>
-          <li>&bull; <b>Insert vs. Send (Delay/Reverb):</b> <code class="font-bold">Hold Sound Edit + FX Select</code> (<code class="font-bold">Amount</code> = Send Level).</li>
-          <li>&bull; <b>Tempo Encoder:</b> Turn = BPM &bull; <b>Click</b> = Time Div (<b>Hold+Turn</b> locks family) &bull; <span class="text-sky-700 font-semibold">Shift+Turn</span> = Swing &bull; <span class="text-sky-700 font-semibold">Shift+Click</span> = <b>Metronome On/Off</b>!</li>
+          <li><b>FX Select LEDs:</b> <b>Bright</b> = Editing | <b>Dim</b> = Active (On) | <b>Unlit</b> = Bypassed (Off)</li>
+          <li><b>Type/Sub Encoder:</b> <b>Click</b> = FX On/Off | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Subtype preset (<code class="font-bold">Master</code> = main &amp; headphone output)</li>
+          <li><b>Insert vs. Send:</b> <code class="font-bold">SE + FX Select</code> sets Delay / Reverb to Insert (serial) or Send (parallel; <code class="font-bold">Amount</code> = Send Level)</li>
+          <li><b>Tempo/Swing Encoder:</b> Turn = BPM (30&ndash;240) | <b>Click+Turn</b> = Time Div (<b>Hold+Turn</b> locks family) | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Swing</li>
         </ul>
       </div>
 
@@ -428,179 +428,111 @@
         <image href="../assets/minifreak_cropped.jpg" x="0" y="0" width="1500" height="641" preserveAspectRatio="xMidYMin slice"/>
 
         <!-- ================= 1. MOD MATRIX & LEFT CONTROLS (CYAN #0284c7) ================= -->
-        <rect x="34" y="27" width="334" height="118" rx="6" fill="none" stroke="#0284c7" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <rect x="206" y="38" width="76" height="23" rx="11.5" fill="none" stroke="#0284c7" stroke-width="2.4"/>
-        <circle cx="304" cy="102" r="22" fill="none" stroke="#0284c7" stroke-width="3.2"/>
-        <g class="svg-badge">
-          <rect x="38" y="4" width="182" height="21" rx="4" fill="#0284c7"/>
-          <text x="129" y="18.5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">Shift+Assign = Page 1–3</text>
-        </g>
-        <g class="svg-badge">
-          <rect x="226" y="4" width="146" height="21" rx="4" fill="#0f172a" fill-opacity="0.94" stroke="#0284c7" stroke-width="1.5"/>
-          <text x="299" y="18.5" text-anchor="middle" font-size="11" font-weight="800" fill="#38bdf8">Matrix: Click=Amt • 1s=0</text>
-        </g>
+        <rect x="34" y="27" width="334" height="116" rx="6" fill="none" stroke="#0284c7" stroke-width="3.2" stroke-dasharray="7 4"/>
+        <circle cx="306" cy="102" r="24.5" fill="none" stroke="#0284c7" stroke-width="2.6"/>
 
-        <!-- Left Performance Controls Box (Shift, Octave, Hold/Rest, Chord/Scales, Glide) -->
-        <rect x="34" y="162" width="334" height="68" rx="6" fill="none" stroke="#0284c7" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="58" cy="188" r="19" fill="none" stroke="#0284c7" stroke-width="3.4"/>
-        <rect x="105" y="171" width="81" height="34" rx="17" fill="none" stroke="#0284c7" stroke-width="2.6"/>
-        <circle cx="230" cy="188" r="13.5" fill="none" stroke="#0284c7" stroke-width="2.6"/>
-        <circle cx="272" cy="188" r="13.5" fill="none" stroke="#0284c7" stroke-width="2.6"/>
-        <circle cx="337" cy="186" r="20" fill="none" stroke="#0284c7" stroke-width="2.6"/>
+        <rect x="34" y="165" width="334" height="65" rx="6" fill="none" stroke="#0284c7" stroke-width="3.2" stroke-dasharray="7 4"/>
+        <rect x="104" y="170" width="84" height="36" rx="18" fill="none" stroke="#0284c7" stroke-width="2.6"/>
         <g class="svg-badge">
-          <rect x="80" y="146" width="124" height="20" rx="4" fill="#0284c7"/>
-          <text x="142" y="160" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">Both = Reset Oct</text>
-        </g>
-        <g class="svg-badge">
-          <rect x="196" y="146" width="180" height="20" rx="4" fill="#0f172a" fill-opacity="0.94" stroke="#0284c7" stroke-width="1.5"/>
-          <text x="286" y="160" text-anchor="middle" font-size="11" font-weight="800" fill="#38bdf8">Hold=Chord • Shift=Scales</text>
+          <rect x="82" y="144" width="128" height="19" rx="4" fill="#0284c7"/>
+          <text x="146" y="157.5" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">Both &lt; &gt; = Reset Oct</text>
         </g>
 
         <!-- ================= 2. DIGITAL OSCILLATORS 1 & 2 (ORANGE #ea580c) ================= -->
         <rect x="384" y="29" width="438" height="101" rx="6" fill="none" stroke="#ea580c" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="408" cy="91" r="13.5" fill="none" stroke="#ea580c" stroke-width="2.6"/>
-        <circle cx="472" cy="86" r="20" fill="none" stroke="#ea580c" stroke-width="2.6"/>
-        <circle cx="537" cy="86" r="20" fill="none" stroke="#ea580c" stroke-width="2.6"/>
-        <circle cx="793" cy="86" r="20" fill="none" stroke="#ea580c" stroke-width="2.6"/>
+        <circle cx="407" cy="91" r="14.5" fill="none" stroke="#ea580c" stroke-width="2.6"/>
+        <circle cx="476" cy="85" r="24" fill="none" stroke="#ea580c" stroke-width="2.6"/>
+        <circle cx="793.5" cy="85.5" r="20.5" fill="none" stroke="#ea580c" stroke-width="2.6"/>
         <g class="svg-badge">
-          <rect x="384" y="4" width="320" height="21" rx="4" fill="#ea580c"/>
-          <text x="544" y="18.5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">Hold Select=Peek • Click Tune=Fine • Shift+Type=WT</text>
+          <rect x="384" y="4" width="152" height="21" rx="4" fill="#ea580c"/>
+          <text x="460" y="18.5" text-anchor="middle" font-size="11.2" font-weight="800" fill="#ffffff">Hold Select = Peek OLED</text>
         </g>
         <g class="svg-badge">
-          <rect x="712" y="4" width="114" height="21" rx="4" fill="#ea580c"/>
-          <text x="769" y="18.5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">Shift+Vol = Mix</text>
+          <rect x="686" y="4" width="144" height="21" rx="4" fill="#ea580c"/>
+          <text x="758" y="18.5" text-anchor="middle" font-size="11.2" font-weight="800" fill="#ffffff">Shift+Vol = Osc 1/2 Mix</text>
         </g>
 
         <!-- ================= 3. FILTER, CYCLING ENV & VOICING/ADSR (TEAL #0d9488) ================= -->
         <rect x="844" y="29" width="244" height="101" rx="6" fill="none" stroke="#0d9488" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="877" cy="91" r="13.5" fill="none" stroke="#0d9488" stroke-width="2.6"/>
-        <circle cx="1058" cy="86" r="20" fill="none" stroke="#0d9488" stroke-width="2.6"/>
-        <g class="svg-badge">
-          <rect x="902" y="4" width="186" height="21" rx="4" fill="#0d9488"/>
-          <text x="995" y="18.5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">0@Center • Shift=Velo&gt;Env</text>
-        </g>
-
         <rect x="844" y="135" width="244" height="95" rx="6" fill="none" stroke="#0d9488" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="877" cy="188" r="13.5" fill="none" stroke="#0d9488" stroke-width="2.6"/>
-        <g class="svg-badge">
-          <rect x="940" y="131" width="148" height="20" rx="4" fill="#0d9488"/>
-          <text x="1014" y="145" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">Shift+Rise/Fall = Curve</text>
-        </g>
-
         <rect x="1104" y="135" width="288" height="95" rx="6" fill="none" stroke="#0d9488" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="1131" cy="188" r="13.5" fill="none" stroke="#0d9488" stroke-width="2.6"/>
-        <g class="svg-badge">
-          <rect x="1198" y="131" width="194" height="20" rx="4" fill="#0d9488"/>
-          <text x="1295" y="145" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">SE+Mode = Env &amp; Voice Menus</text>
-        </g>
 
         <!-- ================= 4. DIGITAL FX, MASTER & TEMPO (INDIGO #4f46e5) ================= -->
         <rect x="1104" y="29" width="358" height="101" rx="6" fill="none" stroke="#4f46e5" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="1131" cy="91" r="13.5" fill="none" stroke="#4f46e5" stroke-width="2.6"/>
-        <circle cx="1200" cy="86" r="20" fill="none" stroke="#4f46e5" stroke-width="2.6"/>
-        <g class="svg-badge">
-          <rect x="1160" y="4" width="302" height="21" rx="4" fill="#4f46e5"/>
-          <text x="1311" y="18.5" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">Click Type=On/Off • Shift=Sub • SE+Sel=Send</text>
-        </g>
+        <circle cx="1204" cy="85.5" r="24" fill="none" stroke="#4f46e5" stroke-width="2.6"/>
 
         <rect x="1398" y="135" width="64" height="95" rx="6" fill="none" stroke="#4f46e5" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="1428" cy="186" r="20" fill="none" stroke="#4f46e5" stroke-width="2.6"/>
+        <circle cx="1432" cy="183" r="25" fill="none" stroke="#4f46e5" stroke-width="2.6"/>
         <g class="svg-badge">
-          <rect x="1294" y="225" width="190" height="20" rx="4" fill="#4f46e5"/>
-          <text x="1389" y="239" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">Click=Div • Shift+Click=Metro</text>
+          <rect x="1340" y="225" width="140" height="20" rx="4" fill="#4f46e5"/>
+          <text x="1410" y="239" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">Shift+Click = Metronome</text>
         </g>
 
         <!-- ================= MODAL C: LFO 1 & 2 (PURPLE #9333ea) ================= -->
         <rect x="384" y="135" width="178" height="95" rx="6" fill="none" stroke="#9333ea" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="408" cy="188" r="13.5" fill="none" stroke="#9333ea" stroke-width="2.8"/>
-        <circle cx="472" cy="186" r="20" fill="none" stroke="#9333ea" stroke-width="2.4"/>
-        <circle cx="537" cy="186" r="20" fill="none" stroke="#9333ea" stroke-width="2.4"/>
-        <g class="svg-badge">
-          <rect x="374" y="225" width="192" height="20" rx="4" fill="#9333ea"/>
-          <text x="470" y="239" text-anchor="middle" font-size="10.8" font-weight="800" fill="#ffffff">Click Rate=Sync • Shift+Sel=Edit</text>
-        </g>
+        <circle cx="476" cy="183.5" r="24" fill="none" stroke="#9333ea" stroke-width="2.6"/>
 
         <!-- ================= MODAL A: CENTRAL DISPLAY & PRESETS (RED #e11d48) ================= -->
         <rect x="570" y="148" width="265" height="82" rx="6" fill="none" stroke="#e11d48" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <circle cx="601" cy="190" r="14" fill="none" stroke="#38bdf8" stroke-width="2.8"/>
-        <circle cx="647" cy="190" r="14" fill="none" stroke="#e11d48" stroke-width="2.8"/>
-        <circle cx="793" cy="186" r="22" fill="none" stroke="#e11d48" stroke-width="2.8"/>
-        <g class="svg-badge">
-          <rect x="582" y="225" width="296" height="20" rx="4" fill="#e11d48"/>
-          <text x="730" y="239" text-anchor="middle" font-size="10.8" font-weight="800" fill="#ffffff">SE+Btn=Jump • Shift+Save=Favs • Hold Preset=Init</text>
-        </g>
+        <circle cx="794" cy="185.5" r="24" fill="none" stroke="#e11d48" stroke-width="2.6"/>
 
-        <!-- ================= MODAL D: TOUCH STRIPS (AMBER #d97706) ================= -->
+        <!-- ================= MODAL D: TOUCH STRIPS (4 OPEN-BOTTOM OUTLINES) ================= -->
         <rect x="26" y="252" width="172" height="56" rx="5" fill="none" stroke="#d97706" stroke-width="3.2"/>
-        <g class="svg-badge">
-          <rect x="18" y="230" width="192" height="20" rx="4" fill="#d97706"/>
-          <text x="114" y="244" text-anchor="middle" font-size="11" font-weight="800" fill="#ffffff">Shift = Vibrato / Assign / Dice</text>
-        </g>
 
-        <!-- Touch Strips 1 & 2 (Staggered Borders: Outer Amber, Middle Green, Inner Purple) -->
-        <rect x="50" y="364" width="160" height="134" rx="6" fill="none" stroke="#d97706" stroke-width="3.2" stroke-dasharray="7 4"/>
-        <rect x="56" y="370" width="148" height="122" rx="5" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="5 3"/>
-        <rect x="62" y="376" width="136" height="110" rx="4" fill="none" stroke="#9333ea" stroke-width="2.4" stroke-dasharray="4 3"/>
-        <rect x="14" y="500" width="230" height="84" rx="6" fill="#0f172a" fill-opacity="0.95" stroke="#d97706" stroke-width="2.4"/>
-        <text x="129" y="517" text-anchor="middle" font-size="11.5" font-weight="800" fill="#fbbf24">TOUCH STRIPS 1 (L) &amp; 2 (R)</text>
-        <text x="129" y="532" text-anchor="middle" font-size="10.2" font-weight="700" fill="#f8fafc">&bull; Bend/Wheel &bull; Blu LED: Vib Rate/Depth*</text>
-        <text x="129" y="547" text-anchor="middle" font-size="10.2" font-weight="700" fill="#38bdf8">&bull; Macro 1 &amp; 2 &bull; Gate % &amp; Spice Amt</text>
-        <text x="129" y="562" text-anchor="middle" font-size="10.2" font-weight="700" fill="#d8b4fe">&bull; Shaper: Amp/Crv &bull; <tspan fill="#4ade80">Seq Hold: Len/Velo</tspan></text>
-        <text x="129" y="576" text-anchor="middle" font-size="9.2" font-weight="700" fill="#cbd5e1">*Hold Bend/Wheel pad to edit Vibrato</text>
+        <path d="M 29,504 V 356 Q 29,349 36,349 H 226 Q 233,349 233,356 V 504" fill="none" stroke="#d97706" stroke-width="3.0" stroke-dasharray="7 4"/>
+        <path d="M 37,504 V 362 Q 37,356 43,356 H 219 Q 225,356 225,362 V 504" fill="none" stroke="#0284c7" stroke-width="2.8" stroke-dasharray="6 3"/>
+        <path d="M 45,504 V 368 Q 45,363 50,363 H 212 Q 217,363 217,368 V 504" fill="none" stroke="#16a34a" stroke-width="2.6" stroke-dasharray="5 3"/>
+        <path d="M 53,504 V 374 Q 53,370 57,370 H 205 Q 209,370 209,374 V 504" fill="none" stroke="#9333ea" stroke-width="2.5" stroke-dasharray="4 3"/>
 
-        <!-- ================= STEP BAR: NESTED STAGGERED BORDERS (GREEN, RED, PURPLE) ================= -->
-        <rect x="254" y="247" width="1100" height="64" rx="6" fill="none" stroke="#16a34a" stroke-width="3.4"/>
-        <line x1="381" y1="247" x2="381" y2="311" stroke="#16a34a" stroke-width="2.2" stroke-dasharray="4 2"/>
-        <line x1="511" y1="247" x2="511" y2="311" stroke="#16a34a" stroke-width="2.2" stroke-dasharray="4 2"/>
-        <line x1="1146" y1="247" x2="1146" y2="311" stroke="#16a34a" stroke-width="2.2" stroke-dasharray="4 2"/>
+        <rect x="18" y="504" width="226" height="80" rx="6" fill="#0f172a" fill-opacity="0.95" stroke="#d97706" stroke-width="2.4"/>
+        <text x="131" y="519" text-anchor="middle" font-size="10.8" font-weight="800" fill="#fbbf24">TOUCH STRIPS: 1 (L) | 2 (R)</text>
+        <text x="131" y="534" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fde68a">Modes: Bend/Wheel | M1/M2 | Gate/Spice</text>
+        <text x="131" y="549" text-anchor="middle" font-size="9.5" font-weight="700" fill="#38bdf8">Hold Bend/Wheel (Vib): Rate | Depth</text>
+        <text x="131" y="564" text-anchor="middle" font-size="9.5" font-weight="700" fill="#4ade80">Seq Hold Step: Note Length | Velocity</text>
+        <text x="131" y="578" text-anchor="middle" font-size="9.5" font-weight="700" fill="#d8b4fe">Shaper Hold Step: Amplitude | Curve</text>
 
-        <rect x="515" y="253" width="796" height="52" rx="4" fill="none" stroke="#e11d48" stroke-width="2.8" stroke-dasharray="6 3"/>
-        <rect x="520" y="259" width="829" height="40" rx="3" fill="none" stroke="#9333ea" stroke-width="2.6" stroke-dasharray="4 3"/>
+        <!-- ================= STEP BAR: OVERALL MODE OUTLINES (GREEN, PURPLE, RED) ================= -->
+        <rect x="252" y="245" width="1105" height="68" rx="6" fill="none" stroke="#16a34a" stroke-width="3.2"/>
+        <rect x="513" y="250" width="839" height="58" rx="5" fill="none" stroke="#9333ea" stroke-width="2.6" stroke-dasharray="6 3"/>
+        <rect x="518" y="255" width="792" height="48" rx="4" fill="none" stroke="#e11d48" stroke-width="2.6" stroke-dasharray="5 3"/>
 
-        <!-- ================= STEP BAR PAD EXPLANATIONS (DIRECTLY BELOW PADS OVER TOP OF KEYS, y: 328..416) ================= -->
+        <!-- ================= STEP BAR MODE-DEDICATED PAD BREAKDOWN (OVER TOP OF KEYS) ================= -->
         <g>
-          <rect x="254" y="328" width="1100" height="88" rx="6" fill="#0f172a" fill-opacity="0.94" stroke="#16a34a" stroke-width="2.4"/>
-          <line x1="511" y1="328" x2="511" y2="416" stroke="#475569" stroke-width="1.5"/>
-          <line x1="829" y1="328" x2="829" y2="416" stroke="#475569" stroke-width="1.5"/>
-          <line x1="985" y1="328" x2="985" y2="416" stroke="#475569" stroke-width="1.5"/>
-          <line x1="1146" y1="328" x2="1146" y2="416" stroke="#475569" stroke-width="1.5"/>
+          <rect x="252" y="326" width="1105" height="90" rx="6" fill="#0f172a" fill-opacity="0.94" stroke="#16a34a" stroke-width="2.4"/>
+          <line x1="542" y1="326" x2="542" y2="416" stroke="#475569" stroke-width="1.5"/>
+          <line x1="827" y1="326" x2="827" y2="416" stroke="#475569" stroke-width="1.5"/>
+          <line x1="1092" y1="326" x2="1092" y2="416" stroke="#475569" stroke-width="1.5"/>
 
-          <text x="382" y="345" text-anchor="middle" font-size="11.2" font-weight="800" fill="#4ade80">MODE &amp; TRANSPORT PADS</text>
-          <text x="382" y="362" text-anchor="middle" font-size="10.2" font-weight="700" fill="#f8fafc">&bull; Hold Off/Arp/Seq + Pad = Copy/Paste/Erase</text>
-          <text x="382" y="378" text-anchor="middle" font-size="10.2" font-weight="700" fill="#38bdf8">&bull; Shift+Rec = Overdub (Blu) vs Replace (Red)</text>
-          <text x="382" y="394" text-anchor="middle" font-size="10.2" font-weight="700" fill="#fbbf24">&bull; Long-Press Rec in Arp = Copy Arp to Seq!</text>
-          <text x="382" y="409" text-anchor="middle" font-size="10" font-weight="700" fill="#cbd5e1">&bull; Mods = 4 Mod Lanes (Hold Step + Turn Knob)</text>
+          <text x="397" y="343" text-anchor="middle" font-size="11.2" font-weight="800" fill="#4ade80">ARP MODE PADS</text>
+          <text x="397" y="360" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">1&ndash;4: Up | Down | UpDwn | Rand</text>
+          <text x="397" y="376" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">5&ndash;8: Order | Poly | Walk | Ptrn &nbsp;|&nbsp; 9&ndash;12: Oct 1&ndash;4</text>
+          <text x="397" y="392" text-anchor="middle" font-size="9.6" font-weight="700" fill="#fbbf24">13&ndash;16: Repeat | Ratchet | RandOct (latch) | Mutate</text>
+          <text x="397" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#cbd5e1">Last Step + Pad 1&ndash;16: Pattern mode length</text>
 
-          <text x="670" y="345" text-anchor="middle" font-size="11.2" font-weight="800" fill="#4ade80">PADS 1&ndash;8: ARP MODE / SEQ / FAVS / SHAPER</text>
-          <text x="670" y="362" text-anchor="middle" font-size="9.8" font-weight="700" fill="#f8fafc">&bull; Arp: Up, Down, UpDwn, Rand, Order, Poly, Walk, Pattern</text>
-          <text x="670" y="378" text-anchor="middle" font-size="9.8" font-weight="700" fill="#f8fafc">&bull; Seq Steps 1&ndash;8: Tap = Toggle &bull; Hold = Edit Note/Velo/Len</text>
-          <text x="670" y="394" text-anchor="middle" font-size="9.8" font-weight="700" fill="#fda4af">&bull; Favs (Shift+Save): Blue=Saved, Red=Active, Save+Pad=Store</text>
-          <text x="670" y="409" text-anchor="middle" font-size="9.8" font-weight="700" fill="#d8b4fe">&bull; Shaper (Shift+LFO): Purple Steps (Hold=Edit Amp/Crv)</text>
+          <text x="684.5" y="343" text-anchor="middle" font-size="11.2" font-weight="800" fill="#4ade80">SEQ &amp; MODS PADS</text>
+          <text x="684.5" y="360" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Hold Off | Arp | Seq + Pad/Page = Copy | Paste | Erase</text>
+          <text x="684.5" y="376" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Pads 1&ndash;16: Tap = Toggle step | Hold = Edit step</text>
+          <text x="684.5" y="392" text-anchor="middle" font-size="9.6" font-weight="700" fill="#38bdf8">Pages 16&ndash;64: Switch page | Shift+Page = Extend seq</text>
+          <text x="684.5" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#fbbf24">Last Step + Pad/Page: Sequence length (1&ndash;64)</text>
 
-          <text x="907" y="345" text-anchor="middle" font-size="11.2" font-weight="800" fill="#fbbf24">PADS 9&ndash;12: OCTAVES</text>
-          <text x="907" y="362" text-anchor="middle" font-size="10.2" font-weight="700" fill="#f8fafc">&bull; Arp: Oct 1, 2, 3, 4</text>
-          <text x="907" y="378" text-anchor="middle" font-size="10.2" font-weight="700" fill="#f8fafc">&bull; Seq: Steps 9&ndash;12</text>
-          <text x="907" y="394" text-anchor="middle" font-size="10.2" font-weight="700" fill="#fda4af">&bull; Favs: Slots 9&ndash;12</text>
-          <text x="907" y="409" text-anchor="middle" font-size="10.2" font-weight="700" fill="#d8b4fe">&bull; Shaper: Steps 9&ndash;12</text>
+          <text x="959.5" y="343" text-anchor="middle" font-size="11.2" font-weight="800" fill="#fda4af">FAVORITES PADS</text>
+          <text x="959.5" y="360" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Shift+Save: 64 slots (Pads 1&ndash;16 &times; Pages 16&ndash;64)</text>
+          <text x="959.5" y="376" text-anchor="middle" font-size="9.6" font-weight="700" fill="#93c5fd">Pad LEDs: Blue = Saved | <tspan fill="#fda4af">Red = Active preset</tspan></text>
+          <text x="959.5" y="392" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Tap Blue Pad = Load | Hold Save + Pad = Store</text>
+          <text x="959.5" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#cbd5e1">Hold Seq + Pad = Clear | Sound Edit = Exit</text>
 
-          <text x="1065" y="345" text-anchor="middle" font-size="11.2" font-weight="800" fill="#fb7185">PADS 13&ndash;16: ARP MODS</text>
-          <text x="1065" y="362" text-anchor="middle" font-size="10.2" font-weight="700" fill="#f8fafc">&bull; 13 Repeat &bull; 14 Ratchet</text>
-          <text x="1065" y="378" text-anchor="middle" font-size="10.2" font-weight="700" fill="#f8fafc">&bull; 15 RandOct (Latches!)</text>
-          <text x="1065" y="394" text-anchor="middle" font-size="10.2" font-weight="700" fill="#f8fafc">&bull; 16 Mutate (Hold 13/14/16)</text>
-          <text x="1065" y="409" text-anchor="middle" font-size="10" font-weight="700" fill="#cbd5e1">&bull; Seq / Favs / Shaper 13&ndash;16</text>
-
-          <text x="1250" y="345" text-anchor="middle" font-size="11.2" font-weight="800" fill="#d8b4fe">PAGES &amp; LAST STEP</text>
-          <text x="1250" y="362" text-anchor="middle" font-size="10.2" font-weight="700" fill="#f8fafc">&bull; Pages 16 / 32 / 48 / 64</text>
-          <text x="1250" y="378" text-anchor="middle" font-size="10.2" font-weight="700" fill="#38bdf8">&bull; Shift+Page = Extend Seq</text>
-          <text x="1250" y="394" text-anchor="middle" font-size="10.2" font-weight="700" fill="#d8b4fe">&bull; Shaper Slopes: /  \  ^  -</text>
-          <text x="1250" y="409" text-anchor="middle" font-size="10.2" font-weight="700" fill="#fbbf24">&bull; Last Step+Pad = Length</text>
+          <text x="1224.5" y="343" text-anchor="middle" font-size="11.2" font-weight="800" fill="#d8b4fe">LFO SHAPER PADS</text>
+          <text x="1224.5" y="360" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Shift+LFO Select: Edit wave (Purple step LEDs)</text>
+          <text x="1224.5" y="376" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">1&ndash;16: Tap = Toggle | Hold = Edit | 1st+End = Seg</text>
+          <text x="1224.5" y="392" text-anchor="middle" font-size="9.6" font-weight="700" fill="#f8fafc">Long-Hold Pad: Latch Step Edit (White flash)</text>
+          <text x="1224.5" y="408" text-anchor="middle" font-size="9.6" font-weight="700" fill="#fbbf24">Pages 16&ndash;64: Slope (/ \ ^ -) | Last Step+Pad = Len</text>
         </g>
 
-        <!-- ================= KEYBED WORKFLOW CALLOUT (LOWER KEYS, y: 510..552) ================= -->
-        <rect x="310" y="510" width="1060" height="42" rx="6" fill="#0f172a" fill-opacity="0.94" stroke="#d97706" stroke-width="2.4"/>
-        <text x="840" y="527" text-anchor="middle" font-size="11.8" font-weight="800" fill="#fbbf24">37-KEY VELOCITY + AFTERTOUCH KEYBED SHORTCUTS (Poly Voice Stealing NEVER Steals Lowest Note!)</text>
-        <text x="840" y="544" text-anchor="middle" font-size="10.8" font-weight="700" fill="#f8fafc">
-          &bull; <tspan fill="#38bdf8">Hold Chord + Keys</tspan> = Program Chord  &nbsp;|&nbsp;  &bull; <tspan fill="#4ade80">Seq Stopped + Hold Key</tspan> = Transpose &amp; Play Seq  &nbsp;|&nbsp;  &bull; <tspan fill="#fbbf24">Seq Playing + Shift + Key</tspan> = Transpose Live  &nbsp;|&nbsp;  &bull; <tspan fill="#d8b4fe">User Scale</tspan> = Tap Keys
+        <!-- ================= KEYBED WORKFLOW CALLOUT (LOWER KEYS, y: 514..554) ================= -->
+        <rect x="300" y="514" width="1070" height="40" rx="6" fill="#0f172a" fill-opacity="0.94" stroke="#d97706" stroke-width="2.4"/>
+        <text x="835" y="530" text-anchor="middle" font-size="11.4" font-weight="800" fill="#fbbf24">37-KEY VELOCITY + AFTERTOUCH KEYBED SHORTCUTS (Poly Voice Stealing Never Steals Lowest Note)</text>
+        <text x="835" y="546" text-anchor="middle" font-size="10.4" font-weight="700" fill="#f8fafc">
+          <tspan fill="#38bdf8">Hold Chord + Keys</tspan> = Store Chord &nbsp;|&nbsp; <tspan fill="#4ade80">Seq Stopped + Hold Key</tspan> = Transpose &amp; Play &nbsp;|&nbsp; <tspan fill="#fbbf24">Seq Playing + Shift + Key</tspan> = Transpose Live &nbsp;|&nbsp; <tspan fill="#d8b4fe">User Scale</tspan> = Tap Keys
         </text>
       </svg>
     </div>
@@ -611,53 +543,54 @@
       <!-- MODAL A: PRESETS, MENUS & FAVORITES (RED #e11d48) -->
       <div class="col-span-3 rounded-lg border-2 border-rose-600 bg-rose-50/50 p-1.5">
         <div class="flex items-center justify-between border-b border-rose-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-rose-950 uppercase tracking-tight">Modal A: Presets &amp; Favorites</span>
+          <span class="font-extrabold text-rose-950 uppercase tracking-tight">Modal A: Presets, Save &amp; Menus</span>
           <span class="px-1.5 py-0.5 bg-rose-600 text-white rounded text-[10px] font-bold">Red Outline</span>
         </div>
         <ul class="space-y-0.5 text-slate-700">
-          <li>&bull; <b>Browse &amp; Init:</b> Turn <code class="font-bold">Preset</code> (<span class="text-sky-700 font-semibold">Shift+Turn</span> = Category Filter; <b>Hold 2s</b> = <b>Init Patch</b>). <b>Hold <code class="font-bold">Sound Edit</code> + Btn</b> jumps to menu.</li>
-          <li>&bull; <b>Save / Rename:</b> Tap <code class="font-bold">Save</code> 2&times; (overwrite), OR click <code class="font-bold">Preset</code> to edit <b>Slot # &rarr; Type &rarr; Name</b> (<i>Turn</i>=Char, <i>Shift</i>=A/a/0, <i>Click</i>=Next, <i>Hold+Turn</i>=Cursor).</li>
-          <li>&bull; <b>Favorites (<span class="text-sky-700 font-semibold">Shift+Save</span>):</b> Pads 1&ndash;16 (&times;4 pages) light <span class="text-blue-600 font-bold">Blue LED</span> (saved) or <span class="text-red-600 font-bold">Red LED</span> (active). Tap = Load &bull; <b>Save+Pad</b> = Store &bull; <b>Seq+Pad</b> = Clear.</li>
+          <li><b>Browse &amp; Init:</b> Turn <code class="font-bold">Preset</code> &rarr; Click = load | <span class="text-sky-700 font-semibold">Shift+Turn</span> = Category Filter | <b>Hold 2s</b> = <b>Init Preset</b></li>
+          <li><b>Save &amp; Rename:</b> Tap <code class="font-bold">Save</code> 2&times; (overwrite) | Click <code class="font-bold">Preset</code> = <b>Slot # &rarr; Type &rarr; Name</b> (<i>Turn</i>=Char | <i>Shift</i>=A/a/0 | <i>Click</i>=Next | <i>Hold+Turn</i>=Pos)</li>
+          <li><b>Menus &amp; Panel:</b> <code class="font-bold">Sound Edit</code> (White) = Preset Menu (<code class="font-bold">SE+Btn</code> jumps; tap cancels) | <span class="text-sky-700 font-semibold">Shift+SE</span> (Blue) = Global <code class="font-bold">Utility</code> (<span class="text-sky-700 font-semibold">Shift+Save</span> = Favs/Panel)</li>
         </ul>
       </div>
 
       <!-- MODAL B: ARPEGGIATOR, SEQUENCER & 4 MOD LANES (GREEN #16a34a) -->
       <div class="col-span-3 rounded-lg border-2 border-emerald-600 bg-emerald-50/50 p-1.5">
         <div class="flex items-center justify-between border-b border-emerald-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-emerald-950 uppercase tracking-tight">Modal B: Arp, Seq &amp; 4 Mod Lanes</span>
+          <span class="font-extrabold text-emerald-950 uppercase tracking-tight">Modal B: Arp, Seq &amp; Mod Recording</span>
           <span class="px-1.5 py-0.5 bg-emerald-600 text-white rounded text-[10px] font-bold">Green Outline</span>
         </div>
         <ul class="space-y-0.5 text-slate-700">
-          <li>&bull; <b>Arp &rarr; Seq Transfer:</b> While playing Arp, <b>long-press <code class="font-bold">Record</code></b> to copy Arp notes into the Sequencer!</li>
-          <li>&bull; <b>Step vs. Live Rec:</b> <code class="font-bold">Rec</code> while Stopped = Step Rec (<span class="text-sky-700 font-semibold">Shift+Rec</span> toggles <span class="text-blue-600 font-bold">Blue LED Overdub</span> vs <span class="text-red-600 font-bold">Red LED Replace</span>). <code class="font-bold">Rec</code> while Playing = Live Rec.</li>
-          <li>&bull; <b>Quick Step Edit:</b> <b>Hold Step Pad</b> &rarr; Turn <code class="font-bold">Preset</code> = Note (Long-click = delete), <b>Strip 1</b> = Length, <b>Strip 2</b> = Velocity.</li>
-          <li>&bull; <b>4 Mod Lanes:</b> Tap <code class="font-bold">Mods</code> &rarr; Rec + turn knob, OR <b>hold Step + turn knob</b>.</li>
+          <li><b>Arp &rarr; Seq Transfer:</b> While playing Arp, <b>long-press <code class="font-bold">Record</code></b> to copy active Arp notes into the Sequencer</li>
+          <li><b>Step vs. Live Rec:</b> <code class="font-bold">Rec</code> Stopped = Step Rec (up to 6 notes/step) | <code class="font-bold">Rec</code> Playing = Live Rec | <span class="text-sky-700 font-semibold">Shift+Rec</span> = <span class="text-blue-600 font-bold">Blue Overdub</span> vs <span class="text-red-600 font-bold">Red Replace</span></li>
+          <li><b>Step Note Select:</b> In Step Rec or while holding a Step pad, turn <code class="font-bold">Preset</code> = pick chord note | <b>Long-click <code class="font-bold">Preset</code></b> = delete note/step</li>
+          <li><b>4 Mod Lanes (<code class="font-bold">Mods</code>):</b> Tap <code class="font-bold">Mods</code> &rarr; Rec + turn knob/strip, OR hold Step + turn knob | Turn <code class="font-bold">Preset</code> = lane 1&ndash;4 (<b>Long-click</b> = clear)</li>
         </ul>
       </div>
 
       <!-- MODAL C: LFO (1 & 2) & SHAPER WAVE EDIT (PURPLE #9333ea) -->
       <div class="col-span-3 rounded-lg border-2 border-purple-600 bg-purple-50/50 p-1.5">
         <div class="flex items-center justify-between border-b border-purple-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-purple-950 uppercase tracking-tight">Modal C: LFO &amp; Shaper Edit</span>
+          <span class="font-extrabold text-purple-950 uppercase tracking-tight">Modal C: LFO 1&ndash;2 &amp; Shaper Waves</span>
           <span class="px-1.5 py-0.5 bg-purple-600 text-white rounded text-[10px] font-bold">Purple Outline</span>
         </div>
         <ul class="space-y-0.5 text-slate-700">
-          <li>&bull; <b>LFO 1 &amp; 2:</b> <b>Click <code class="font-bold">Rate</code></b> = Sync On/Off &bull; <span class="text-sky-700 font-semibold">Shift+Rate</span> = Retrig Src. Turn <code class="font-bold">Wave</code> to <b>Shaper</b>, then <span class="text-sky-700 font-semibold">Shift+Wave</span> loads Shaper 1&ndash;16.</li>
-          <li>&bull; <b>Enter Shaper (<span class="text-purple-700 font-semibold">Shift+LFO Select</span>):</b> Step pads blink <span class="text-purple-600 font-bold">Purple LED</span>, Strips turn <span class="text-red-600 font-bold">Red LED</span>, Page pads set Slope (<code class="font-mono">/ \ ^ -</code>).</li>
-          <li>&bull; <b>Edit &amp; Save:</b> <b>Hold step</b> (or <b>long-hold till flashing White LED</b> for multi-step Segments!). <b>Strip 1</b> = Amp, <b>Strip 2</b> = Curve. <b>Hold <code class="font-bold">Save+LFO Select</code></b> = Store Wave 1&ndash;8.</li>
+          <li><b>LFO 1 &amp; 2:</b> Tap <code class="font-bold">Select</code> = 1/2 (LEDs: <b>Yellow</b> <code class="font-mono">+</code> | <b>Red</b> <code class="font-mono">-</code>) | <b>Click <code class="font-bold">Rate</code></b> = Sync | <span class="text-sky-700 font-semibold">Shift+Rate</span> = Retrig (<code class="font-mono">Free</code>, <code class="font-mono">Poly</code>, <code class="font-mono">Mono</code>, <code class="font-mono">Legato</code>, <code class="font-mono">One</code>&hellip;)</li>
+          <li><b>Load Shaper Wave:</b> Turn <code class="font-bold">Wave</code> to <b>Shaper</b>, then <span class="text-sky-700 font-semibold">Shift+Turn <code class="font-bold">Wave</code></span> previews Preset + 16 Factory + 8 User waves (release <code class="font-bold">Shift</code> to load)</li>
+          <li><b>Save Shaper Wave:</b> Presets auto-save 1 Shaper/LFO | In Shaper Edit, <b>Hold <code class="font-bold">Save</code> + <code class="font-bold">LFO Select</code></b> &rarr; <code class="font-bold">Preset</code> stores User Wave 1&ndash;8</li>
         </ul>
       </div>
 
       <!-- MODAL D: TOUCH STRIPS & KEYBED (AMBER #d97706) -->
       <div class="col-span-3 rounded-lg border-2 border-amber-600 bg-amber-50/50 p-1.5">
         <div class="flex items-center justify-between border-b border-amber-200 pb-0.5 mb-0.5 whitespace-nowrap">
-          <span class="font-extrabold text-amber-950 uppercase tracking-tight">Modal D: Touch Strips &amp; Keys</span>
+          <span class="font-extrabold text-amber-950 uppercase tracking-tight">Modal D: Vibrato, Macros &amp; Spice/Dice</span>
           <span class="px-1.5 py-0.5 bg-amber-600 text-white rounded text-[10px] font-bold">Amber Outline</span>
         </div>
         <ul class="space-y-0.5 text-slate-700">
-          <li>&bull; <b>Vibrato LFO (<span class="text-sky-700 font-semibold">Shift+Bend/Wheel</span>):</b> Top Wheel LED turns <span class="text-blue-600 font-bold">Blue</span>. <b>Hold <code class="font-bold">Bend/Wheel</code> pad</b>: Strip 1 = Rate, Strip 2 = Depth (stays active across modes!).</li>
-          <li>&bull; <b>Macro Assign (<span class="text-sky-700 font-semibold">Shift+Macros</span>):</b> Strips pulse White LED. Tap Strip 1 (<code class="font-bold">M1</code>) or Strip 2 (<code class="font-bold">M2</code>) &rarr; turn up to 4 knobs/Matrix points. Long-click <code class="font-bold">Preset</code> = clear.</li>
-          <li>&bull; <b>Gate / Spice &amp; Dice:</b> Strip 1 = Gate %, Strip 2 = Spice amount. <span class="text-sky-700 font-semibold">Shift+Gate/Spice</span> = roll <b>Dice</b> (new random seed).</li>
+          <li><b>Vibrato (<span class="text-sky-700 font-semibold">Shift+Bend/Wheel</span>):</b> Toggles 3rd triangle LFO (top Wheel LED = <span class="text-blue-600 font-bold">Blue</span>; stays active across strip modes; <code class="font-bold">SE+Osc</code> also edits)</li>
+          <li><b>Macro Assign (<span class="text-sky-700 font-semibold">Shift+Macros</span>):</b> Strips pulse White &rarr; tap Strip 1 (<code class="font-bold">M1</code>) or 2 (<code class="font-bold">M2</code>) &rarr; turn up to 4 knobs (<code class="font-bold">Matrix</code>/<code class="font-bold">Preset</code> = custom; <b>Long-click</b> = clear)</li>
+          <li><b>Gate, Spice &amp; Dice:</b> <code class="font-bold">Gate</code> = step length | <code class="font-bold">Spice</code> morphs Vel/Oct/Gate/Step/Env non-destructively | <span class="text-sky-700 font-semibold">Shift+Gate/Spice</span> = roll <b>Dice</b></li>
+          <li><b>Keyboard Menu Jump:</b> <b>Hold <code class="font-bold">Sound Edit</code> + tap Touch Strip</b> opens <code class="font-mono">Bend Range</code> | <code class="font-mono">Matrix Src VeloAT</code> | <code class="font-mono">Kbd Src</code></li>
         </ul>
       </div>
 
@@ -701,7 +634,7 @@
             <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + CycEnv Mode</code> &rarr; Cycling Env Menu</div>
             <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + LFO Select</code> &rarr; LFO Retrig &amp; Sync</div>
             <div><code class="px-1 py-0.5 rounded bg-indigo-100 text-indigo-950 font-bold">SE + Touch Strip</code> &rarr; Keyboard Menu</div>
-            <div class="col-span-2 pt-0.5 border-t border-indigo-200"><code class="px-1 py-0.5 rounded bg-sky-100 text-sky-900 font-bold">Shift + Chord (Scales)</code> &rarr; Scale Config Menu &nbsp;&bull;&nbsp; <code class="px-1 py-0.5 rounded bg-slate-200 text-slate-900 font-bold">Tap Sound Edit</code> = Cancel Save / Exit</div>
+            <div class="col-span-2 pt-0.5 border-t border-indigo-200"><code class="px-1 py-0.5 rounded bg-sky-100 text-sky-900 font-bold">Shift + Chord (Scales)</code> &rarr; Scale Config Menu &nbsp;|&nbsp; <code class="px-1 py-0.5 rounded bg-slate-200 text-slate-900 font-bold">Tap Sound Edit</code> = Cancel Save / Exit</div>
           </div>
         </div>
 
@@ -804,7 +737,7 @@
             </div>
 
             <div class="p-1 rounded bg-purple-50/50 border border-purple-200">
-              <div class="font-bold text-purple-950">5. Cycling Env &bull; 6. LFO &bull; 7. Keyboard &bull; 8. Seq &bull; 9. Scale</div>
+              <div class="font-bold text-purple-950">5. Cycling Env | 6. LFO | 7. Keyboard | 8. Seq | 9. Scale</div>
               <ul class="mt-0.5 space-y-0.5">
                 <li><b>Cycling Env:</b> <code class="font-mono">Retrig Src</code> (Poly/Mono/Legato/LFO1-2), <code class="font-mono">Stage Order</code> (<code class="font-mono">RHF</code> hold high vs <code class="font-mono">RFH/HRF</code> hold at 0), <code class="font-mono">Tempo Sync</code>.</li>
                 <li><b>LFO:</b> <code class="font-mono">LFO 1/2 Retrig</code>, <code class="font-mono">Sync Filter</code> (Straight/Triplet/Dotted), <code class="font-mono">Shaper Rate</code> (<code class="font-mono">Per Step</code> vs. <code class="font-mono">All Steps</code> = 16&times; faster).</li>
@@ -828,7 +761,7 @@
           <div class="space-y-1 text-slate-800">
             <div>
               <div class="font-bold text-sky-950">1. Preset Operations</div>
-              <div><code class="font-mono">Preset Copy / Paste</code> (Osc 1/2, FX 1/2/3, Seq+Mods, LFO Curve, Swap FX) &bull; <code class="font-mono">Preset Erase</code> (Init, Reload, Matrix, Seq, Mods, Macro 1/2) &bull; <code class="font-mono">Panel Mode</code> (<b>Favorite Panel</b> vs. <b>Knob Panel</b>).</div>
+              <div><code class="font-mono">Preset Copy / Paste</code> (Osc 1/2, FX 1/2/3, Seq+Mods, LFO Curve, Swap FX) | <code class="font-mono">Preset Erase</code> (Init, Reload, Matrix, Seq, Mods, Macro 1/2) | <code class="font-mono">Panel Mode</code> (<b>Favorite Panel</b> vs. <b>Knob Panel</b>).</div>
             </div>
 
             <div class="border-t border-sky-200 pt-0.5">
@@ -844,7 +777,7 @@
               <div class="font-bold text-sky-950">3. Audio &amp; Calibration</div>
               <div><code class="font-mono">Audio In Mode</code>: <b>Line</b> vs. <b>Microphone</b> (Dynamic mics; no phantom power).</div>
               <div><code class="font-mono">Audio In Gain</code>: <code class="font-mono">-9 dB to +24 dB</code>.</div>
-              <div><code class="font-mono">Master Tune</code> (&plusmn;50c) &bull; <code class="font-mono">Stereo to Mono</code>.</div>
+              <div><code class="font-mono">Master Tune</code> (&plusmn;50c) | <code class="font-mono">Stereo to Mono</code>.</div>
               <div><code class="font-mono">Calib Cutoff</code> &amp; <code class="font-mono">Calib Analog</code> (1&ndash;2 min self-tune).</div>
             </div>
 
@@ -856,8 +789,8 @@
             </div>
 
             <div class="border-t border-sky-200 pt-0.5">
-              <div class="font-bold text-sky-950">6. Global Scale &bull; 7. Misc &bull; 8. Your Name</div>
-              <div><code class="font-mono">Global Scale/Root</code> &bull; <code class="font-mono">LED Intensity</code> &bull; <code class="font-mono">Your Name</code> (tags your patches &amp; adds your name to Filter list!).</div>
+              <div class="font-bold text-sky-950">6. Global Scale | 7. Misc | 8. Your Name</div>
+              <div><code class="font-mono">Global Scale/Root</code> | <code class="font-mono">LED Intensity</code> | <code class="font-mono">Your Name</code> (tags your patches &amp; adds your name to Filter list!).</div>
             </div>
           </div>
         </div>
@@ -890,8 +823,10 @@
           if (len > 0) {
             const cx = parseFloat(text.getAttribute('x'));
             const w = Math.ceil(len + 18);
+            const rx = Math.max(14, Math.min(1486 - w, Math.round(cx - w / 2)));
             rect.setAttribute('width', w);
-            rect.setAttribute('x', Math.round(cx - w / 2));
+            rect.setAttribute('x', rx);
+            text.setAttribute('x', rx + w / 2);
           }
         }
       });
